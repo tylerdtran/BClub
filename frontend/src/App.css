@@ -1,0 +1,235 @@
+/* the reset selector*/ 
+* {
+	margin: 0; 
+	padding: 0; 
+}
+
+:root {
+    --bruin-blue: rgb(26, 108, 184);
+}
+
+html {
+	color: #666; /* Set default text color to white for dark mode website */
+}
+
+/* the styles for the header */
+header {
+	position: relative;
+}
+
+header #logo {
+	max-width: 23%;
+	padding: 1%;
+}
+
+header br {
+	display: none; /* This spacing is only needed for mobile */
+}
+
+header h3 {
+	font-size: 100%;
+	position: absolute;
+	bottom: 5%;
+	right: 1%;
+	max-width: 50%;
+	text-align: right;
+}
+
+/* the styles for the nav menu */
+
+#nav_menu{
+	width: 100%; /* of body section */
+}
+
+#nav_menu ul{
+	clear: both;
+	list-style-type: none; /* Removes bullet points */
+	margin: 0;
+	padding: 0;
+	position: relative;
+}
+
+#nav_menu li a{ /* Individual nav menu button */
+	display: block;
+	width: 100%; /* of containing nav button */
+	text-align: center;
+	padding: 1em 0em;
+	text-decoration: none;
+	color: #555;
+	border: 1px solid var(--bruin-blue);
+	border-radius: 25px;
+}
+
+#nav_menu ul li{ /* Nav menu buttons */
+	float: left;
+	width: 19.6%; /* of body section */
+	margin: 0.2%;
+}
+
+#nav_menu ul li a.current {
+	color: rgb(26, 108, 184);
+}
+
+#nav_menu ul li ul{
+	width: 19.6%; /* of body section */
+	display: none; /* Hide submenus when not hovered */ 
+	position: absolute; /* Position below main menu */
+	top: 100%; /* Position below main menu */
+}
+
+#nav_menu ul li ul li{
+	width: 100%; /* of containing nav button */
+	float: none; /* Makes sure the submenu items are displayed vertically */
+}
+
+#nav_menu ul li:hover > ul {
+	display: block; /* Display list items when hovered */
+}
+
+#nav_menu > ul::after{ /*Prevents submenu from being displayed on top of main menu */
+	content: ""; /* Adds an empty space after the main menu */
+	display: block; 
+	clear: both; /* Make sure the content doesn't float */
+}
+
+/* the styles for the elements */
+body {
+	font-family: "Open Sans", sans-serif;
+    font-size: 100%;
+	background-color: #fafafa;
+	width: 99%;
+	margin: auto;
+}
+
+main {
+	display: flex;
+	margin-top: 1%;
+}
+
+main p {
+	padding: 1%;
+}
+
+main a {
+	color: #666;
+}
+
+/* the styles for the section */
+.featureSection {
+	flex-basis: 60%;
+	padding: 1%;
+	order: 1;
+	border-right: 1px solid var(--bruin-blue);
+}
+
+.featureSection h1 {
+	font-size: 150%;
+	padding: 0.5em 0em 0.25em;
+	margin: 0em;
+}
+
+.featureSection h2 {
+	font-size: 130%;
+	color: var(--bruin-blue);
+	padding: 0.5em 0em 0.25em;
+}
+
+.featureSection a {
+	color: #666;
+}
+
+.featurePhoto {
+	width: 50%;
+	float: right;
+	clear: left;
+	margin: 0% 0% 2.5% 2.5%;
+}
+
+.featurePhoto img{
+	width: 100%;
+}
+
+.featureSection h3 {
+	font-size: 105%;
+	padding-bottom: 0.25em;
+}
+
+/* the styles for the aside */
+.APIs {
+	flex-basis: 30%;
+	padding: 1%;
+	order: 2;
+}
+
+.APIs h2 {
+	font-size: 130%;
+	color: var(--bruin-blue);
+	padding: 0.5em 0em 0.25em;
+}
+
+.APIs h3 {
+	font-size: 105%;
+	padding: 0.25em 0em 0.25em;
+}
+
+.APIs a {
+	text-decoration: none;
+}
+
+.APIs img {
+	max-height: 20%;
+	max-width: 20%;
+}
+
+.APIs a:hover {
+	color: var(--bruin-blue);
+}
+
+.APIs a:focus {
+	color: var(--bruin-blue);
+}
+
+.eventSection {
+	height: 50%;
+}
+
+.photoSection {
+	height: 50%;
+}
+
+/* the styles for the footer */
+footer p {
+	clear: both;
+	text-align: center;
+	padding: 2em 0em;
+}
+
+/* Media query for small windows and mobile devices */
+@media screen and (max-width: 1080px){
+	main {
+		flex-direction: column;
+	}
+	#nav_menu {
+		font-size: 2.5vw;
+	}
+	header br {
+		display: inline;
+	}
+	header #logo {
+		max-width: 90%;
+	}
+	header h3 {
+		max-width: 100%;
+	}
+	body {
+		width: 98%;
+	}
+	.featureSection {
+		order: 1;
+		border-right: none;
+		border-bottom: 1px solid var(--bruin-blue);
+	}
+	.otherProducts {
+		order: 2;
+	}
+}
