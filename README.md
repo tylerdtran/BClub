@@ -7,7 +7,7 @@ BClub is a new way for Bruins and clubs at UCLA to interact, featuring an interf
 git clone https://github.com/tylerdtran/BClub
 ```
 
-- Install Node.js 18.14.0 LTS
+- Install Node.js 18.14.2 LTS
 
 Arch Linux:
 ```
@@ -49,10 +49,11 @@ curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash - &&\
 sudo apt-get install -y nodejs
 ```
 
-Install MUI:
+Install dependencies:
 ```
-npm install @mui/material @emotion/react @emotion/styled
-npm install @fontsource/roboto
+cd BClub
+cd frontend
+npm install react-router-dom
 ```
 
 Move to the project directory:
