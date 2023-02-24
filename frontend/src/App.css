@@ -76,15 +76,11 @@ header h3 {
 	margin: 0.2%;
 }
 
-#nav_menu ul li a.current {
-	color: var(--dynamic-bruin-blue);
-}
-
 #nav_menu ul li ul{
-	width: 19.5%; /* of body section */
+	width: 19.6%; /* of body section */
 	display: none; /* Hide submenus when not hovered */ 
 	position: absolute; /* Position below main menu */
-	top: 100%; /* Position below main menu */
+	top: 3.6em; /* Position below main menu */
 }
 
 #nav_menu ul li ul li{
@@ -234,6 +230,12 @@ footer p {
 	text-align: center;
 	padding: 1em 0em;
 	border-top: 1px solid var(--dynamic-bruin-blue);
+}
+
+.errorMessage {
+	margin: 1em;
+	font-size: 200%;
+	color: var(--dynamic-text-color);
 }
 
 /* Media query for small windows and mobile devices */
