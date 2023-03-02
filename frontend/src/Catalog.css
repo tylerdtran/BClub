@@ -1,0 +1,73 @@
+.catalogMain {
+	display: inline;
+}
+
+.catalogMain h2 {
+	text-align: center;
+	font-weight: bold;
+	padding-top: 1%;
+	color: var(--dynamic-bruin-blue);
+}
+
+.catalogMain p {
+	padding: 1em 1em 0 1em;
+}
+
+.catalogMain ul {
+	list-style-position: inside;
+}
+
+.catalogMain li {
+	padding: 0.5em;
+}
+
+/* Create two equal columns next to each other */
+.category {
+	padding: 1%;
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-template-rows: auto;
+}
+
+.clubListing {
+	grid-column: span 1;
+	padding: 1%;
+    display: flex;
+    flex-direction: row;
+}
+
+.clubListing a {
+	color: var(--dynamic-text-color);
+}
+
+.clubImage {
+    float: right;
+    width: 50%;
+    border: 2px solid var(--dynamic-bruin-blue);
+}
+
+.clubListing p {
+    float: left;
+    width: 50%;
+}
+
+.clubListing h3 {
+	text-align: center;
+}
+
+.seeAll {
+	text-align: center;
+}
+
+/* Media query for small windows and mobile devices */
+@media screen and (max-width: 1080px){
+	.category {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+
+@media screen and (max-width: 720px){
+	.category {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
