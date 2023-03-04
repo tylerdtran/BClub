@@ -1,0 +1,69 @@
+.calendarMain {
+	display: inline;
+}
+
+* calendar Section*/
+.eventsIntroSection {
+	flex-basis: 100%;
+	order: 1;
+  
+	/* border-right: 1px solid var(--bruin-blue); */
+}
+backgroundImage{
+  border-radius: 10%;
+}
+
+.eventsHeader {
+  text-align: center;
+  background: url(../public/calendarCampusLogo.jpeg);
+  background-size: cover;
+  color: white;
+  font-size: 120px;
+  
+}
+.eventsHeader2 {
+  text-align: center;
+  background-color: beige;
+  color: rgb(5, 1, 1);
+  font-size: 30px;
+  
+}
+.lineMoveUp{
+  position: relative;
+  top: -50px;
+}
+
+.eventsUpcoming {
+    
+    text-align: center;
+    font-size: 30px;
+    position: relative;
+
+    
+  }
+.event-item {
+    text-align: center;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    
+    
+}
+
+.event-description {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+
+table {
+    margin: 0 auto;
+    
+  }
+  
+  th, td {
+    text-align: center;
+  }
+
+  

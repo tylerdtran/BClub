@@ -1,5 +1,5 @@
 {
-  "name": "frontend",
+  "name": "frontend2",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -8,10 +8,7 @@
     "@testing-library/user-event": "^13.5.0",
     "moment": "^2.29.4",
     "react": "^18.2.0",
-    "react-big-calendar": "^1.6.8",
-    "react-calendar": "^4.0.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.8.1",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },
