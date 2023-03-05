@@ -11,6 +11,7 @@ import Feedback from './Feedback';
 import Account from './Account';
 import Clubs from './Clubs';
 import Profile from './Profile';
+import SignUp from './SignUp';
 import NoPage from './NoPage';
 
 export default function App(){
@@ -27,6 +28,7 @@ export default function App(){
 					<Route path="account" element={<Account/>} />
 					<Route path="myclubs" element={<Clubs/>} />
 					<Route path="myprofile" element={<Profile/>} />
+					<Route path="signup" element={<SignUp/>} />
 					<Route path="*" element={<NoPage/>} />
 				</Routes>
 			</BrowserRouter>
