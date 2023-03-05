@@ -5,6 +5,7 @@ import { initializeApp } from "firebase/app";
 import './App.css';
 import React from 'react';
 
+
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyA-8vR9blff5GIhVhlMH8LMu48_U5-91ic",
