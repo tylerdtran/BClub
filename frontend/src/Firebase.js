@@ -18,14 +18,5 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-<<<<<<< HEAD:frontend/src/LoginPage
-export default function LoginPage()
-{
-    return(
-      <div></div>
-    );
-}
-=======
 // Initialize Firebase Authentication and get a reference to the service
 export const auth = getAuth(app);
->>>>>>> LoginSystem:frontend/src/Firebase.js
