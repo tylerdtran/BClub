@@ -13,6 +13,8 @@ import Clubs from './Clubs';
 import Profile from './Profile';
 import SignUp from './SignUp';
 import NoPage from './NoPage';
+import SignInPage from './LoginComponents/SignInPage';
+import SignUpPage from './LoginComponents/SignUpPage';
 
 export default function App(){
 	return (
@@ -28,7 +30,9 @@ export default function App(){
 					<Route path="account" element={<Account/>} />
 					<Route path="myclubs" element={<Clubs/>} />
 					<Route path="myprofile" element={<Profile/>} />
-					<Route path="signup" element={<SignUp/>} />
+					<Route path="SignUpPage" element={<SignUpPage/>} />
+					<Route path="SignInPage" element={<SignInPage/>} />
+					<Route path="AuthDetails" element={<AuthDetails/>} />
 					<Route path="*" element={<NoPage/>} />
 				</Routes>
 			</BrowserRouter>
