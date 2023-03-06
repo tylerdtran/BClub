@@ -11,7 +11,6 @@ import Feedback from './Feedback';
 import Account from './Account';
 import Clubs from './Clubs';
 import Profile from './Profile';
-import SignUp from './SignUp';
 import NoPage from './NoPage';
 import SignInPage from './LoginComponents/SignInPage';
 import SignUpPage from './LoginComponents/SignUpPage';

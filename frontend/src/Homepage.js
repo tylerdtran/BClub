@@ -4,6 +4,7 @@ import React from 'react';
 export default function Homepage(){
 	return(
 		<>
+			<input type="text" name="searchBar" id="searchBar" placeholder="Search"></input>
 			<main>
 				<section className="featureSection">
 					<h2>Club Spotlight</h2>

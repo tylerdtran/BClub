@@ -49,14 +49,16 @@ curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash - &&\
 sudo apt-get install -y nodejs
 ```
 
-Install dependencies:
+# Install dependencies:
 ```
 cd BClub
 cd frontend
 npm install react-router-dom
+npm install firebase
+npm install moment
 ```
 
-Move to the project directory:
+# Move to the project directory:
 ```
 cd BClub
 cd frontend

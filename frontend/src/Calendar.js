@@ -49,7 +49,7 @@ export default function Calendar() {
 						<br></br>
 						<h1>Events Coming Up!</h1>
 						<p className='lineMoveUp'>_________</p>
-						<p>UCLA Clubs, Events, & Activites</p>
+						<p>UCLA Clubs, Events, & Activities</p>
 						<br></br>
 						<LearnMoreButton />
 					</div>
@@ -80,14 +80,6 @@ export default function Calendar() {
 						<br></br>
 						<br></br>
 						<table>
-							<br></br>
-							<br></br>
-							<thead>
-								<tr>
-									<th className="eventsUpcoming">Date</th>
-									<th className="eventsUpcoming">Events</th>
-								</tr>
-							</thead>
 							<tbody className="eventsUpcoming">
 								{tableRows}
 							</tbody>
