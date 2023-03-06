@@ -11,11 +11,12 @@ import Feedback from './Feedback';
 import Account from './Account';
 import Clubs from './Clubs';
 import Profile from './Profile';
-import SignUp from './SignUp';
 import NoPage from './NoPage';
 import SignInPage from './LoginComponents/SignInPage';
 import SignUpPage from './LoginComponents/SignUpPage';
 import AuthDetails from './LoginComponents/AuthDetails';
+import Highlights from './Highlights';
+import HighlightsForm from './HighlightsForm';
 
 export default function App(){
 	return (
@@ -34,6 +35,8 @@ export default function App(){
 					<Route path="SignUpPage" element={<SignUpPage/>} />
 					<Route path="SignInPage" element={<SignInPage/>} />
 					<Route path="AuthDetails" element={<AuthDetails/>} />
+					<Route path="highlights" element={<Highlights/>} />
+					<Route path="highlightsform" element={<HighlightsForm/>} />
 					<Route path="*" element={<NoPage/>} />
 				</Routes>
 			</BrowserRouter>
