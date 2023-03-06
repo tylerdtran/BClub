@@ -7,13 +7,14 @@
 :root {
 	--dynamic-bg: #fafafa;
 	--dynamic-text-color: #666;
+	--dynamic-dark-text-color: #222;
 	--dynamic-bruin-blue: rgb(26, 108, 184);
 	--dynamic-lighter-blue: rgb(98, 158, 214);
 	--dynamic-lightest-blue: rgb(171, 205, 238);
+	--dynamic-events-header: beige;
 }
 
 html {
-	font-family: "Open Sans", sans-serif;
     font-size: 100%;
 	color: var(--dynamic-text-color);
 	background: var(--dynamic-lighter-blue);
@@ -102,15 +103,15 @@ header h3 {
 
 #searchBar{
 	font-family: "Open Sans", sans-serif;
-    font-size: 75%;
+    font-size: 2em;
 	padding: 3px;
-	margin-right: 10px;
+	margin: 1% 1% 0% 1%;
+	width: 97.5%;
 }
 
 .darkModeButton {
 	font-family: "Open Sans", sans-serif;
 	position: relative;
-	top: 1px;
 	background: var(--dynamic-bg);
 	color: var(--dynamic-text-color);
 	border: 1px solid var(--dynamic-bruin-blue);
@@ -118,6 +119,11 @@ header h3 {
 	padding: 3px;
 	margin-right: 10px;
 	height: 2em;
+}
+
+.headerLink {
+	color: var(--dynamic-text-color);
+	text-decoration: none;
 }
 
 /* the styles for the elements */

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth"
 import { auth } from "../Firebase";
-
+import "./Login.css";
 
 export default function SignInPage()
 {
@@ -23,10 +23,12 @@ export default function SignInPage()
     return(
       <div className="Login-Container"> 
         <form onSubmit={signIn}>
-          <h1>Log In to your Account</h1>
-          <input type="email" placeholder="Enter your email" value={email} onChange={(e) => setEmail(e.target.value)}></input>
-          <input type="password" placeholder="Enter your password" value={password} onChange={(e) => setPassword(e.target.value)}></input>
-          <button type="submit">Log In</button>
+          <h1>Welcome back, Bruin!</h1>
+          <input className="loginInput" type="email" placeholder="E-mail" value={email} onChange={(e) => setEmail(e.target.value)}></input>
+          <br/>
+          <input className="loginInput" type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)}></input>
+          <br/>
+          <button type="submit" className="loginButton">Log In</button>
         </form>
       </div>
     );
