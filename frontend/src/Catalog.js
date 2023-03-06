@@ -2,7 +2,6 @@ import './App.css';
 import './Catalog.css';
 import React, { useState } from 'react';
 
-// href
 function Club({ clubName, clubBlurb, clubImage}) {
 	return (
 		<div className="clubListing">

@@ -8,17 +8,4 @@ import { TwitterEmbed } from 'react-social-media-embed';
 import { YouTubeEmbed } from 'react-social-media-embed';
 
 export default function Highlights() {
-  /* firebase clubs 
-     ID
-     Description
-     etc.
-     paths for each social media
-  */
-  // todo: read from firebase database
-  // modularize
-  // bootstrap
-  // sideways scroll
-
-
-  // template
 }

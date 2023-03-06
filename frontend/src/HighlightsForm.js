@@ -3,10 +3,6 @@ import { database } from "./Firebase";
 import { ref, set } from "firebase/database";
 
 export default function HighlightsForm() {
-    // bootstrap
-    // redirect once hitting submit
-    // clicking on logo redirects to index.html and not the home page
-
     const [highlightLink, setHighlightLink] = useState("");
     const [socialMedia, setSocialMedia] = useState("");
 
