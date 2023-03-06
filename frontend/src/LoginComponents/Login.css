@@ -1,0 +1,25 @@
+h1 {
+    text-align: center;
+    margin: 1%;
+}
+
+.loginInput {
+    display: block;
+    margin: auto;
+    font-family: "Open Sans", sans-serif;
+    font-size: 2em;
+}
+
+.loginButton {
+    display: block;
+    margin: auto;
+	font-family: "Open Sans", sans-serif;
+    font-size: 2em;
+	background: var(--dynamic-bg);
+	color: var(--dynamic-text-color);
+	border: 1px solid var(--dynamic-bruin-blue);
+	border-radius: 5px;
+	padding: 10px;
+	margin-bottom: 1%;
+	height: 2em;
+}
