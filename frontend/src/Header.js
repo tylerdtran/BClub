@@ -1,6 +1,7 @@
 import './App.css';
 import React from 'react';
 import {Link} from "react-router-dom";
+import AuthDetails from './LoginComponents/AuthDetails';
 
 function DarkModeButton({value, handlerFunction}){
     return(
@@ -61,7 +62,7 @@ export default class Header extends React.Component {
             		<br />
             		<h3>
               		<DarkModeButton value={this.state.mode} handlerFunction={() => this.handleClick()}/>
-              		Welcome Bruin! | <Link to="/SignInPage" className="headerLink">Sign In</Link> | <Link to="/SignUpPage" className="headerLink">Register</Link>
+              		<AuthDetails />
             		</h3>
           		</header>
           		<nav id="nav_menu">
