@@ -6,13 +6,13 @@ import { useNavigate } from "react-router-dom"; // needs to be simplified
 
 import "./Login.css";
 
-export default function SignInPage()
+export default function SignUpPage()
 { 
   const [displayName, setDisplayName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [classYear, setClassYear] = useState("");
-  const userId = auth.currentUser.uid
+  // const userId = auth.currentUser.uid
   const start = 1950;
   const end = 2030;
   let classes = [...Array(end - start + 1).keys()].map(x => x + start);
@@ -34,7 +34,7 @@ export default function SignInPage()
     createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => { 
       console.log(userCredential);
-      writeUserData(userId, displayName, email, classYear)
+      //writeUserData(userId, displayName, email, classYear)
     })
     .catch((error) => { 
       console.log(error);
@@ -42,13 +42,7 @@ export default function SignInPage()
   }
 
   // writes the user data to the database 
-  function writeUserData(userId, displayName, email, classYear) {
-    set(ref(db, 'users/' + userId), {
-      display_name: displayName, 
-      email: email,
-      class_year: classYear
-    });
-  }
+  
 
   return(
     <div className="Login-Container"> 
