@@ -1,6 +1,6 @@
 import './App.css';
 import './Catalog.css';
-import React, { useState } from 'react';
+import React from 'react';
 
 function Club({ clubName, clubBlurb, clubImage}) {
 	return (

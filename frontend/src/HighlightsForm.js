@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { database } from "./Firebase";
+import { db } from "./Firebase";
 import { ref, set } from "firebase/database";
 
 export default function HighlightsForm() {
@@ -8,7 +8,7 @@ export default function HighlightsForm() {
 
     const highlightForm = (e) => {
       e.preventDefault();
-      set(ref(database), {
+      set(ref(db), {
         link: highlightLink,
         social_media: socialMedia
       })
