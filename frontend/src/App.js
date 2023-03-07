@@ -34,7 +34,6 @@ export default function App(){
 					<Route path="myprofile" element={<Profile/>} />
 					<Route path="SignUpPage" element={<SignUpPage/>} />
 					<Route path="SignInPage" element={<SignInPage/>} />
-					<Route path="AuthDetails" element={<AuthDetails/>} />
 					<Route path="highlights" element={<Highlights/>} />
 					<Route path="highlightsform" element={<HighlightsForm/>} />
 					<Route path="*" element={<NoPage/>} />
