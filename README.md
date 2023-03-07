@@ -56,6 +56,7 @@ cd frontend
 npm install react-router-dom
 npm install firebase
 npm install moment
+npm install react-google-button 
 ```
 
 # Move to the project directory:
