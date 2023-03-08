@@ -20,7 +20,7 @@ export default function HighlightsForm() {
     }
 
     return (
-    <div className="Highlight-Container"> 
+    <div> 
       <form onSubmit={highlightForm}>
         <h1>Submit a Highlight</h1>
         <input type="text" placeholder="Highlight Link" value={highlightLink} onChange={(e) => setHighlightLink(e.target.value)}></input>
