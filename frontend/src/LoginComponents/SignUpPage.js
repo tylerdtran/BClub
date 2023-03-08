@@ -12,6 +12,7 @@ export default function SignUpPage()
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [classYear, setClassYear] = useState("");
+  const [validated, setValidated] = useState(false);
   // const userId = auth.currentUser.uid
   const start = 1950;
   const end = 2030;
@@ -29,24 +30,38 @@ export default function SignUpPage()
   /* use the setFirstName and setLastName functions */
 
   const signUp = (e) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    if (form.checkValidity() === false) {
+      e.stopPropagation();
+    } else {
     // todo: sign in
     e.preventDefault();
     createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => { 
       console.log(userCredential);
-      //writeUserData(userId, displayName, email, classYear)
+      // writeUserData(userId, displayName, email, classYear)
+      routeChange();
     })
     .catch((error) => { 
       console.log(error);
     })
   }
+  setValidated(true);
+}
 
   // writes the user data to the database 
-  
+  // function writeUserData(userId, displayName, email, classYear) {
+  //   set(ref(db, 'users/' + userId), {
+  //     display_name: displayName, 
+  //     email: email,
+  //     class_year: classYear
+  //   });
+  // }
 
   return(
     <div className="Login-Container"> 
-      <form onSubmit={signUp}>
+      <form validated={validated} onSubmit={signUp}>
         <h1>Welcome home, Bruin!</h1>
         <input className="loginInput" type="first-name" placeholder="Full Name" value={displayName} onChange={(e) => setDisplayName(e.target.value)}></input>
         <br/>
@@ -61,7 +76,7 @@ export default function SignUpPage()
                 ))}
         </select>
         <br/>
-        <button type="submit" className="loginButton" onClick={routeChange}>Register</button>
+        <button type="submit" className="loginButton" >Register</button>
       </form>
     </div>
   );

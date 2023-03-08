@@ -8,7 +8,6 @@ import Homepage from './Homepage';
 import Catalog from './Catalog';
 import Calendar from './Calendar';
 import Feedback from './Feedback';
-import Account from './Account';
 import Clubs from './Clubs';
 import Profile from './Profile';
 import NoPage from './NoPage';
@@ -28,7 +27,6 @@ export default function App(){
 					<Route path="catalog" element={<Catalog/>} />
 					<Route path="calendar" element={<Calendar/>} />
 					<Route path="feedback" element={<Feedback/>} />
-					<Route path="account" element={<Account/>} />
 					<Route path="myclubs" element={<Clubs/>} />
 					<Route path="myprofile" element={<Profile/>} />
 					<Route path="SignUpPage" element={<SignUpPage/>} />
