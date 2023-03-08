@@ -24,7 +24,7 @@ export default function HighlightsForm() {
       <form onSubmit={highlightForm}>
         <h1>Submit a Highlight</h1>
         <input type="text" placeholder="Highlight Link" value={highlightLink} onChange={(e) => setHighlightLink(e.target.value)}></input>
-        <select placeholder="Choose a Social Media" value={socialMedia} onChange={(e) => setSocialMedia(e.target.value)}>
+        <select value={socialMedia} onChange={(e) => setSocialMedia(e.target.value)}>
             <option value="" disabled selected>Select social media</option>
             <option value="facebook">Facebook</option>
             <option value="instagram">Instagram</option>
