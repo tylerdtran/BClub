@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { db } from "./Firebase";
-import { ref, set } from "firebase/database";
+import { ref, set, push } from "firebase/database";
 
 export default function HighlightsForm() {
     const [highlightLink, setHighlightLink] = useState("");
@@ -8,9 +8,11 @@ export default function HighlightsForm() {
 
     const highlightForm = (e) => {
       e.preventDefault();
-      set(ref(db), {
-        link: highlightLink,
-        social_media: socialMedia
+      const path = "/highlights/" + socialMedia
+      const highlightRef = ref(db, path);
+      const newHighlightRef = push(highlightRef);
+      set(newHighlightRef, {
+        link: highlightLink
       })
       .catch((error) => { 
         console.log(error);

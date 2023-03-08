@@ -1,37 +1,94 @@
 import React from "react";
-import { FacebookEmbed } from 'react-social-media-embed';
-import { InstagramEmbed } from 'react-social-media-embed';
-import { LinkedInEmbed } from 'react-social-media-embed';
-import { PinterestEmbed } from 'react-social-media-embed';
-import { TikTokEmbed } from 'react-social-media-embed';
-import { TwitterEmbed } from 'react-social-media-embed';
-import { YouTubeEmbed } from 'react-social-media-embed';
+import './Highlights.css'
+import { FacebookEmbed,
+         InstagramEmbed,
+         LinkedInEmbed,
+         PinterestEmbed,
+         TikTokEmbed,
+         TwitterEmbed,
+         YouTubeEmbed } from 'react-social-media-embed';
+import { db } from "./Firebase";
+import { ref, onChildAdded } from "firebase/database";
+
+const socialMedias = ["facebook", "instagram", "linkedin", "pinterest","tiktok", "twitter", "youtube"];
+
+function returnHighlights({ socialMedia }) {
+    const path = "/highlights/" + socialMedia;
+    const highlights = [];
+    const highlightsRef = ref(db, path);
+
+    onChildAdded(highlightsRef, (data) => {
+        highlights.push(data.val().link);
+    });
+    return highlights;
+}
 
 function Post({ link, socialMedia }) {
     if(socialMedia=="facebook") {
-        return(<FacebookEmbed url={link} />);
+        return(
+            <div className="squares"> 
+                <FacebookEmbed url={link} />
+            </div>
+        );
     }
-    else if(socialMedia=="instagram") {
-        return(<InstagramEmbed url={link} />);
+    if(socialMedia=="instagram") {
+        return(
+            <div className="squares"> 
+                <InstagramEmbed url={link} />
+            </div>
+        );
     }
-    else if(socialMedia=="linkedin") {
-        return(<LinkedInEmbed url={link} />);
+    if(socialMedia=="linkedin") {
+        return(
+            <div className="squares"> 
+                <LinkedInEmbed url={link} />
+            </div>
+        );
     }
-    else if(socialMedia=="pinterest") {
-        return(<PinterestEmbed url={link} />);
+    if(socialMedia=="pinterest") {
+        return(
+            <div className="squares"> 
+                <PinterestEmbed url={link} />
+            </div>
+        );
     }
-    else if(socialMedia=="tiktok") {
-        return(<TikTokEmbed url={link}  />);
+    if(socialMedia=="twitter") {
+        return(
+            <div className="squares"> 
+                <TikTokEmbed url={link} />
+            </div>
+        );
     }
-    else if(socialMedia=="twitter") {
-        return(<TwitterEmbed url={link} />);
+    if(socialMedia=="twitter") {
+        return(
+            <div className="squares"> 
+                <TwitterEmbed url={link} />
+            </div>
+        );
     }
-    else if(socialMedia=="youtube") {
-        return(<YouTubeEmbed url={link} />);
+    if(socialMedia=="youtube") {
+        return(
+            <div className="squares"> 
+                <YouTubeEmbed url={link} />
+            </div>
+        );
     }
+    */
+}
+
+function SocialMedia({ link, socialMedia }) {
+    return (
+        <>
+            <h2>{ socialMedia }</h2>
+            <div className="horizontal-scroll-paper">
+                { returnHighlights }
+            </div>
+        </>
+    );
 }
 
 export default function Highlights() {
+    /*
     return (
         <>
             <h2>Facebook</h2>
@@ -101,4 +158,5 @@ export default function Highlights() {
             </div>
         </>
     );
+    */
 }
