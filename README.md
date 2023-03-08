@@ -58,6 +58,7 @@ npm install firebase
 npm install moment
 npm install react-google-button 
 npm install react-bootstrap bootstrap
+npm install --save react-firebase-hooks
 ```
 
 # Move to the project directory:
