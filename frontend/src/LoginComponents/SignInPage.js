@@ -38,7 +38,7 @@ export default function SignInPage()
   const GoogleLogin = async () => {
     try {
       const result = await signInWithPopup(auth, provider);
-      console.log(result.user);
+      console.log(result);
       routeChange(`../`);
     } catch (error) {
       console.log(error);
