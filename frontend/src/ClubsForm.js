@@ -9,6 +9,7 @@ export default function ClubsForm() {
     const [instagram, setInstagram] = useState("");
     const [advisor, setAdvisor] = useState("");
     const [contact, setContact] = useState("");
+    const [category, setCategory] = useState("");
 
     const clubForm = (e) => {
       e.preventDefault();
@@ -22,6 +23,7 @@ export default function ClubsForm() {
         instagram: instagram,
         advisor: advisor,
         contact: contact,
+        category: category
       })
       .catch((error) => { 
         console.log(error);
@@ -37,6 +39,17 @@ export default function ClubsForm() {
             <input type="text" placeholder="Instagram" value={instagram} onChange={(e) => setInstagram(e.target.value)}></input>
             <input type="text" placeholder="Advisor" value={advisor} onChange={(e) => setAdvisor(e.target.value)}></input>
             <input type="text" placeholder="Contact" value={contact} onChange={(e) => setContact(e.target.value)}></input>
+            <select value={category} onChange={(e) => setCategory(e.target.value)}>
+                <option value="" disabled selected>Select a Category</option>
+                <option value="academic">Academic</option>
+                <option value="arts">Arts</option>
+                <option value="career">Career</option>
+                <option value="community service">Community Service</option>
+                <option value="cultural">Cultural</option>
+                <option value="techological">Technological</option>
+                <option value="recreational">Recreational</option>
+                <option value="other">Other</option>  
+            </select>
             <button type="submit">Submit</button>
         </form>
         </div>
