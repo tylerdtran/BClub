@@ -57,6 +57,7 @@ npm install react-router-dom
 npm install firebase
 npm install moment
 npm install react-google-button 
+npm install react-bootstrap bootstrap
 ```
 
 # Move to the project directory:
