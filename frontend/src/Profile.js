@@ -1,3 +1,4 @@
+/*
 import './App.css';
 import React from 'react';
 import { auth, db } from '../Firebase';
@@ -96,3 +97,4 @@ function Profile(){
 }
 
 export default { Profile };
+*/

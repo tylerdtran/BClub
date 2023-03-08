@@ -9,7 +9,7 @@ import Catalog from './Catalog';
 import Calendar from './Calendar';
 import Feedback from './Feedback';
 import Clubs from './Clubs';
-import Profile from './Profile';
+//import Profile from './Profile';
 import NoPage from './NoPage';
 import SignInPage from './LoginComponents/SignInPage';
 import SignUpPage from './LoginComponents/SignUpPage';
@@ -29,7 +29,6 @@ export default function App(){
 					<Route path="calendar" element={<Calendar/>} />
 					<Route path="feedback" element={<Feedback/>} />
 					<Route path="myclubs" element={<Clubs/>} />
-					<Route path="myprofile" element={<Profile/>} />
 					<Route path="SignUpPage" element={<SignUpPage/>} />
 					<Route path="SignInPage" element={<SignInPage/>} />
 					<Route path="highlights" element={<Highlights/>} />
