@@ -10,9 +10,7 @@ import { FacebookEmbed,
 import { db } from "./Firebase";
 import { ref, onChildAdded } from "firebase/database";
 
-const socialMedias = ["facebook", "instagram", "linkedin", "pinterest","tiktok", "twitter", "youtube"];
-
-function returnHighlights({ socialMedia }) {
+function returnSocialMediaLinks(socialMedia) {
     const path = "/highlights/" + socialMedia;
     const highlights = [];
     const highlightsRef = ref(db, path);
@@ -23,140 +21,71 @@ function returnHighlights({ socialMedia }) {
     return highlights;
 }
 
-function Post({ link, socialMedia }) {
-    if(socialMedia=="facebook") {
-        return(
-            <div className="squares"> 
-                <FacebookEmbed url={link} />
+function Posts(props) {
+    const links = returnSocialMediaLinks(props.socialMedia);
+    const postsList = links.map((links) => 
+    {if(props.socialMedia=="Facebook") {
+        return (
+            <div className="squares">
+                <FacebookEmbed url={links}/>
             </div>
         );
     }
-    if(socialMedia=="instagram") {
-        return(
-            <div className="squares"> 
-                <InstagramEmbed url={link} />
+    else if(props.socialMedia=="Instagram") {
+        return (
+            <div className="squares">
+                <InstagramEmbed url={links}/>
             </div>
         );
     }
-    if(socialMedia=="linkedin") {
-        return(
-            <div className="squares"> 
-                <LinkedInEmbed url={link} />
+    else if(props.socialMedia=="LinkedIn") {
+        return (
+            <div className="squares">
+                <LinkedInEmbed url={links}/>
             </div>
         );
     }
-    if(socialMedia=="pinterest") {
-        return(
-            <div className="squares"> 
-                <PinterestEmbed url={link} />
+    else if(props.socialMedia=="Pinterest") {
+        return (
+            <div className="squares">
+                <PinterestEmbed url={links}/>
             </div>
         );
     }
-    if(socialMedia=="twitter") {
-        return(
-            <div className="squares"> 
-                <TikTokEmbed url={link} />
+    else if(props.socialMedia=="TikTok") {
+        return (
+            <div className="squares">
+                <TikTokEmbed url={links}/>
             </div>
         );
     }
-    if(socialMedia=="twitter") {
-        return(
-            <div className="squares"> 
-                <TwitterEmbed url={link} />
+    else if(props.socialMedia=="Twitter") {
+        return (
+            <div className="squares">
+                <TwitterEmbed url={links}/>
             </div>
         );
     }
-    if(socialMedia=="youtube") {
-        return(
-            <div className="squares"> 
-                <YouTubeEmbed url={link} />
+    else if(props.socialMedia=="YouTube") {
+        return (
+            <div className="squares">
+                <YouTubeEmbed url={links}/>
             </div>
         );
-    }
-    */
-}
-
-function SocialMedia({ link, socialMedia }) {
+    }});
     return (
-        <>
-            <h2>{ socialMedia }</h2>
-            <div className="horizontal-scroll-paper">
-                { returnHighlights }
+        <div>
+            <h2>{props.socialMedia}</h2>
+            <div className="horizontal-scroll-wrapper">
+                {postsList}
             </div>
-        </>
+        </div>
     );
 }
 
 export default function Highlights() {
-    /*
-    return (
-        <>
-            <h2>Facebook</h2>
-            <div className="horizontal-scroll-wrapper"> 
-                <div className="squares">
-                    <Post link="https://www.facebook.com/UCLA/posts/10160133154795958"
-                    socialMedia="facebook"/>
-                </div>
-                <div className="squares">
-                    <Post link="https://www.facebook.com/UCLA/posts/10160134035360958"
-                    socialMedia="facebook"/>
-                </div>
-                <div className="squares">
-                    <Post link="https://www.facebook.com/UCLA/posts/10160134339840958"
-                    socialMedia="facebook"/>
-                </div>
-            </div>
-            <h2>Instagram</h2>
-            <div className="horizontal-scroll-wrapper"> 
-                <div className="squares">
-                    <Post link="https://www.instagram.com/reel/CpVnexJgg2O/?utm_source=ig_web_copy_link"
-                    socialMedia="instagram"/>
-                </div>
-                <div className="squares">
-                    <Post link="https://www.instagram.com/p/CpWi_1UOTCK/?utm_source=ig_web_copy_link"
-                    socialMedia="instagram"/>
-                </div>
-                <div className="squares">
-                    <Post link="https://www.instagram.com/p/CpYYlaJtEYE/?utm_source=ig_web_copy_link"
-                    socialMedia="instagram"/>
-                </div>
-            </div>
-            <h2>LinkedIn</h2>
-            <div className="horizontal-scroll-wrapper"> 
-                <div className="squares">
-                    <Post link="https://www.linkedin.com/embed/feed/update/urn:li:share:6898694772484112384"
-                    socialMedia="linkedin"/>
-                </div>
-            </div>
-            <h2>Pinterest</h2>
-            <div className="horizontal-scroll-wrapper"> 
-                <div className="squares">
-                    <Post link="https://www.pinterest.co.uk/pin/875105771321194304/"
-                    socialMedia="pinterest"/>
-                </div>
-            </div>
-            <h2>TikTok</h2>
-            <div className="horizontal-scroll-wrapper"> 
-                <div className="squares">
-                    <Post link="https://www.tiktok.com/@epicgardening/video/7055411162212633903"
-                    socialMedia="tiktok"/>
-                </div>
-            </div>
-            <h2>Twitter</h2>
-            <div className="horizontal-scroll-wrapper"> 
-                <div className="squares">
-                    <Post link="https://twitter.com/PixelAndBracket/status/1356633038717923333"
-                    socialMedia="twitter"/>
-                </div>
-            </div>
-            <h2>YouTube</h2>
-            <div className="horizontal-scroll-wrapper"> 
-                <div className="squares">
-                    <Post link="https://www.youtube.com/watch?v=HpVOs5imUN0"
-                    socialMedia="youtube"/>
-                </div>
-            </div>
-        </>
-    );
-    */
+    const socialMedias = ["Facebook", "Instagram", "LinkedIn", "Pinterest","TikTok", "Twitter", "YouTube"];
+
+    const highlights = socialMedias.map((socialMedia) => <Posts socialMedia={socialMedia}/>);
+    return <><h1>Highlights!</h1><div>{highlights}</div></>;
 }

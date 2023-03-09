@@ -77,7 +77,7 @@ export default class Header extends React.Component {
                 			<Link to="/calendar">Event Calendar</Link>
               			</li>
               			<li>
-                			<Link to="/feedback">Feedback</Link>
+                			<Link to="/highlights">Highlights</Link>
               			</li>
               			<li className="lastitem">
                 			<Link to="/account">My Account</Link>
