@@ -1,10 +1,34 @@
 import './App.css';
 import React from 'react';
+import { MDBInputGroup, MDBInput, MDBIcon, MDBBtn } from 'mdb-react-ui-kit';
 
-export default function Homepage(){
-	return(
+export function searchBar() {
+	return (
+		<MDBInputGroup>
+			<MDBInput label='Search' size='lg' style={{ width: '642%', height: '50px', position: 'relative', }} />
+			<MDBBtn rippleColor='dark' style={{ width: '4.4%', height: '50px', position: 'relative', bottom: '6px', display: 'inline-flex', left: '1510px' }}>
+				<MDBIcon icon='search' size='lg' style={{ position: 'relative', top: '5px', left: '5px' }} />
+			</MDBBtn>
+		</MDBInputGroup>
+
+	);
+}
+
+export default function Homepage() {
+	return (
 		<>
-			<input type="text" name="searchBar" id="searchBar" placeholder="Search"></input>
+			<div id='searchBarWrapper'>
+				{searchBar()}
+			</div>
+			<hr
+				style={{
+					background: "#2D68C4",
+					height: "5px",
+					float: 'left',
+					border: "none",
+					width: '100%'
+				}}
+			/>
 			<main>
 				<section className="featureSection">
 					<h2>Club Spotlight</h2>
@@ -13,7 +37,7 @@ export default function Homepage(){
 					</h3>
 					<div className="featurePhoto">
 						<figcaption>Genshin Theme Song Jeopardy Event - February 7, 2023</figcaption>
-						<img src="featuredevent.jpg" alt="Featured Event"/>
+						<img src="featuredevent.jpg" alt="Featured Event" />
 					</div>
 					<p>
 						With an active community of over 400 UCLA students and alumni, Genshin

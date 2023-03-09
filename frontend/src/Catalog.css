@@ -59,6 +59,12 @@
 	text-align: center;
 }
 
+.custom-Card{
+	border: 100px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
 /* Media query for small windows and mobile devices */
 @media screen and (max-width: 1080px){
 	.category {

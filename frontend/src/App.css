@@ -24,6 +24,7 @@ html {
 	height: 100%;
 }
 
+
 /* the styles for the header */
 header {
 	position: relative;
@@ -49,21 +50,27 @@ header h3 {
 
 /* the styles for the nav menu */
 
-#nav_menu{
-	width: 100%; /* of body section */
+#buttons {
+	display: inline-flex;
+	width: 100%;
 }
 
-#nav_menu ul{
-	clear: both;
-	list-style-type: none; /* Removes bullet points */
-	margin: 0;
-	padding: 0;
-	position: relative;
+#buttons1 {
+	width: 79%;
 }
 
-#nav_menu li a{ /* Individual nav menu button */
-	display: block;
-	width: 100%; /* of containing nav button */
+#buttons2 {
+	width: 20%;
+	height: 10%;
+}
+
+#nav_menu {
+	width: 100%;
+	height:100%;
+}
+
+#nav_menu Button{ /* Individual nav menu button */
+	width: 25%; 
 	text-align: center;
 	padding: 1em 0em;
 	text-decoration: none;
@@ -73,13 +80,30 @@ header h3 {
 	background: linear-gradient(0deg, var(--dynamic-lighter-blue) 0%, var(--dynamic-lightest-blue) 100%);
 }
 
-#nav_menu ul li{ /* Nav menu buttons */
+#dropdown { /* Individual nav menu button */
+	text-align: center;
+	text-decoration: none;
+	height: 100%;
+	width: 100%;
+}
+
+#dropdown1 { /* Individual nav menu button */
+	height: 100%;
+	width: 100%;
+	text-align: center;
+	text-decoration: none;
+	color: white;
+	background: --dynamic-bruin-blue;
+}
+
+#nav_menu Button li{ /* Nav menu buttons */
 	float: left;
 	width: 19.6%; /* of body section */
 	margin: 0.2%;
 }
 
-#nav_menu ul li ul{
+
+#nav_menu Button li Button{
 	width: 19.6%; /* of body section */
 	display: none; /* Hide submenus when not hovered */ 
 	position: absolute; /* Position below main menu */
@@ -109,6 +133,17 @@ header h3 {
 	width: 97.5%;
 }
 
+#searchBarWrapper{
+	top: 1px;
+	font-family: "Open Sans", sans-serif;
+    font-size: 1.4em;
+	padding: 3px;
+	margin: 1% 1% 0% 1%;
+	width: 97.5%;
+}
+
+
+
 .darkModeButton {
 	font-family: "Open Sans", sans-serif;
 	position: relative;
@@ -129,7 +164,7 @@ header h3 {
 /* the styles for the elements */
 body {
 	background-color: var(--dynamic-bg);
-	width: 80%;
+	width: 100%;
 	margin: auto;
 	margin-top: 5px;
 }
