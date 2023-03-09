@@ -59,6 +59,8 @@ npm install moment
 npm install react-google-button 
 npm install react-bootstrap bootstrap
 npm install --save react-firebase-hooks
+npm install @mui/icons-material/ThumbDown @mui/icons-material/ThumbUp @mui/material/Rating
+
 ```
 
 # Move to the project directory:

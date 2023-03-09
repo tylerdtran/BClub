@@ -76,7 +76,7 @@ export default function SignUpPage()
                 ))}
         </select>
         <br/>
-        <button type="submit" className="loginButton" >Register</button>
+        <button type="submit" className="loginButton">Register</button>
       </form>
     </div>
   );

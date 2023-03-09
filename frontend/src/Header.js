@@ -55,6 +55,7 @@ export default class Header extends React.Component {
     		<>
         		<meta charSet="utf-8" />
         		<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet"></link>
+<<<<<<< HEAD
 					<header>
 						<a href="index.html">
 						<img id="logo" src="logo.png" alt="BClub Logo" />
@@ -101,6 +102,48 @@ export default class Header extends React.Component {
 					
 						
 			</>
+=======
+        		<header>
+        			<a href="index.html">
+            		<img id="logo" src="logo.png" alt="BClub Logo" />
+        			</a>
+            		<br />
+            		<br />
+            		<br />
+            		<h3>
+              		<DarkModeButton value={this.state.mode} handlerFunction={() => this.handleClick()}/>
+              		<AuthDetails />
+            		</h3>
+          		</header>
+          		<nav id="nav_menu">
+            		<ul>
+              			<li>
+							<Link to="/">Home</Link>
+              			</li>
+              			<li>
+							<Link to="/catalog">Club Catalog</Link>
+              			</li>
+              			<li>
+                			<Link to="/calendar">Event Calendar</Link>
+              			</li>
+              			<li>
+                			<Link to="/highlights">Highlights</Link>
+              			</li>
+              			<li className="lastitem">
+                			<Link to="/account">My Account</Link>
+                			<ul>
+                  				<li>
+                    				<Link to="/myclubs">My Clubs</Link>
+                  				</li>
+                  				<li>
+                    				<Link to="/Profile">My Profile</Link>
+                  				</li>
+                			</ul>
+              			</li>
+            		</ul>
+        		</nav>
+        	</>
+>>>>>>> origin
     	);
 	}
 }
