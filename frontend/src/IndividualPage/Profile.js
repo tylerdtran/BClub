@@ -1,19 +1,18 @@
-import './App.css';
-import React from 'react';
-import { auth, db } from '../Firebase';
+import React, { useState, useEffect } from 'react';
+import { Form, FormGroup, Col, Button, Card, Toast, ToastContainer } from 'react-bootstrap'
+import { db, auth } from '../Firebase';
 import { useAuthState } from "react-firebase-hooks/auth";
 import { ref, get, update } from "firebase/database";
-import { Form, FormGroup, Col, ButtonGroup, Button, Card, Toast, ToastContainer } from 'react-bootstrap'
+// import Review from "../Components/Review";
 
-
-function Profile(){
+export default function Profile() {
 
 	const [user, loading, error] = useAuthState(auth);
-    const [validated, setValidated] = useState(false);
-    const preferences = ref(db, "user-preferences/" + user.uid); // get author pref
-    const [affil, setAffil] = useState("");
-    const [classYear, setClassYear] = useState("");
-    const [showSave, setShowSave] = useState(false);
+	const [email, setEmail] = useState("");
+	const [classYear, setClassYear] = useState("");
+	const [validated, setValidated] = useState(false);
+	const preferences = ref(db, "users-profile/" + user.uid); // get author pref
+	const [showSave, setShowSave] = useState(false);
     const [disabled, setDisabled] = useState(false);
 
 	const start = 1950;
@@ -24,26 +23,26 @@ function Profile(){
 	useEffect(() => {
         get(preferences).then((snapshot) => {
             if (snapshot.exists()) {
-                setAffil(snapshot.val().affiliation);
+                setEmail(snapshot.val().email);
                 setClassYear(snapshot.val().classYear);
-                console.log(affil + " " + classYear);
+                console.log(email + " " + classYear);
             }
         }).catch((error) => { console.log(error) });
-    }, []);
+    }, [preferences, email, classYear]);
 
-	const handleSubmit = (e) => {
+	const handleSubmission = (e) => {
         e.preventDefault();
         const form = e.currentTarget;
         if (form.checkValidity() === false) {
             e.stopPropagation();
         } else {
             const key = auth.currentUser.uid;
-            let newPref = {
-                affiliation: affil,
+            let newProfile = {
+                email: email,
                 classYear: classYear
             };
             const updates = {};
-            updates['/user-preferences/' + key] = newPref;
+            updates['/users-profile/' + key] = newProfile;
             update(ref(db), updates).catch((error) => {
                 console.log(error);
             }).then(() => {
@@ -54,6 +53,8 @@ function Profile(){
         setValidated(true);
     }
 
+
+
 	return (
 		<Card>
 			<Card.Body>
@@ -63,21 +64,13 @@ function Profile(){
 					</Toast>
 				</ToastContainer>
 
-				<Card.Title>Hello {user.email}!</Card.Title>
+				<Card.Title>Hello {user.displayName}!</Card.Title>
 				<hr />
 				<Card.Text>Update account information</Card.Text>
 				<Col md={4}>
-					<Form noValidate validated={validated} onSubmit={handleSubmit}>
+					<Form noValidate validated={validated} onSubmit={handleSubmission}>
 						<FormGroup className="mb-3">
-							<Form.Select required value={affil} onChange={(e) => { setAffil(e.target.value) }}>
-								<option value="">Select your affiliation...</option>
-								<option value="UCLA Sorority">UCLA Sorority</option>
-								<option value="UCLA Fraternity">UCLA Fraternity</option>
-								<option value="UCLA Student">UCLA Student (not affiliated with Greek life)</option>
-								<option value="Non-UCLA Sorority">Non-UCLA Sorority</option>
-								<option value="Non-UCLA Fraternity">Non-UCLA Fraternity</option>
-								<option value="Non-UCLA Student">Non-UCLA Student (not affiliated with Greek life)</option>
-							</Form.Select>
+							<Form.Control required value={email} onChange={(e) => { setEmail(e.target.value) }}></Form.Control>
 						</FormGroup>
 						<FormGroup className="mb-3" onChange={(e) => { setClassYear(e.target.value) }}>
 							<Form.Select required value={classYear}>
@@ -91,8 +84,7 @@ function Profile(){
 					</Form>
 				</Col>
 			</Card.Body>
-		</Card>
+        </Card>
 	);
 }
 
-export default { Profile };
