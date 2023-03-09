@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { db } from "./Firebase";
-import { ref, set } from "firebase/database";
+import { ref, set, push } from "firebase/database";
 
 export default function HighlightsForm() {
     const [highlightLink, setHighlightLink] = useState("");
@@ -8,9 +8,11 @@ export default function HighlightsForm() {
 
     const highlightForm = (e) => {
       e.preventDefault();
-      set(ref(db), {
-        link: highlightLink,
-        social_media: socialMedia
+      const path = "/highlights/" + socialMedia
+      const highlightRef = ref(db, path);
+      const newHighlightRef = push(highlightRef);
+      set(newHighlightRef, {
+        link: highlightLink
       })
       .catch((error) => { 
         console.log(error);
@@ -18,19 +20,19 @@ export default function HighlightsForm() {
     }
 
     return (
-    <div className="Highlight-Container"> 
+    <div> 
       <form onSubmit={highlightForm}>
         <h1>Submit a Highlight</h1>
         <input type="text" placeholder="Highlight Link" value={highlightLink} onChange={(e) => setHighlightLink(e.target.value)}></input>
-        <select placeholder="Choose a Social Media" value={socialMedia} onChange={(e) => setSocialMedia(e.target.value)}>
+        <select value={socialMedia} onChange={(e) => setSocialMedia(e.target.value)}>
             <option value="" disabled selected>Select social media</option>
-            <option value="facebook">Facebook</option>
-            <option value="instagram">Instagram</option>
-            <option value="linkedin">LinkedIn</option>
-            <option value="pinterest">Pinterest</option>
-            <option value="tiktok">TikTok</option>
-            <option value="twitter">Twitter</option>
-            <option value="youtube">YouTube</option>  
+            <option value="Facebook">Facebook</option>
+            <option value="Instagram">Instagram</option>
+            <option value="LinkedIn">LinkedIn</option>
+            <option value="Pinterest">Pinterest</option>
+            <option value="TikTok">TikTok</option>
+            <option value="Twitter">Twitter</option>
+            <option value="YouTube">YouTube</option>  
         </select>
         <button type="submit">Submit</button>
       </form>
