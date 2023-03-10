@@ -3,27 +3,46 @@ import { db } from "./Firebase";
 import { ref, set, push } from "firebase/database";
 
 export default function ClubsForm() {
-    const [clubName, setClubName] = useState("");
+    const [club_type, setClub_Type] = useState("");
     const [description, setDescription] = useState("");
-    const [website, setWebsite] = useState("");
+    const [name, setName] = useState("");
+    const [nickname, setNickname] = useState("");
+    const [outside_affil, setOutside_Affil] = useState("");
+    const [facebook, setFacebook] = useState("");
     const [instagram, setInstagram] = useState("");
-    const [advisor, setAdvisor] = useState("");
-    const [contact, setContact] = useState("");
-    const [category, setCategory] = useState("");
+    const [twitter, setTwitter] = useState("");
+    const [website, setWebsite] = useState("");
+    const [url, setURL] = useState("");
 
     const clubForm = (e) => {
       e.preventDefault();
-      const path = "/clubs/";
+      const path = "/Clubs/" + name;
       const clubRef = ref(db, path);
-      const newClubRef = push(clubRef);
-      set(newClubRef, {
-        name: clubName,
-        description: description,
-        website: website,
-        instagram: instagram,
-        advisor: advisor,
-        contact: contact,
-        category: category
+      set(clubRef, {
+        Club_Type: club_type,
+        Description: description,
+        Name: name,
+        Nickname: nickname,
+       Outside_Affil: outside_affil,
+        Overall_Rating: {
+          Activeness: "",
+          Community: "",
+          Competitiveness: "",
+          Fun: "",
+          Involvement: ""
+        },
+        Socials:{
+          Facebook: facebook,
+          Instagram: instagram,
+          Twitter: twitter
+        },
+        Website: website,
+        URL: url,
+        createdAt: new Date().getTime()
+      })
+      .then(() =>{
+      alert('Club data submitted');
+      window.location.reload();
       })
       .catch((error) => { 
         console.log(error);
@@ -33,13 +52,16 @@ export default function ClubsForm() {
         <div> 
         <form onSubmit={clubForm}>
             <h1>Submit a Club</h1>
-            <input type="text" required placeholder="Club Name" value={clubName} onChange={(e) => setClubName(e.target.value)}></input>
-            <textarea placeholder="Description" value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
+            <input type="text" required placeholder="Club Name" value={name} onChange={(e) => setName(e.target.value)}></input>
+            <input type="text" placeholder="Club Nickname" value={nickname} onChange={(e) => setNickname(e.target.value)}></input>
+            <input type="text" placeholder="Outside Affilations" value={outside_affil} onChange={(e) => setOutside_Affil(e.target.value)}></input>
+            <input type="text" placeholder="Facebook" value={facebook} onChange={(e) => setFacebook(e.target.value)}></input>
+            <input type="text" required placeholder="Instagram" value={instagram} onChange={(e) => setInstagram(e.target.value)}></input>
+            <input type="text" placeholder="Twitter" value={twitter} onChange={(e) => setTwitter(e.target.value)}></input>
+            <textarea required placeholder="Description" value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
+            <input type="text" required placeholder="URL" value={url} onChange={(e) => setURL(e.target.value)}></input>
             <input type="text" placeholder="Website" value={website} onChange={(e) => setWebsite(e.target.value)}></input>
-            <input type="text" placeholder="Instagram" value={instagram} onChange={(e) => setInstagram(e.target.value)}></input>
-            <input type="text" placeholder="Advisor" value={advisor} onChange={(e) => setAdvisor(e.target.value)}></input>
-            <input type="text" placeholder="Contact" value={contact} onChange={(e) => setContact(e.target.value)}></input>
-            <select value={category} onChange={(e) => setCategory(e.target.value)}>
+            <select required value={club_type} onChange={(e) => setClub_Type(e.target.value)}>
                 <option value="" disabled selected>Select a Category</option>
                 <option value="academic">Academic</option>
                 <option value="arts">Arts</option>
