@@ -13,10 +13,10 @@ export default function GoogleCalendar() {
     const eventsRef = ref(db, 'events');
     const newEventsRef = push(eventsRef);
     set(newEventsRef, {
-      title: title ?? "", 
-      start: start ?? "",
-      end: end ?? "",
-      location: location ?? ""
+      title: title,
+      start: start,
+      end: end,
+      location: location
     })
     const newClickedArray = [...clicked];
     newClickedArray[index] = true;
@@ -39,10 +39,10 @@ export default function GoogleCalendar() {
         console.log(data);
         for(let i = 0; i < data.items.length; i++) {
           setEvents(prevArray => [...prevArray, 
-            [data.items[i].summary, 
-            data.items[i].start.date,
-            data.items[i].end.date,
-            data.items[i].location]]);
+            [data.items[i].summary ?? "", 
+            data.items[i].originalStartTime?.date ?? data.items[i].start?.date ?? "",
+            data.items[i].end?.date ?? "",
+            data.items[i].location ?? ""]]);
           setClicked(prevArray => [...prevArray, false]);
         }
       })
