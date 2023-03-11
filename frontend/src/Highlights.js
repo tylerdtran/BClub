@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import './Highlights.css'
 import { FacebookEmbed,
          InstagramEmbed,
@@ -10,20 +10,25 @@ import { FacebookEmbed,
 import { db } from "./Firebase";
 import { ref, onChildAdded } from "firebase/database";
 
-function returnSocialMediaLinks(socialMedia) {
-    const path = "/highlights/" + socialMedia;
-    const highlights = [];
-    const highlightsRef = ref(db, path);
+function useSocialMediaLinks(socialMedia) {
+    const [links, setLinks] = useState([]);
 
-    onChildAdded(highlightsRef, (data) => {
-        highlights.push(data.val().link);
-    });
-    return highlights;
+    useEffect(() => {
+        const path = "/highlights/" + socialMedia;
+        const highlightsRef = ref(db, path);
+        
+        onChildAdded(highlightsRef, (data) => {
+            setLinks(prevLinks => [...prevLinks, data.val().link]);
+        });
+    }, [socialMedia]);
+
+    return links;
 }
 
 function Posts(props) {
-    const links = returnSocialMediaLinks(props.socialMedia);
-    const postsList = links.map((links) => 
+    const links = useSocialMediaLinks(props.socialMedia);
+    const filteredLinks = [...new Set(links)];
+    const postsList = filteredLinks.map((links) => 
     {if(props.socialMedia=="Facebook") {
         return (
             <div className="squares">
