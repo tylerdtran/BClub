@@ -23,7 +23,7 @@ const app = initializeApp(firebaseConfig);
 // Initialize Firebase Authentication and get a reference to the service
 const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
-provider.addScope("https://www.googleapis.com/auth/calendar");
+provider.addScope("https://www.googleapis.com/auth/calendar.events.readonly");
 provider.addScope("https://www.googleapis.com/auth/forms");
 const db = getDatabase();
 export { auth, provider, db }

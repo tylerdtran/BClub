@@ -16,7 +16,7 @@ import SignInPage from './LoginComponents/SignInPage';
 import SignUpPage from './LoginComponents/SignUpPage';
 import Highlights from './Highlights';
 import HighlightsForm from './HighlightsForm';
-import Google from './Google';
+import GoogleCalendar from './GoogleCalendar';
 
 export default function App(){
 	return (
@@ -36,7 +36,7 @@ export default function App(){
 					<Route path="SignInPage" element={<SignInPage/>} />
 					<Route path="highlights" element={<Highlights/>} />
 					<Route path="highlightsform" element={<HighlightsForm/>} />
-					<Route path="google" element={<Google/>} />
+					<Route path="addevents" element={<GoogleCalendar/>} />
 					<Route path="*" element={<NoPage/>} />
 				</Routes>
 			</BrowserRouter>
