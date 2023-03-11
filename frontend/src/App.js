@@ -17,6 +17,7 @@ import Highlights from './Highlights';
 import HighlightsForm from './HighlightsForm';
 import ClubsForm from './ClubsForm';
 
+import GoogleCalendar from './GoogleCalendar';
 
 export default function App(){
 	return (
@@ -36,6 +37,7 @@ export default function App(){
 					<Route path="highlights" element={<Highlights/>} />
 					<Route path="highlightsform" element={<HighlightsForm/>} />
 					<Route path="clubsform" element={<ClubsForm/>} />
+					<Route path="addevents" element={<GoogleCalendar/>} />
 					<Route path="*" element={<NoPage/>} />
 				</Routes>
 			</BrowserRouter>

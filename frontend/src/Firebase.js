@@ -14,7 +14,7 @@ const firebaseConfig = {
   projectId: "bclub-b0d3f",
   storageBucket: "bclub-b0d3f.appspot.com",
   messagingSenderId: "555735926398",
-  appId: "1:555735926398:web:38b9a5029a02c4a8d9fa2f"
+  appId: "1:555735926398:web:38b9a5029a02c4a8d9fa2f",
 };
 
 // Initialize Firebase
@@ -23,5 +23,7 @@ const app = initializeApp(firebaseConfig);
 // Initialize Firebase Authentication and get a reference to the service
 const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
+provider.addScope("https://www.googleapis.com/auth/calendar.events.readonly");
+provider.addScope("https://www.googleapis.com/auth/forms");
 const db = getDatabase();
 export { auth, provider, db }
