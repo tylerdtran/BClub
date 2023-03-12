@@ -76,6 +76,8 @@ header h3 {
 
 .input-group {
 	display: flex;
+	align-items: center;
+	justify-content: center;
 	flex-direction: row;
 	width: 100%;
 }
@@ -94,7 +96,7 @@ header h3 {
 
 .searchBtn{
     font-size: 2em;
-	flex-basis: 8.78%;
+	flex-basis: 8%;
 }
 
 #searchBarWrapper{
