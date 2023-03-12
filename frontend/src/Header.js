@@ -54,7 +54,6 @@ export default class Header extends React.Component {
     	return (
     		<>
         		<meta charSet="utf-8" />
-        		<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet"></link>
 					<header>
 						<a href="index.html">
 						<img id="logo" src="logo.png" alt="BClub Logo" />
@@ -63,43 +62,29 @@ export default class Header extends React.Component {
 						<br />
 						<br />
 						<h3>
-						<DarkModeButton value={this.state.mode} handlerFunction={() => this.handleClick()}/>
-						<AuthDetails />
+							<DarkModeButton value={this.state.mode} handlerFunction={() => this.handleClick()}/>
+							<AuthDetails />
 						</h3>
 					</header>
-					<div id="buttons">
-						<div id="buttons1">
-							<ButtonGroup id="nav_menu">
-								
-									<Button href="/">
-										Home
-									</Button>
-									<Button href="/catalog">
-										Club Catalog
-									</Button>
-									<Button href="/calendar">
-									Club Calendar
-									</Button>
-									<Button href="/highlights">
-										Highlights	
-									</Button>
-							</ButtonGroup>	
-						</div>	
-						<div id="buttons2">					
-							<Dropdown id="dropdown">
-									<Dropdown.Toggle id="dropdown1">
-										My Account
-									</Dropdown.Toggle>
-									<Dropdown.Menu>
-										<Dropdown.Item href="/myclubs" > My Clubs </Dropdown.Item>
-										<Dropdown.Item href="/myprofile" > My Profile </Dropdown.Item>
-									</Dropdown.Menu>
-							</Dropdown>
-						</div>	
-					</div>
-					
-					
-						
+					<div id="navBarButtons">
+						<ButtonGroup id="nav_menu">
+							<Button href="/">
+								Home
+							</Button>
+							<Button href="/catalog">
+								Club Catalog
+							</Button>
+							<Button href="/calendar">
+								Club Calendar
+							</Button>
+							<Button href="/highlights">
+								Highlights	
+							</Button>
+							<Button href="/IndividualPage/profile">
+								My Profile
+							</Button>
+						</ButtonGroup>	
+					</div>		
 			</>
     	);
 	}

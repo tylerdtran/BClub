@@ -5,12 +5,11 @@ import { MDBInputGroup, MDBInput, MDBIcon, MDBBtn } from 'mdb-react-ui-kit';
 export function searchBar() {
 	return (
 		<MDBInputGroup>
-			<MDBInput label='Search' size='lg' style={{ width: '642%', height: '50px', position: 'relative', }} />
-			<MDBBtn rippleColor='dark' style={{ width: '4.4%', height: '50px', position: 'relative', bottom: '6px', display: 'inline-flex', left: '1510px' }}>
-				<MDBIcon icon='search' size='lg' style={{ position: 'relative', top: '5px', left: '5px' }} />
+			<MDBInput placeholder="Search" className="searchBar"/>
+			<MDBBtn rippleColor='dark' className="searchBtn">
+				<MDBIcon icon='search'/>
 			</MDBBtn>
 		</MDBInputGroup>
-
 	);
 }
 
@@ -32,9 +31,7 @@ export default function Homepage() {
 			<main>
 				<section className="featureSection">
 					<h2>Club Spotlight</h2>
-					<h3>
-						Genshin Impact at UCLA
-					</h3>
+					<h3 className="homepageh3">Genshin Impact at UCLA</h3>
 					<div className="featurePhoto">
 						<figcaption>Genshin Theme Song Jeopardy Event - February 7, 2023</figcaption>
 						<img src="featuredevent.jpg" alt="Featured Event" />
@@ -47,20 +44,20 @@ export default function Homepage() {
 						be had!
 						<br />
 						<br />
-						<a href="https://discord.gg/FpvRw77U9d">Join us on Discord!</a>
+						<a href="https://discord.gg/FpvRw77U9d">Click here to join us on Discord!</a>
 						<br />
 						<br />
-						<a href="http://localhost:3000">View this club's page on BClub</a>
+						<a href="http://localhost:3000">Click here to view this club's page on BClub!</a>
 					</p>
 				</section>
 				<aside className="APIs">
 					<div className="eventSection">
 						<h2>Upcoming Events</h2>
-						<h3>Place Google Calendar API here</h3>
+						<h3 className="homepageh3">Place Google Calendar API here</h3>
 					</div>
 					<div className="photoSection">
 						<h2>Photos</h2>
-						<h3>Place Instagram API here</h3>
+						<h3 className="homepageh3">Place Instagram API here</h3>
 					</div>
 				</aside>
 			</main>

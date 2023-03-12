@@ -1,19 +1,22 @@
-h1 {
+.welcomeMessage {
     text-align: center;
-    margin: 1%;
+    margin: 0.5em 0em 0.5em 0em;
+}
+
+.noAccount {
+    text-align: center;
+    margin: 2em 0em 0.5em 0em;
 }
 
 .loginInput {
     display: block;
     margin: auto;
-    font-family: "Open Sans", sans-serif;
     font-size: 2em;
 }
 
 .loginButton {
     display: block;
     margin: auto;
-	font-family: "Open Sans", sans-serif;
     font-size: 2em;
 	background: var(--dynamic-bg);
 	color: var(--dynamic-text-color);
@@ -22,4 +25,8 @@ h1 {
 	padding: 10px;
 	margin-bottom: 1%;
 	height: 2em;
+}
+
+.googleLogin {
+    margin: 1% auto;
 }
