@@ -6,6 +6,7 @@
 .noAccount {
     text-align: center;
     margin: 2em 0em 0.5em 0em;
+    color: var(--dynamic-text-color) !important;
 }
 
 .loginInput {
