@@ -31,7 +31,7 @@ export default function App(){
 					<Route path="calendar" element={<Calendar/>} />
 					<Route path="feedback" element={<Feedback/>} />
 					<Route path="myclubs" element={<Clubs/>} />
-					<Route path="Profile" element={<Profile/>} />
+					<Route path="IndividualPage/profile" element={<Profile/>} />
 					<Route path="SignUpPage" element={<SignUpPage/>} />
 					<Route path="SignInPage" element={<SignInPage/>} />
 					<Route path="highlights" element={<Highlights/>} />

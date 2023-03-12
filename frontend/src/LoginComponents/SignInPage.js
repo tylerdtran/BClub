@@ -64,15 +64,15 @@ export default function SignInPage()
     return(
       <div className="Login-Container"> 
         <form onSubmit={signInUsingEmail}>
-          <h1>Welcome back, Bruin!</h1>
+          <h1 className="welcomeMessage">Welcome back, Bruin!</h1>
           <input className="loginInput" type="email" placeholder="E-mail" value={email} onChange={(e) => setEmail(e.target.value)}></input>
           <br/>
           <input className="loginInput" type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)}></input>
           <br/>
-          <button type="submit" className="loginButton">Log In</button>
-          <h2>Don't have an account?</h2>
-          <button type="button" onClick={() => routeChange(`/SignUpPage`)}>Register for an Account</button>
-          <GoogleButton onClick={GoogleLogin}> Sign in with Google </GoogleButton>
+          <button type="submit" className="loginButton">Sign In</button>
+          <h2 className="noAccount">Don't have an account?</h2>
+          <button type="button" className="loginButton" onClick={() => routeChange(`/SignUpPage`)}>Register</button>
+          <GoogleButton className="googleLogin" onClick={GoogleLogin}> Sign in with Google </GoogleButton>
         </form>
       </div>
     );
