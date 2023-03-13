@@ -22,10 +22,14 @@ export default function HighlightsForm() {
     return (
     <div> 
       <form onSubmit={highlightForm}>
-        <h1>Submit a Highlight</h1>
-        <input type="text" placeholder="Highlight Link" value={highlightLink} onChange={(e) => setHighlightLink(e.target.value)}></input>
-        <select value={socialMedia} onChange={(e) => setSocialMedia(e.target.value)}>
-            <option value="" disabled selected>Select social media</option>
+        <p className="highlightBlurb">
+          <h1>Submit a Highlight</h1>
+          Want to promote a social media post from your club? Submit it here!
+        </p>
+        <div className="highlightFlexbox">
+        <input type="text" placeholder="Highlight Link" className="highlightLink" value={highlightLink} onChange={(e) => setHighlightLink(e.target.value)}></input>
+        <select className="platformSelect" value={socialMedia} onChange={(e) => setSocialMedia(e.target.value)}>
+            <option value="" disabled selected>Select social media platform...</option>
             <option value="Facebook">Facebook</option>
             <option value="Instagram">Instagram</option>
             <option value="LinkedIn">LinkedIn</option>
@@ -34,7 +38,8 @@ export default function HighlightsForm() {
             <option value="Twitter">Twitter</option>
             <option value="YouTube">YouTube</option>  
         </select>
-        <button type="submit">Submit</button>
+        </div>
+        <button type="submit" className="bigButton">Submit</button>
       </form>
     </div>
     );
