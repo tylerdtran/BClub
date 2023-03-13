@@ -8,7 +8,7 @@ import Homepage from './Homepage';
 import Catalog from './Catalog';
 import Calendar from './Calendar';
 import Feedback from './Feedback';
-import Clubs from './Clubs';
+import ClubPage from './IndividualPage/ClubPage';
 import Profile from './IndividualPage/Profile';
 import NoPage from './NoPage';
 import SignInPage from './LoginComponents/SignInPage';
@@ -16,6 +16,10 @@ import SignUpPage from './LoginComponents/SignUpPage';
 import Highlights from './Highlights';
 import HighlightsForm from './HighlightsForm';
 import ClubsForm from './ClubsForm';
+import { ReviewDisplay } from './Components/ReviewDisplay';
+import WriteReview from './Components/WriteReview';
+// import CreateReview from './Components/WriteReview';
+import 'bootstrap/dist/css/bootstrap.css';
 
 export default function App(){
 	return (
@@ -28,10 +32,13 @@ export default function App(){
 					<Route path="catalog" element={<Catalog/>} />
 					<Route path="calendar" element={<Calendar/>} />
 					<Route path="feedback" element={<Feedback/>} />
-					<Route path="myclubs" element={<Clubs/>} />
+					<Route path="ClubPage" element={<ClubPage/>} />
 					<Route path="Profile" element={<Profile/>} />
 					<Route path="SignUpPage" element={<SignUpPage/>} />
 					<Route path="SignInPage" element={<SignInPage/>} />
+					<Route path="WriteReview" element={<WriteReview/>} />
+					<Route path="ReviewDisplay" element={<ReviewDisplay/>} />
+					<Route path="clubs/:clubname" element={<ReviewDisplay />} />
 					<Route path="highlights" element={<Highlights/>} />
 					<Route path="highlightsform" element={<HighlightsForm/>} />
 					<Route path="clubsform" element={<ClubsForm/>} />

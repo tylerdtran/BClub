@@ -1,10 +1,11 @@
 import './App.css';
 import React from 'react';
+import SearchClubs from './Components/SearchClubs';
 
 export default function Homepage(){
 	return(
 		<>
-			<input type="text" name="searchBar" id="searchBar" placeholder="Search"></input>
+			<SearchClubs nav={"redirect"}  />
 			<main>
 				<section className="featureSection">
 					<h2>Club Spotlight</h2>
