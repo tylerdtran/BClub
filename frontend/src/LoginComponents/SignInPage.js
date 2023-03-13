@@ -69,9 +69,9 @@ export default function SignInPage()
           <br/>
           <input className="loginInput" type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)}></input>
           <br/>
-          <button type="submit" className="loginButton">Sign In</button>
+          <button type="submit" className="bigButton">Sign In</button>
           <h2 className="noAccount">Don't have an account?</h2>
-          <button type="button" className="loginButton" onClick={() => routeChange(`/SignUpPage`)}>Register</button>
+          <button type="button" className="bigButton" onClick={() => routeChange(`/SignUpPage`)}>Register</button>
           <GoogleButton className="googleLogin" onClick={GoogleLogin}> Sign in with Google </GoogleButton>
         </form>
       </div>

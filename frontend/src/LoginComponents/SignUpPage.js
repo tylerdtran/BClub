@@ -70,13 +70,13 @@ export default function SignUpPage()
         <input className="loginInput" type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)}></input>
         <br/>
         <select className="loginInput" onChange={(e) => { setClassYear(e.target.value) }}>
-                <option value="">Select your class year</option>
+                <option value="">Select your class year...</option>
                 {classes.map((x) => (
                   <option value={x}>{x}</option>
                 ))}
         </select>
         <br/>
-        <button type="submit" className="loginButton">Register</button>
+        <button type="submit" className="bigButton">Register</button>
       </form>
     </div>
   );

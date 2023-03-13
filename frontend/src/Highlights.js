@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Button from 'react-bootstrap/Button';
 import './Highlights.css'
 import { FacebookEmbed,
          InstagramEmbed,
@@ -31,52 +32,59 @@ function Posts(props) {
     const postsList = filteredLinks.map(
         (links) => 
         {
-            if(props.socialMedia=="Facebook") {
+            if(props.socialMedia === "Facebook") {
             return (
                 <div className="squares">
                     <FacebookEmbed url={links}/>
                 </div>
             );
             }
-            else if(props.socialMedia=="Instagram") {
+            else if(props.socialMedia === "Instagram") {
                 return (
                     <div className="squares">
                         <InstagramEmbed url={links}/>
                     </div>
                 );
             }
-            else if(props.socialMedia=="LinkedIn") {
+            else if(props.socialMedia === "LinkedIn") {
                 return (
                     <div className="squares">
                         <LinkedInEmbed url={links}/>
                     </div>
                 );
             }
-            else if(props.socialMedia=="Pinterest") {
+            else if(props.socialMedia === "Pinterest") {
                 return (
                     <div className="squares">
                         <PinterestEmbed url={links}/>
                     </div>
                 );
             }
-            else if(props.socialMedia=="TikTok") {
+            else if(props.socialMedia === "TikTok") {
                 return (
                     <div className="squares">
                         <TikTokEmbed url={links}/>
                     </div>
                 );
             }
-            else if(props.socialMedia=="Twitter") {
+            else if(props.socialMedia === "Twitter") {
                 return (
                     <div className="squares">
                         <TwitterEmbed url={links}/>
                     </div>
                 );
             }
-            else if(props.socialMedia=="YouTube") {
+            else if(props.socialMedia === "YouTube") {
                 return (
                     <div className="squares">
                         <YouTubeEmbed url={links}/>
+                    </div>
+                );
+            }
+            else {
+                return (
+                    <div className="squares">
+                        Error loading social media!
                     </div>
                 );
             }
@@ -98,7 +106,9 @@ export default function Highlights() {
     const highlights = socialMedias.map((socialMedia) => <Posts socialMedia={socialMedia}/>);
     return(
         <>
-            <br />
+            <Button className="submitButton" href="/highlightsform">
+				Submit a highlight!
+			</Button>
             <div>
                 {highlights}
             </div>
