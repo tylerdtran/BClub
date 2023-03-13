@@ -1,7 +1,7 @@
 // handles the actual review card 
 
 import React, { useState, useEffect } from "react";
-import { Card, Badge, Stack, ToggleButton, Row, Col, DropdownButton, Dropdown, Modal, Button, Form, Popover, OverlayTrigger } from 'react-bootstrap';
+import { Card, Badge, Stack, ToggleButton, Row, Col, DropdownButton, Dropdown, Modal, Button, Popover, OverlayTrigger } from 'react-bootstrap';
 import Rating from '@mui/material/Rating';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -26,7 +26,7 @@ function StarRating(props) {
     const [showDelete, setShowDelete] = useState(false);
     const handleCloseDelete = () => setShowDelete(false);
     const handleShowDelete = () => setShowDelete(true);
-    const [displayName, setDisplayName] = useState("");
+    // const [displayName, setDisplayName] = useState("");
     const [classYear, setClassYear] = useState("");
   
     const [user, loading, error] = useAuthState(auth);
@@ -47,10 +47,10 @@ function StarRating(props) {
     // Figure out how to set the displayName for the user. to reflect in the comments. 
     // get most recent flair info from database
     useEffect(() => {
-      console.log(props.id);
+      // console.log(props.id);
       get(preferences).then((snapshot) => {
         if (snapshot.exists()) {
-          setDisplayName(snapshot.val().displayName);
+          // setDisplayName(snapshot.val().displayName);
           setClassYear(snapshot.val().classYear);
         }
       }).catch((error) => { console.log(error) });
@@ -118,7 +118,6 @@ function StarRating(props) {
         <Card className='mt-4'>
           <Card.Body>
             <Stack direction='horizontal' gap={2}>
-              <Badge bg="secondary" className="text-primary">{displayName}</Badge>
               <Badge bg="secondary" className="text-primary">{classYear}</Badge>
               {
                 user && props.data.author === user.uid && props.deleteReview != null &&
@@ -132,17 +131,17 @@ function StarRating(props) {
             </Stack>
             <Row className='pt-2'>
               <Col>
-                <Card.Text className='mt-2'>{props?.data?.text}</Card.Text>
-                <Card.Text className='text-muted'>{props?.data?.dateTime}</Card.Text>
+                <Card.Text className='mt-2'>{props.data.text}</Card.Text>
+                <Card.Text className='text-muted'>{props.data.dateTime}</Card.Text>
               </Col>
               <Col md={4}>
-                <Card.Title className='text-center'>{props?.data?.clubtype}</Card.Title>
+                <Card.Title className='text-center'>{props.data.clubtype}</Card.Title>
                 <hr />
-                <StarRating name="Overall" stars={props?.data?.overallRating} />
-                <StarRating name="Activeness" stars={props?.data?.activeness} />
-                <StarRating name="Community" stars={props?.data?.community} />
-                <StarRating name="Competitiveness" stars={props?.data?.competitiveness} />
-                <StarRating name="Fun" stars={props?.data?.fun} />
+                <StarRating name="Overall" stars={props.data.overall} />
+                <StarRating name="Activeness" stars={props.data.activeness} />
+                <StarRating name="Community" stars={props.data.community} />
+                <StarRating name="Competitiveness" stars={props.data.competitiveness} />
+                <StarRating name="Fun" stars={props.data.fun} />
               </Col>
             </Row>
             <Stack direction='horizontal' className='d-flex align-self-center' gap={1}>

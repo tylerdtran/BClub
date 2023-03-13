@@ -22,13 +22,8 @@ export default function ClubsForm() {
         description: description,
         name: name,
         nickname: nickname,
-        overallRating: overallRating,
-        rating: {
-          activeness: "",
-          community: "",
-          competitiveness: "",
-          fun: ""
-        },
+        overallRating: 0,
+        rating: [1, 1, 1, 1],
         socials:{
           Facebook: facebook,
           Instagram: instagram,

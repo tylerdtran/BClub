@@ -104,7 +104,7 @@ export default function SearchClubs(props) {
         }
         if (props.nav == "redirect")
         {
-            nav(`/club/${selectedValue}`);
+            nav(`/clubs/${selectedValue}`);
         }
     }
 
