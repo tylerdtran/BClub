@@ -22,3 +22,7 @@
     padding: 0;
   }
   
+  .carousel-inner > .item > img, .carousel-inner > .item > a > img {
+    width:640px;
+  height:360px;
+}

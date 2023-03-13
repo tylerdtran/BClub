@@ -24,6 +24,14 @@ body {
 	color: var(--dynamic-text-color) !important;
 }
 
+#weeklyFeatured{
+    font-size: 200%;
+	text-align: center;
+	color: var(--dynamic-bruin-blue);
+	outline: #222;
+
+}
+
 a {
 	transition: none !important;
 }

@@ -31,13 +31,16 @@ export default function Homepage() {
 			/>
 			<main>
 				<section className="featureSection">
+				<p id='weeklyFeatured'>Weekly Featured Clubs</p>
 				<Slides></Slides>
+				<br></br>
+				<br></br>
 
 					<h2>Club Spotlight</h2>
 					<h3 className="homepageh3">Genshin Impact at UCLA</h3>
 					<div className="featurePhoto">
 						<figcaption>Genshin Theme Song Jeopardy Event - February 7, 2023</figcaption>
-						<img src="featuredevent.jpg" alt="Featured Event" />
+						<img src="featuredevent.jpg" alt="Featured Event" wid />
 					</div>
 					<p>
 						With an active community of over 400 UCLA students and alumni, Genshin
