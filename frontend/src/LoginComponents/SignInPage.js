@@ -44,6 +44,7 @@ export default function SignInPage()
       console.log(error);
     }
   };
+  
     return(
       <div className="Login-Container"> 
         <form onSubmit={signInUsingEmail}>
