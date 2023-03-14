@@ -138,7 +138,7 @@ export default function Catalog() {
       <div className="catalogContainer">
         <h1 className='centeredCategoryTitle'>Club Catalog</h1>
         {categories.map((category) => (
-          <div key={category.name}>
+          <div className='categoryCenter' key={category.name}>
             <h2>{category.name}</h2>
             <Category clubs={category.clubs} />
           </div>
