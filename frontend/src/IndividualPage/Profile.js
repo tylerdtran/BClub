@@ -4,6 +4,8 @@ import { db, auth } from '../Firebase';
 import { useAuthState } from "react-firebase-hooks/auth";
 import { ref, get, update } from "firebase/database";
 // import Review from "../Components/Review";
+import { RatingBar } from "../Components/RatingBar"
+import 'bootstrap/dist/css/bootstrap.css';
 
 export default function Profile() {
 
@@ -56,6 +58,7 @@ export default function Profile() {
 
 
 	return (
+		<div>
 		<Card>
 			<Card.Body>
 				<ToastContainer className="p-3" position="top-center">
@@ -63,7 +66,6 @@ export default function Profile() {
 						<Toast.Body>Updates saved.</Toast.Body>
 					</Toast>
 				</ToastContainer>
-
 				<Card.Title>Hello {user.displayName}!</Card.Title>
 				<hr />
 				<Card.Text>Update account information</Card.Text>
@@ -85,6 +87,10 @@ export default function Profile() {
 				</Col>
 			</Card.Body>
         </Card>
+			<div>
+				<RatingBar title="Overall" rating={4}/>	
+			</div>
+		</div>
 	);
 }
 
