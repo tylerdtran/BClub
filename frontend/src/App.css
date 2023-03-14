@@ -1,0 +1,281 @@
+:root {
+	--dynamic-bg: #fafafa;
+	--dynamic-text-color: #666;
+	--dynamic-dark-text-color: #222;
+	--dynamic-bruin-blue: rgb(26, 108, 184);
+	--dynamic-lighter-blue: rgb(98, 158, 214);
+	--dynamic-lightest-blue: rgb(171, 205, 238);
+	--dynamic-events-header: beige;
+}
+
+html {
+    font-size: 100%;
+	background: var(--dynamic-lighter-blue);
+	background: linear-gradient(0deg, var(--dynamic-bruin-blue) 0%, var(--dynamic-lighter-blue) 100%);
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	height: 100%;
+	width: 90%;
+	margin: auto;
+}
+
+body {
+	background-color: var(--dynamic-bg) !important;
+	color: var(--dynamic-text-color) !important;
+}
+
+#weeklyFeatured{
+    font-size: 200%;
+	text-align: center;
+	color: var(--dynamic-bruin-blue);
+	outline: #222;
+
+}
+
+a {
+	transition: none !important;
+}
+
+/* the styles for the header */
+header {
+	position: relative;
+}
+
+header #logo {
+	max-width: 23%;
+	padding: 1%;
+}
+
+header br {
+	display: none; /* This spacing is only needed for mobile */
+}
+
+header h3 {
+	font-size: 100%;
+	position: absolute;
+	bottom: 5%;
+	right: 1%;
+	max-width: 50%;
+	text-align: right;
+	display: flex;
+}
+
+/* the styles for the nav menu */
+
+#nav_menu {
+	width: 100%;
+	height: 100%;
+}
+
+/*#nav_menu Button{ Individual nav menu button
+	width: 25%; 
+	text-align: center;
+	padding: 1em 0em;
+	text-decoration: none;
+	color: var(--dynamic-text-color);
+	border: 1px solid var(--dynamic-bruin-blue);
+	border-radius: 25px;
+	background: linear-gradient(0deg, var(--dynamic-lighter-blue) 0%, var(--dynamic-lightest-blue) 100%);
+}*/
+
+.homepageh3 {
+	margin-left: 1%;
+}
+
+.input-group {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: row;
+	width: 100%;
+}
+
+.form-outline {
+	flex-basis: 90%;
+	margin-right: 1%;
+}
+
+.searchBar{
+    font-size: 2em;
+	padding: 3px;
+	position: relative;
+	top: 10px;
+}
+
+.searchBtn{
+    font-size: 2em;
+	flex-basis: 8%;
+}
+
+#searchBarWrapper{
+    font-size: 1.4em;
+	margin: 1% 1% 0% 1%;
+}
+
+header button {
+	position: relative;
+	background: var(--dynamic-bg);
+	color: var(--dynamic-text-color);
+	border: 1px solid var(--dynamic-bruin-blue);
+	border-radius: 5px;
+	margin: 0px;
+	padding: 5px 10px;
+	height: 2em;
+}
+
+.darkModeButton {
+	margin-right: 10px;
+}
+
+.headerLink {
+	color: var(--dynamic-text-color);
+	text-decoration: none;
+}
+
+/* the styles for the elements */
+body {
+	background-color: var(--dynamic-bg);
+	width: 100%;
+	margin: auto;
+	margin-top: 5px;
+}
+
+main {
+	display: flex;
+	margin-top: 1%;
+}
+
+main p {
+	padding: 1%;
+}
+
+main a {
+	color: var(--dynamic-text-color);
+}
+
+/* the styles for the section */
+.featureSection {
+	flex-basis: 60%;
+	padding: 1%;
+	order: 1;
+}
+
+.featureSection h1 {
+	font-size: 150%;
+	padding: 0.5em 0em 0.25em;
+	margin: 0em;
+}
+
+.featureSection h2 {
+	font-size: 130%;
+	color: var(--dynamic-bruin-blue);
+	padding: 0.5em 0em 0.25em;
+}
+
+.featureSection a {
+	color: var(--dynamic-text-color);
+}
+
+.featurePhoto {
+	width: 50%;
+	float: right;
+	clear: left;
+	margin: 0% 0% 2.5% 2.5%;
+}
+
+.featurePhoto img{
+	width: 100%;
+	padding: 0.5em 0em;
+}
+
+.featureSection h3 {
+	font-size: 105%;
+	padding-bottom: 0.25em;
+}
+
+/* the styles for the aside */
+.APIs {
+	flex-basis: 30%;
+	padding: 1%;
+	order: 2;
+}
+
+.APIs h2 {
+	font-size: 130%;
+	color: var(--dynamic-bruin-blue);
+	padding: 0.5em 0em 0.25em;
+}
+
+.APIs h3 {
+	font-size: 105%;
+	padding: 0.25em 0em 0.25em;
+}
+
+.APIs a {
+	text-decoration: none;
+}
+
+.APIs img {
+	max-height: 20%;
+	max-width: 20%;
+}
+
+.APIs a:hover {
+	color: var(--dynamic-bruin-blue);
+}
+
+.APIs a:focus {
+	color: var(--dynamic-bruin-blue);
+}
+
+.eventSection {
+	height: 50%;
+}
+
+.photoSection {
+	height: 50%;
+}
+
+/* the styles for the footer */
+footer p {
+	clear: both;
+	text-align: center;
+	padding: 1em 0em;
+	border-top: 1px solid var(--dynamic-bruin-blue);
+}
+
+.errorMessage {
+	margin: 1em;
+	font-size: 200%;
+	color: var(--dynamic-text-color);
+}
+
+/* Media query for small windows and mobile devices */
+@media screen and (max-width: 1080px){
+	main {
+		flex-direction: column;
+	}
+	#nav_menu {
+		font-size: 2.5vw;
+	}
+	header br {
+		display: inline;
+	}
+	header #logo {
+		max-width: 90%;
+	}
+	header h3 {
+		max-width: 100%;
+	}
+	body {
+		width: 98%;
+	}
+	.featureSection {
+		order: 1;
+		border-right: none;
+		border-bottom: 1px solid var(--dynamic-bruin-blue);
+	}
+	.otherProducts {
+		order: 2;
+	}
+}

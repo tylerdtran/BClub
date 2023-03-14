@@ -1,0 +1,28 @@
+.carousel-caption {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+    padding: 15px;
+    background-color: rgba(0,0,0,0.5);
+    color: #fff;
+  }
+  
+  .carousel-caption h3 {
+    font-size: 2.2em;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .carousel-caption p {
+    font-size: 1.2em;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .carousel-inner > .item > img, .carousel-inner > .item > a > img {
+    width:640px;
+  height:360px;
+}
