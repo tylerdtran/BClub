@@ -1,0 +1,311 @@
+/* the reset selector*/ 
+* {
+	margin: 0; 
+	padding: 0; 
+}
+
+:root {
+	--dynamic-bg: #fafafa;
+	--dynamic-text-color: #666;
+	--dynamic-dark-text-color: #222;
+	--dynamic-bruin-blue: rgb(26, 108, 184);
+	--dynamic-lighter-blue: rgb(98, 158, 214);
+	--dynamic-lightest-blue: rgb(171, 205, 238);
+	--dynamic-events-header: beige;
+}
+
+html {
+    font-size: 100%;
+	color: var(--dynamic-text-color);
+	background: var(--dynamic-lighter-blue);
+	background: linear-gradient(0deg, var(--dynamic-bruin-blue) 0%, var(--dynamic-lighter-blue) 100%);
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	height: 100%;
+}
+
+
+/* the styles for the header */
+header {
+	position: relative;
+}
+
+header #logo {
+	max-width: 23%;
+	padding: 1%;
+}
+
+header br {
+	display: none; /* This spacing is only needed for mobile */
+}
+
+header h3 {
+	font-size: 100%;
+	position: absolute;
+	bottom: 5%;
+	right: 1%;
+	max-width: 50%;
+	text-align: right;
+}
+
+/* the styles for the nav menu */
+
+#buttons {
+	display: inline-flex;
+	width: 100%;
+}
+
+#buttons1 {
+	width: 79%;
+}
+
+#buttons2 {
+	width: 20%;
+	height: 10%;
+}
+
+#nav_menu {
+	width: 100%;
+	height:100%;
+}
+
+#nav_menu Button{ /* Individual nav menu button */
+	width: 25%; 
+	text-align: center;
+	padding: 1em 0em;
+	text-decoration: none;
+	color: var(--dynamic-text-color);
+	border: 1px solid var(--dynamic-bruin-blue);
+	border-radius: 25px;
+	background: linear-gradient(0deg, var(--dynamic-lighter-blue) 0%, var(--dynamic-lightest-blue) 100%);
+}
+
+#dropdown { /* Individual nav menu button */
+	text-align: center;
+	text-decoration: none;
+	height: 100%;
+	width: 100%;
+}
+
+#dropdown1 { /* Individual nav menu button */
+	height: 100%;
+	width: 100%;
+	text-align: center;
+	text-decoration: none;
+	color: white;
+	background: --dynamic-bruin-blue;
+}
+
+#nav_menu Button li{ /* Nav menu buttons */
+	float: left;
+	width: 19.6%; /* of body section */
+	margin: 0.2%;
+}
+
+
+#nav_menu Button li Button{
+	width: 19.6%; /* of body section */
+	display: none; /* Hide submenus when not hovered */ 
+	position: absolute; /* Position below main menu */
+	top: 3.6em; /* Position below main menu */
+}
+
+#nav_menu ul li ul li{
+	width: 100%; /* of containing nav button */
+	float: none; /* Makes sure the submenu items are displayed vertically */
+}
+
+#nav_menu ul li:hover > ul {
+	display: block; /* Display list items when hovered */
+}
+
+#nav_menu > ul::after{ /*Prevents submenu from being displayed on top of main menu */
+	content: ""; /* Adds an empty space after the main menu */
+	display: block; 
+	clear: both; /* Make sure the content doesn't float */
+}
+
+#{
+	font-family: "Open Sans", sans-serif;
+    font-size: 2em;
+	padding: 3px;
+	margin: 1% 1% 0% 1%;
+	width: 97.5%;
+}
+
+#searchBarWrapper{
+	top: 1px;
+	font-family: "Open Sans", sans-serif;
+    font-size: 1.4em;
+	padding: 3px;
+	margin: 1% 1% 0% 1%;
+	width: 97.5%;
+}
+
+
+
+.darkModeButton {
+	font-family: "Open Sans", sans-serif;
+	position: relative;
+	background: var(--dynamic-bg);
+	color: var(--dynamic-text-color);
+	border: 1px solid var(--dynamic-bruin-blue);
+	border-radius: 5px;
+	padding: 3px;
+	margin-right: 10px;
+	height: 2em;
+}
+
+.headerLink {
+	color: var(--dynamic-text-color);
+	text-decoration: none;
+}
+
+/* the styles for the elements */
+body {
+	background-color: var(--dynamic-bg);
+	width: 100%;
+	margin: auto;
+	margin-top: 5px;
+}
+
+main {
+	display: flex;
+	margin-top: 1%;
+}
+
+main p {
+	padding: 1%;
+}
+
+main a {
+	color: var(--dynamic-text-color);
+}
+
+/* the styles for the section */
+.featureSection {
+	flex-basis: 60%;
+	padding: 1%;
+	order: 1;
+	border-right: 1px solid var(--dynamic-bruin-blue);
+}
+
+.featureSection h1 {
+	font-size: 150%;
+	padding: 0.5em 0em 0.25em;
+	margin: 0em;
+}
+
+.featureSection h2 {
+	font-size: 130%;
+	color: var(--dynamic-bruin-blue);
+	padding: 0.5em 0em 0.25em;
+}
+
+.featureSection a {
+	color: var(--dynamic-text-color);
+}
+
+.featurePhoto {
+	width: 50%;
+	float: right;
+	clear: left;
+	margin: 0% 0% 2.5% 2.5%;
+}
+
+.featurePhoto img{
+	width: 100%;
+	padding: 0.5em 0em;
+}
+
+.featureSection h3 {
+	font-size: 105%;
+	padding-bottom: 0.25em;
+}
+
+/* the styles for the aside */
+.APIs {
+	flex-basis: 30%;
+	padding: 1%;
+	order: 2;
+}
+
+.APIs h2 {
+	font-size: 130%;
+	color: var(--dynamic-bruin-blue);
+	padding: 0.5em 0em 0.25em;
+}
+
+.APIs h3 {
+	font-size: 105%;
+	padding: 0.25em 0em 0.25em;
+}
+
+.APIs a {
+	text-decoration: none;
+}
+
+.APIs img {
+	max-height: 20%;
+	max-width: 20%;
+}
+
+.APIs a:hover {
+	color: var(--dynamic-bruin-blue);
+}
+
+.APIs a:focus {
+	color: var(--dynamic-bruin-blue);
+}
+
+.eventSection {
+	height: 50%;
+}
+
+.photoSection {
+	height: 50%;
+}
+
+/* the styles for the footer */
+footer p {
+	clear: both;
+	text-align: center;
+	padding: 1em 0em;
+	border-top: 1px solid var(--dynamic-bruin-blue);
+}
+
+.errorMessage {
+	margin: 1em;
+	font-size: 200%;
+	color: var(--dynamic-text-color);
+}
+
+/* Media query for small windows and mobile devices */
+@media screen and (max-width: 1080px){
+	main {
+		flex-direction: column;
+	}
+	#nav_menu {
+		font-size: 2.5vw;
+	}
+	header br {
+		display: inline;
+	}
+	header #logo {
+		max-width: 90%;
+	}
+	header h3 {
+		max-width: 100%;
+	}
+	body {
+		width: 98%;
+	}
+	.featureSection {
+		order: 1;
+		border-right: none;
+		border-bottom: 1px solid var(--dynamic-bruin-blue);
+	}
+	.otherProducts {
+		order: 2;
+	}
+}
