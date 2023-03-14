@@ -11,7 +11,7 @@ function RatingBar(props) {
                     <div>{props.title}</div>
                     <div>{props.rating}/5</div>
                 </div>
-                <ProgressBar now={100} animated />
+                <ProgressBar now={percent} animated />
             </div>
         );
     } else {

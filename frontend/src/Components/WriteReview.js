@@ -31,7 +31,7 @@ function FormSelect(props) {
     );
 }
 
-export default function WriteReview() {
+export function WriteReview() {
     const nav = useNavigate();
     const location = useLocation();
 

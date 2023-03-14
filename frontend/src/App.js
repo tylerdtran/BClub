@@ -17,7 +17,8 @@ import Highlights from './Highlights';
 import HighlightsForm from './HighlightsForm';
 import ClubsForm from './ClubsForm';
 import { ReviewDisplay } from './Components/ReviewDisplay';
-import WriteReview from './Components/WriteReview';
+// import WriteReview from '../Components/WriteReview';
+// import ProtectedRoute from './Components/ProtectedRoute';
 // import CreateReview from './Components/WriteReview';
 import 'bootstrap/dist/css/bootstrap.css';
 
@@ -36,7 +37,13 @@ export default function App(){
 					<Route path="Profile" element={<Profile/>} />
 					<Route path="SignUpPage" element={<SignUpPage/>} />
 					<Route path="SignInPage" element={<SignInPage/>} />
-					<Route path="WriteReview" element={<WriteReview/>} />
+					{/* <Route path="writeReview" element={<ProtectedRoute state={{ next: '/writeReview' }} />}>
+						<Route index element={<WriteReview />} />
+					</Route>
+					<Route path="editReview" element={<ProtectedRoute state={{ next: '/editReview' }} />}>
+						<Route index element={<WriteReview />} />
+					</Route> */}
+					{/* <Route path="writeReview" element={<WriteReview/>} /> */}
 					<Route path="ReviewDisplay" element={<ReviewDisplay/>} />
 					<Route path="clubs/:clubname" element={<ReviewDisplay />} />
 					<Route path="highlights" element={<Highlights/>} />
