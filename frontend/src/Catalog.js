@@ -4,8 +4,10 @@ import React from 'react';
 import {
     MDBCard, MDBCardBody, MDBCardTitle, MDBCardText, MDBCardImage, MDBBtn, MDBRipple
 } from 'mdb-react-ui-kit';
+import { useNavigate } from 'react-router-dom';
 
 export default function Catalog() {
+    const nav = useNavigate();
     const categories = [
       {
         name: "Featured",
@@ -153,7 +155,7 @@ function Category({ category, clubs }) {
         <section className="category">
           <div className="empty-grid-item"></div> {/* Add empty grid item */}
           {clubs.map((club) => (
-            <MDBCard key={club.clubName}>
+            <MDBCard key={club.clubName} onClick={() => {nav('/clubs/Bruin-Club-Tennis')}}>
               <MDBRipple rippleColor='black' rippleTag='div' className='bg-image hover-overlay'>
                 <MDBCardImage src={club.clubImage} fluid alt='Club Image' />
                 <a>
@@ -163,7 +165,7 @@ function Category({ category, clubs }) {
               <MDBCardBody>
                 <MDBCardTitle>{club.clubName}</MDBCardTitle>
                 <MDBCardText>{club.clubBlurb}</MDBCardText>
-                <MDBBtn href='#'>Button</MDBBtn>
+                <MDBBtn >Button</MDBBtn>
               </MDBCardBody>
             </MDBCard>
           ))}

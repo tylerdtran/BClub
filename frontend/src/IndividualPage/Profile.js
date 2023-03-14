@@ -4,8 +4,7 @@ import { db, auth } from '../Firebase';
 import { useAuthState } from "react-firebase-hooks/auth";
 import { ref, get, update } from "firebase/database";
 // import Review from "../Components/Review";
-import { RatingBar } from "../Components/RatingBar"
-import 'bootstrap/dist/css/bootstrap.css';
+import { RatingBar } from "../Components/RatingBar";
 
 export default function Profile() {
 

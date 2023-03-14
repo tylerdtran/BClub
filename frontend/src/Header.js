@@ -79,7 +79,7 @@ export default class Header extends React.Component {
 							<Button href="/highlights">
 								Highlights	
 							</Button>
-							<Button href="/IndividualPage/profile">
+							<Button href="/Profile">
 								My Profile
 							</Button>
 						</ButtonGroup>	
