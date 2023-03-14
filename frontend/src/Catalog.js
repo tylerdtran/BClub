@@ -1,13 +1,13 @@
 import './App.css';
 import './Catalog.css';
 import React from 'react';
-import {
-    MDBCard, MDBCardBody, MDBCardTitle, MDBCardText, MDBCardImage, MDBBtn, MDBRipple
-} from 'mdb-react-ui-kit';
-import { useNavigate } from 'react-router-dom';
+// import {
+//     MDBCard, MDBCardBody, MDBCardTitle, MDBCardText, MDBCardImage, MDBBtn, MDBRipple
+// } from 'mdb-react-ui-kit';
+import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
 
 export default function Catalog() {
-    const nav = useNavigate();
     const categories = [
       {
         name: "Featured",
@@ -18,9 +18,9 @@ export default function Catalog() {
             clubImage: "clubcatalogimages/genshin_club.webp",
           },
           {
-            clubName: "Coming Soon",
-            clubBlurb: "Coming Soon",
-            clubImage: "placeholder.png",
+            clubName: "Bruin Club Tennis",
+            clubBlurb: "The best club ever!",
+            clubImage: "clubcatalogimages/BruinClubTennis.png",
           },
           {
             clubName: "Coming Soon",
@@ -142,7 +142,7 @@ export default function Catalog() {
         {categories.map((category) => (
           <div className='categoryCenter' key={category.name}>
             <h2>{category.name}</h2>
-            <Category clubs={category.clubs} />
+            <Category clubs={category.clubs}></Category> 
           </div>
         ))}
       </div>
@@ -155,19 +155,17 @@ function Category({ category, clubs }) {
         <section className="category">
           <div className="empty-grid-item"></div> {/* Add empty grid item */}
           {clubs.map((club) => (
-            <MDBCard key={club.clubName} onClick={() => {nav('/clubs/Bruin-Club-Tennis')}}>
-              <MDBRipple rippleColor='black' rippleTag='div' className='bg-image hover-overlay'>
-                <MDBCardImage src={club.clubImage} fluid alt='Club Image' />
+            <Card key={club.clubName} href="clubs/Bruin-Club-Tennis">
+                <Card.Img src={club.clubImage} fluid alt='Club Image' />
                 <a>
                   <div className='mask' style={{ backgroundColor: 'rgba(251, 251, 251, 0.15)' }}></div>
                 </a>
-              </MDBRipple>
-              <MDBCardBody>
-                <MDBCardTitle>{club.clubName}</MDBCardTitle>
-                <MDBCardText>{club.clubBlurb}</MDBCardText>
-                <MDBBtn >Button</MDBBtn>
-              </MDBCardBody>
-            </MDBCard>
+              <Card.Body>
+                <Card.Title>{club.clubName}</Card.Title>
+                <Card.Text>{club.clubBlurb}</Card.Text>
+                <Button >Button</Button>
+              </Card.Body>
+            </Card>
           ))}
         </section>
       </div>
