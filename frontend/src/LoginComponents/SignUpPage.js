@@ -40,7 +40,7 @@ export default function SignUpPage()
     .then((userCredential) => { 
       console.log(userCredential);
       const userId = auth.currentUser.uid
-      writeUserData(userId, displayName, email, classYear)
+      // writeUserData(userId, displayName, email, classYear)
       routeChange();
     })
     .catch((error) => { 
@@ -51,13 +51,13 @@ export default function SignUpPage()
 }
 
   // writes the user data to the database 
-  function writeUserData(userId, displayName, email, classYear) {
-    set(ref(db, 'users-profile/' + userId), {
-      display_name: displayName, 
-      email: email,
-      class_year: classYear
-    });
-  }
+  // function writeUserData(userId, displayName, email, classYear) {
+  //   set(ref(db, 'users-profile/' + userId), {
+  //     display_name: displayName, 
+  //     email: email,
+  //     class_year: classYear
+  //   });
+  // }
 
   return(
     <div className="Login-Container"> 

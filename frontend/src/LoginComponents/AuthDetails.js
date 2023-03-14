@@ -20,10 +20,10 @@ const AuthDetails = () => {
     useEffect(() => {
         const listen = onAuthStateChanged(auth, (user) => {
             if(user) {
-                setAuthUser(user)
+                setAuthUser(user);
             }
             else {
-                setAuthUser(null)
+                setAuthUser(null);
             }
         });
         return () => {

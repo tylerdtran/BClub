@@ -3,16 +3,18 @@ import { Form, FormGroup, Col, Button, Card, Toast, ToastContainer } from 'react
 import { db, auth } from '../Firebase';
 import { useAuthState } from "react-firebase-hooks/auth";
 import { ref, get, update } from "firebase/database";
-import { useNavigate } from "react-router-dom"; 
 
 export default function Profile() {
 
-	let nav = useNavigate()
-	const [user, loading, error] = useAuthState(auth);
-	console.log(auth.currentUser.uid)
+	const [user] = useAuthState(auth);
+	console.log(user);
+	if (user == null)
+	{
+		console.log("THis doesn't work");
+	}
 	const [classYear, setClassYear] = useState("");
 	const [validated, setValidated] = useState(false);
-	const preferences = ref(db, `users-profile/` + auth.currentUser.uid); // get author pref
+	const preferences = ref(db, `users-profile/` + user?.uid); // get author pref
 	const [showSave, setShowSave] = useState(false);
     const [disabled, setDisabled] = useState(false);
 
@@ -63,7 +65,7 @@ export default function Profile() {
 							<Toast.Body>Updates saved.</Toast.Body>
 						</Toast>
 					</ToastContainer>
-					<Card.Title>Hello {user.displayName}!</Card.Title>
+					{/* <Card.Title>Hello {user.email}!</Card.Title> */}
 					<hr />
 					<Card.Text>Update account information</Card.Text>
 					<Col md={4}>
