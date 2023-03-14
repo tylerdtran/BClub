@@ -7,9 +7,10 @@ import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import { useAuthState } from "react-firebase-hooks/auth";
 import ThumbDownIcon from '@mui/icons-material/ThumbDown';
 import { db, auth } from '../Firebase';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { ref, get, update } from "firebase/database";
 import 'bootstrap/dist/css/bootstrap.css';
+import { WriteReview } from "./WriteReview";
 
 function StarRating(props) {
     return (
@@ -28,6 +29,13 @@ function StarRating(props) {
     const handleShowDelete = () => setShowDelete(true);
     // const [displayName, setDisplayName] = useState("");
     const [classYear, setClassYear] = useState("");
+    // const [editFunction, setEditFunction] = useState(false);
+
+    // function editComponent() {
+    //   location = useLocation()
+
+    //   return
+    // }
   
     const [user, loading, error] = useAuthState(auth);
   
@@ -128,6 +136,7 @@ function StarRating(props) {
                   <Dropdown.Item onClick={handleShowDelete}>Delete</Dropdown.Item>
                 </DropdownButton>
               }
+              
             </Stack>
             <Row className='pt-2'>
               <Col>

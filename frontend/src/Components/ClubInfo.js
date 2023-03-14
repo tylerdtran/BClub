@@ -10,25 +10,6 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 export function ClubInfo(props) {
 
-    const [highlight, setHighlight] = useState("");
-
-    //
-    useEffect(() => {
-        if (props?.data != null) {
-            const rate = parseInt(props?.data?.overallRating);
-            if (3.5 < rate && rate <= 5) {
-                setHighlight("hl-green");
-            } else if (2.5 < rate && rate <= 3.5) {
-                setHighlight("hl-yellow");
-            } else if (1 <= rate && rate <= 2.5) {
-                setHighlight("hl-red");
-            } else {
-                setHighlight("");
-            }
-        }
-    }, [props.loading, props?.data, props?.data?.overallRating]);
-
-
         return (
             <div>
                 <Container>
@@ -42,12 +23,13 @@ export function ClubInfo(props) {
                                     <Container>
                                         <Stack direction='horizontal' gap={5} className='justify-content-center'>
                                             <Stack direction='horizontal' gap={2} className='d-flex justify-content-center'>
-                                                <h4>Overall Rating:</h4>
-                                                <h4 className={highlight}>{props?.data?.overallRating || 'N/A'}</h4>
+                                                <h5>Overall Rating:</h5>
+                                                {/* <h5 className={highlight}>{props?.data?.rating?.overall || 'N/A'}</h5> */}
+                                                <h5>{props?.data?.rating?.overall || 'N/A'}</h5>
                                             </Stack>
                                             <Stack direction='horizontal' gap={2} className='d-flex justify-content-center'>
-                                                <h4>Club Type:</h4>
-                                                <h4 className='hl-info'>{props?.data?.clubType}</h4>
+                                                <h5>Club Type:</h5>
+                                                <h5>{props?.data?.clubType}</h5>
                                             </Stack>
                                         </Stack>
                                     </Container>

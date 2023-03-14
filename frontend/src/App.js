@@ -16,10 +16,10 @@ import SignUpPage from './LoginComponents/SignUpPage';
 import Highlights from './Highlights';
 import HighlightsForm from './HighlightsForm';
 import ClubsForm from './ClubsForm';
+import { EditReview } from './Components/EditReview';
 import { ReviewDisplay } from './Components/ReviewDisplay';
 // import WriteReview from '../Components/WriteReview';
-// import ProtectedRoute from './Components/ProtectedRoute';
-// import CreateReview from './Components/WriteReview';
+import { ProtectedRoute } from './Components/ProtectedRoute';
 import 'bootstrap/dist/css/bootstrap.css';
 
 export default function App(){
@@ -39,10 +39,10 @@ export default function App(){
 					<Route path="SignInPage" element={<SignInPage/>} />
 					{/* <Route path="writeReview" element={<ProtectedRoute state={{ next: '/writeReview' }} />}>
 						<Route index element={<WriteReview />} />
-					</Route>
+	</Route>*/}
 					<Route path="editReview" element={<ProtectedRoute state={{ next: '/editReview' }} />}>
-						<Route index element={<WriteReview />} />
-					</Route> */}
+						<Route index element={<EditReview />} />
+					</Route> 
 					{/* <Route path="writeReview" element={<WriteReview/>} /> */}
 					<Route path="ReviewDisplay" element={<ReviewDisplay/>} />
 					<Route path="clubs/:clubname" element={<ReviewDisplay />} />
