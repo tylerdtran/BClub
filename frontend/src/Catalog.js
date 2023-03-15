@@ -11,28 +11,52 @@ export default function Catalog() {
 	const [newname2, setNewName2] = useState("");
 	const [newname3, setNewName3] = useState("");
 	const [newname4, setNewName4] = useState("");
-
-	useEffect(()=>{
-		const latestClubs = query(ref(db, '/clubs'), orderByChild('createdAt'), limitToLast(4));
-
-		get(latestClubs).then((snapshot) =>{
-		  if(snapshot.exists()){
-			var clubs = snapshot.val();
-			var keys = Object.keys(clubs);
-			setNewName1(clubs[keys[0]].name);
-			setNewName2(clubs[keys[1]].name);
-			setNewName3(clubs[keys[2]].name);
-      setNewName4(clubs[keys[3]].name);
-
-    } else{
-			console.log("no data");
-		  }
-		}).catch((error) => {
-		  console.error(error)
-		})
-	})
+  useEffect(() => {
+    const latestClubs = query(ref(db, "/clubs"), orderByChild("createdAt"), limitToLast(4));
+    get(latestClubs)
+      .then((snapshot) => {
+        if (snapshot.exists()) {
+          var clubs = snapshot.val();
+          var keys = Object.keys(clubs);
+          setNewName1(clubs[keys[0]].name);
+          setNewName2(clubs[keys[1]].name);
+          setNewName3(clubs[keys[2]].name);
+          setNewName4(clubs[keys[3]].name);
+        } else {
+          console.log("no data");
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []); 
 
     const categories = [
+      {
+        name: "Featured",
+        clubs: [
+          {
+            clubName: "Genshin Impact at UCLA",
+            clubBlurb: "THe definitive community for Genshin Impact at UCLA",
+            clubImage: "clubcatalogimages/genshin_club.webp",
+          },
+          {
+            clubName: "Bruin Club Tennis",
+            clubBlurb: "The best club ever!",
+            clubImage: "clubcatalogimages/BruinClubTennis.png",
+          },
+		  {
+            clubName: "Here soon",
+            clubBlurb: "Coming Soon",
+            clubImage: "placeholder.png",
+          },
+          {
+            clubName: "Not Soon",
+            clubBlurb: "Coming Soon",
+            clubImage: "placeholder.png",
+          },
+        ],
+      },
       {
         name: "New Clubs",
         clubs: [
@@ -173,12 +197,13 @@ export default function Catalog() {
     );
   }
 
-function Category({ category, clubs }) {
+function Category({ clubs }) {
     return (
       <div>
         <section className="category">
           <div className="empty-grid-item"></div> {/* Add empty grid item */}
           {clubs.map((club) => (
+            club.clubName !== "" && (
             <Card key={club.clubName} href="clubs/Bruin-Club-Tennis">
                 <Card.Img src={club.clubImage} fluid alt='Club Image' />
                 <a>
@@ -190,6 +215,7 @@ function Category({ category, clubs }) {
                 <Button >Button</Button>
               </Card.Body>
             </Card>
+            )
           ))}
         </section>
       </div>
