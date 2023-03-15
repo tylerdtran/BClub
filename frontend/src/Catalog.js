@@ -9,9 +9,6 @@ import { render } from '@testing-library/react';
 
 export default function Catalog() {
   const [newClubs, setNewClubs] = useState([]);
-  const [educationalClubs, setEducationalClubs] = useState([]);
-  const [recreationalClubs, setRecreationalClubs] = useState([]);
-
   useEffect(() => {
     const latestClubs = query(ref(db, "/clubs"), orderByChild("createdAt"), limitToLast(4));
     get(latestClubs)
@@ -30,41 +27,47 @@ export default function Catalog() {
       });
   }, []); 
 
-  useEffect(() => {
-    const categorySortedClubs = query(ref(db, '/clubs'), orderByChild('clubType'), equalTo('academic')); //CHANGE
-    get(categorySortedClubs)
-    .then((snapshot) => {
+
+
+  const [artsClubs, setArtsClubs] = useState([]);
+  const [careerClubs, setCareerClubs] = useState([]);
+  const [communityServiceClubs, setCommunityServiceClubs] = useState([]);
+  const [culturalClubs, setCulturalClubs] = useState([]);
+  const [educationalClubs, setEducationalClubs] = useState([]);
+  const [recreationalClubs, setRecreationalClubs] = useState([]);
+  const [technologicalClubs, setTechnologicalClubs] = useState([]);
+  const [otherClubs, setOtherClubs] = useState([]);
+
+
+  const fetchClubsByType = async (clubType, setClubs) => {
+    const categorySortedClubs = query(ref(db, '/clubs'), orderByChild('clubType'), equalTo(clubType));
+    try {
+      const snapshot = await get(categorySortedClubs);
       if (snapshot.exists()) {
-        var clubs = snapshot.val();
+        const clubs = snapshot.val();
         const clubArray = Object.keys(clubs).map((key) => clubs[key]);
-        setEducationalClubs(clubArray); //CHANGE
+        setClubs(clubArray);
       } else {
         console.log("no data");
       }
-    })
-    .catch((error) => {
+    } catch (error) {
       console.error(error);
-    });
-  }, []); 
+    }
+  };
 
   useEffect(() => {
-    const categorySortedClubs = query(ref(db, '/clubs'), orderByChild('clubType'), equalTo('recreational')); //CHANGE
-    get(categorySortedClubs)
-    .then((snapshot) => {
-      if (snapshot.exists()) {
-        var clubs = snapshot.val();
-        const clubArray = Object.keys(clubs).map((key) => clubs[key]);
-        setRecreationalClubs(clubArray); //CHANGE
-      } else {
-        console.log("no data");
-      }
-    })
-    .catch((error) => {
-      console.error(error);
-    });
-  }, []); 
+    fetchClubsByType('academic', setEducationalClubs);
+    fetchClubsByType('arts', setArtsClubs);
+    fetchClubsByType('career', setCareerClubs);
+    fetchClubsByType('community_service', setCommunityServiceClubs);
+    fetchClubsByType('cultural', setCulturalClubs);
+    fetchClubsByType('recreational', setRecreationalClubs);
+    fetchClubsByType('technological', setTechnologicalClubs);
+    fetchClubsByType('other', setOtherClubs);
 
-  const renderClubCategory = (Name, clubs) => ({
+  }, []);
+
+  const makeClubCategory = (Name, clubs) => ({
     name: Name,
     clubs: clubs.map((club) => ({
       clubName: club.name || "",
@@ -75,7 +78,7 @@ export default function Catalog() {
 
 
     const categories = [
-      renderClubCategory("Featured", [
+      makeClubCategory("Featured", [
         {
           name: "Genshin Impact at UCLA",
           blurb: "The definitive community for Genshin Impact at UCLA",
@@ -86,12 +89,16 @@ export default function Catalog() {
           blurb: "The best club ever!",
           image: "clubcatalogimages/BruinClubTennis.png",
         },
-        { name: "Here soon", image: "placeholder.png" },
-        { name: "Not Soon", image: "placeholder.png" },
       ]),
-      renderClubCategory("New Clubs", newClubs),
-      renderClubCategory("Educational", educationalClubs),
-      renderClubCategory("Recreational", recreationalClubs),
+      makeClubCategory("Newly Added Clubs", newClubs),
+      makeClubCategory("Arts", artsClubs),
+      makeClubCategory("Career", careerClubs),
+      makeClubCategory("Community Service", communityServiceClubs),
+      makeClubCategory("Cultural", culturalClubs),
+      makeClubCategory("Educational", educationalClubs),
+      makeClubCategory("Recreational", recreationalClubs),
+      makeClubCategory("Technological", technologicalClubs),
+      makeClubCategory("Other", otherClubs),
     ];
   
     return (
