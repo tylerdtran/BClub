@@ -3,12 +3,14 @@ import React from 'react';
 import AuthDetails from './LoginComponents/AuthDetails';
 import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
+import { auth } from './Firebase';
 
 function DarkModeButton({value, handlerFunction}){
     return(
     	<button className="darkModeButton" onClick={handlerFunction}> {value} </button>
     );
 }
+
   
 export default class Header extends React.Component {
     constructor(props) {
@@ -17,7 +19,8 @@ export default class Header extends React.Component {
         mode: "Switch to Dark Mode",
       }
     }
-  
+	
+	
     handleClick() {
     	// Set light mode dynamic colors
     	if (this.state.mode === "Switch to Light Mode"){
@@ -79,7 +82,7 @@ export default class Header extends React.Component {
 							<Button href="/highlights">
 								Highlights	
 							</Button>
-							<Button href="/IndividualPage/profile">
+							<Button href="/Profile">
 								My Profile
 							</Button>
 						</ButtonGroup>	

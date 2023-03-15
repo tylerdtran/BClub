@@ -44,22 +44,6 @@ export default function SignInPage()
       console.log(error);
     }
   };
-
-
-  // logout feature:
-  /*
-  const logout = () => {
-    localStorage.clear()
-    window.location.reload()
-  }
-  <button onClick={logout}>Logout</button>
-  <div>
-    {value?<Homepage/>:
-    <GoogleButton onClick={handleClick}>Sign in With Google</GoogleButton>
-    }
-  </div>
-  *//* Need to force the Login Page off the homepage  */
-  // onClick={() => routeChange(`/SignUpPage`)}
   
     return(
       <div className="Login-Container"> 
