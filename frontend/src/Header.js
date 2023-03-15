@@ -58,7 +58,7 @@ export default class Header extends React.Component {
         		<meta charSet="utf-8" />
 					<header>
 						<a href="index.html">
-						<img id="logo" src="logo.png" alt="BClub Logo" />
+						<img id="logo" src="/logo.png" alt="BClub Logo" />
 						</a>
 						<br />
 						<br />

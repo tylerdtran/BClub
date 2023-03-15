@@ -44,47 +44,40 @@ export default function ClubsForm() {
     }
     return (
         <div> 
-        <Form onSubmit={clubForm}>
+        <Form className="clubForm" onSubmit={clubForm}>
             <h1>Submit a Club</h1>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label>Name</Form.Label>
-                <Form.Control type="text" required placeholder="name@example.com" value={name} onChange={(e) => setName(e.target.value)}/>
-            </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput2">
-                <Form.Label>Name</Form.Label>
+                <Form.Label>Club Name</Form.Label>
                 <Form.Control type="text" required placeholder="Club Name" value={name} onChange={(e) => setName(e.target.value)}/>
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput3">
-              <Form.Label>Nickname</Form.Label>
+              <Form.Label>Club Nickname</Form.Label>
               <Form.Control type="text" placeholder="Club Nickname" value={nickname} onChange={(e) => setNickname(e.target.value)}/>
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput4">
-              <Form.Label>Facebook</Form.Label>
+              <Form.Label>Club Facebook Page</Form.Label>
               <Form.Control type="text" placeholder="Facebook" value={facebook} onChange={(e) => setFacebook(e.target.value)}/>
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput5">
-              <Form.Label>Instagram</Form.Label>
+              <Form.Label>Club Instagram Page</Form.Label>
               <Form.Control type="text" required placeholder="Instagram" value={instagram} onChange={(e) => setInstagram(e.target.value)}/>
             </Form.Group>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput6">
-              <Form.Label>Overall Rating</Form.Label>
-                <Form.Control type="text" required placeholder="OverallRating" value={overallRating} onChange={(e) => setOverallRating(e.target.value)}/>
-            </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput7">
-              <Form.Label>Description</Form.Label>
+              <Form.Label>Club Description</Form.Label>
               <Form.Control as="textarea"required placeholder="Description" value={description} onChange={(e) => setDescription(e.target.value)}/>
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput8">
-              <Form.Label>url</Form.Label>
+              <Form.Label>Desired BClub URL</Form.Label>
                 <Form.Control type="text" required placeholder="URL" value={url} onChange={(e) => setURL(e.target.value)}/>
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput9">
-              <Form.Label>Website</Form.Label>
+              <Form.Label>External Club Website</Form.Label>
                 <Form.Control type="text" placeholder="Website" value={website} onChange={(e) => setWebsite(e.target.value)}/>
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput9">
+              <Form.Label>Club Category</Form.Label>
               <select required value={clubType} onChange={(e) => setClubType(e.target.value)}>
-                  <option value="" disabled selected>Select a Category</option>
+                  <option value="" disabled selected>Select a category...</option>
                   <option value="academic">Academic</option>
                   <option value="arts">Arts</option>
                   <option value="career">Career</option>
@@ -94,7 +87,8 @@ export default function ClubsForm() {
                   <option value="recreational">Recreational</option>
                   <option value="other">Other</option>  
               </select>
-              <button type="submit">Submit</button>
+              <br/>
+              <button className="clubFormButton" type="submit">Submit</button>
             </Form.Group>
         </Form>
         </div>
