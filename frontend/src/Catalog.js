@@ -38,13 +38,13 @@ export default function Catalog() {
         clubs: [
           {
             clubName: newname1,
-            clubBlurb: "",
-            clubImage: "",
+            clubBlurb: "Coming Soon",
+            clubImage: "placeholder.png",
           },
           {
             clubName: newname2,
-            clubBlurb: "",
-            clubImage: "",
+            clubBlurb: "Coming Soon",
+            clubImage: "placeholder.png",
           },
           {
             clubName: newname3,
