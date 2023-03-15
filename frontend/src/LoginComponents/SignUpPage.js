@@ -62,7 +62,7 @@ export default function SignUpPage()
   return(
     <div className="Login-Container"> 
       <form validated={validated} onSubmit={signUp}>
-        <h1>Welcome home, Bruin!</h1>
+        <h1 className="welcomeMessage">Welcome home, Bruin!</h1>
         <input className="loginInput" type="first-name" placeholder="Full Name" value={displayName} onChange={(e) => setDisplayName(e.target.value)}></input>
         <br/>
         <input className="loginInput" type="email" placeholder="E-mail" value={email} onChange={(e) => setEmail(e.target.value)}></input>

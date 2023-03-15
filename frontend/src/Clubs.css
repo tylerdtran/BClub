@@ -1,0 +1,35 @@
+.clubForm{
+    display: flex;
+    flex-direction: column;
+    padding-top: 1.5em;
+    width: 80%;
+    margin: auto;
+}
+
+.clubForm h1{
+    margin-bottom: 0.5em;
+}
+
+.clubForm button{
+    margin: 1em 0em;
+    background: var(--dynamic-bg);
+	color: var(--dynamic-text-color);
+	border: 1px solid var(--dynamic-bruin-blue);
+	border-radius: 5px;
+    height: 2em;
+}
+
+.clubFormItem{
+    margin-bottom: 1em;
+}
+
+.clubFormInput{
+    float: right;
+    width: 60%;
+}
+
+.clubFormLabel{
+    float: left;
+    position: relative;
+    top: 4px;
+}

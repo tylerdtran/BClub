@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { db } from "./Firebase";
 import { ref, set, push } from "firebase/database";
+import './Clubs.css'
 
 export default function ClubsForm() {
     const [club_type, setClub_Type] = useState("");
@@ -50,19 +51,58 @@ export default function ClubsForm() {
     }
     return (
         <div> 
-        <form onSubmit={clubForm}>
-            <h1>Submit a Club</h1>
-            <input type="text" required placeholder="Club Name" value={name} onChange={(e) => setName(e.target.value)}></input>
-            <input type="text" placeholder="Club Nickname" value={nickname} onChange={(e) => setNickname(e.target.value)}></input>
-            <input type="text" placeholder="Outside Affilations" value={outside_affil} onChange={(e) => setOutside_Affil(e.target.value)}></input>
-            <input type="text" placeholder="Facebook" value={facebook} onChange={(e) => setFacebook(e.target.value)}></input>
-            <input type="text" required placeholder="Instagram" value={instagram} onChange={(e) => setInstagram(e.target.value)}></input>
-            <input type="text" placeholder="Twitter" value={twitter} onChange={(e) => setTwitter(e.target.value)}></input>
-            <textarea required placeholder="Description" value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
-            <input type="text" required placeholder="URL" value={url} onChange={(e) => setURL(e.target.value)}></input>
-            <input type="text" placeholder="Website" value={website} onChange={(e) => setWebsite(e.target.value)}></input>
-            <select required value={club_type} onChange={(e) => setClub_Type(e.target.value)}>
-                <option value="" disabled selected>Select a Category</option>
+        <form className="clubForm" onSubmit={clubForm}>
+            <h1>Create a Club</h1>
+
+            <div className="clubFormItem">
+              <label className="clubFormLabel" for="clubName">Club Name: </label>
+              <input className="clubFormInput" id="clubName" type="text" required placeholder="Club Name" value={name} onChange={(e) => setName(e.target.value)}></input>
+            </div>
+
+            <div className="clubFormItem">
+              <label className="clubFormLabel" for="clubNickname">Club Nickname: </label>
+              <input className="clubFormInput" id="clubNickname" type="text" placeholder="Club Nickname" value={nickname} onChange={(e) => setNickname(e.target.value)}></input>
+            </div>
+
+            <div className="clubFormItem">
+              <label className="clubFormLabel" for="clubAffiliations">Outside Affiliations: </label>
+              <input className="clubFormInput" id="clubAffiliations" type="text" placeholder="Outside Affilations" value={outside_affil} onChange={(e) => setOutside_Affil(e.target.value)}></input>
+            </div>
+
+            <div className="clubFormItem">
+              <label className="clubFormLabel" for="clubFacebook">Club Facebook Page: </label>
+              <input className="clubFormInput" id="clubFacebook" type="text" placeholder="Facebook URL" value={facebook} onChange={(e) => setFacebook(e.target.value)}></input>
+            </div>
+            
+            <div className="clubFormItem">
+              <label className="clubFormLabel" for="clubInstagram">Club Instagram Page: </label>
+              <input className="clubFormInput" id="clubInstagram" type="text" required placeholder="Instagram URL" value={instagram} onChange={(e) => setInstagram(e.target.value)}></input>
+            </div>
+            
+            <div className="clubFormItem">
+              <label className="clubFormLabel" for="clubTwitter">Club Twitter Page: </label>
+              <input className="clubFormInput" id="clubTwitter" type="text" placeholder="Twitter URL" value={twitter} onChange={(e) => setTwitter(e.target.value)}></input>
+            </div>
+
+            <div className="clubFormItem">
+              <label className="clubFormLabel" for="clubDescription">Club Description: </label>
+              <textarea className="clubFormInput" id="clubDescription" required placeholder="Description" value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
+            </div>
+            
+            <div className="clubFormItem">
+              <label className="clubFormLabel" for="clubURL">Desired BClub URL: </label>
+              <input className="clubFormInput" id="clubURL" type="text" required placeholder="Desired BClub URL" value={url} onChange={(e) => setURL(e.target.value)}></input>
+            </div>
+
+            <div className="clubFormItem">
+              <label className="clubFormLabel" for="clubSite">External Club Website: </label>
+              <input className="clubFormInput" id="clubSite" type="text" placeholder="External Club Website URL" value={website} onChange={(e) => setWebsite(e.target.value)}></input>
+            </div>
+
+            <div className="clubFormItem">
+              <label className="clubFormLabel" for="categorySelect">Category: </label>
+              <select className="clubFormInput" id="categorySelect" required value={club_type} onChange={(e) => setClub_Type(e.target.value)}>
+                <option value="" disabled selected>Select a category...</option>
                 <option value="academic">Academic</option>
                 <option value="arts">Arts</option>
                 <option value="career">Career</option>
@@ -71,7 +111,8 @@ export default function ClubsForm() {
                 <option value="techological">Technological</option>
                 <option value="recreational">Recreational</option>
                 <option value="other">Other</option>  
-            </select>
+              </select>
+            </div>
             <button type="submit">Submit</button>
         </form>
         </div>
