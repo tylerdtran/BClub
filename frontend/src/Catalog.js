@@ -78,18 +78,6 @@ export default function Catalog() {
 
 
     const categories = [
-      makeClubCategory("Featured", [
-        {
-          name: "Genshin Impact at UCLA",
-          blurb: "The definitive community for Genshin Impact at UCLA",
-          imageUrl: "clubcatalogimages/genshin_club.webp",
-        },
-        {
-          name: "Bruin Club Tennis",
-          blurb: "The best club ever!",
-          imageUrl: "clubcatalogimages/BruinClubTennis.png",
-        },
-      ]),
       makeClubCategory("Newly Added Clubs", newClubs),
       makeClubCategory("Arts", artsClubs),
       makeClubCategory("Career", careerClubs),
