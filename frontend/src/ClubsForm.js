@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { db } from "./Firebase";
+import { storage } from "./Firebase";
 import { Form } from "react-bootstrap";
 import { ref, set } from "firebase/database";
+import { ref as storageRef, uploadBytes, getDownloadURL } from "firebase/storage";
 
 export default function ClubsForm() {
     const [clubType, setClubType] = useState("");
@@ -13,11 +15,18 @@ export default function ClubsForm() {
     const [instagram, setInstagram] = useState("");
     const [website, setWebsite] = useState("");
     const [url, setURL] = useState("");
+    const [imageUpload, setImageUpload] = useState(null);
 
-    const clubForm = (e) => {
+    const clubForm = async (e) => {
       e.preventDefault();
       const path = "/clubs/" + url;
       const clubRef = ref(db, path);
+      const imageRef = storageRef(storage, `clubImages/${url}`);
+      uploadBytes(imageRef, imageUpload).then(() =>
+        console.log("image uploaded")
+      );
+      const imageUrl = await getDownloadURL(imageRef);
+
       set(clubRef, {
         clubType: clubType,
         description: description,
@@ -31,7 +40,8 @@ export default function ClubsForm() {
         },
         website: website,
         url: url,
-        createdAt: new Date().getTime()
+        createdAt: new Date().getTime(),
+        imageUrl: imageUrl
       })
       .then(() =>{
       alert('Club data submitted');
@@ -73,6 +83,10 @@ export default function ClubsForm() {
               <Form.Label>Website</Form.Label>
                 <Form.Control type="text" placeholder="Website" value={website} onChange={(e) => setWebsite(e.target.value)}/>
             </Form.Group>
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput9">
+              <Form.Label>Club Image</Form.Label>
+              <Form.Control required type="file" accept="image/*" onChange={(e) => setImageUpload(e.target.files[0])} />
+            </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput8">
               <select required value={clubType} onChange={(e) => setClubType(e.target.value)}>
                   <option value="" disabled selected>Select a Category</option>
@@ -81,7 +95,7 @@ export default function ClubsForm() {
                   <option value="career">Career</option>
                   <option value="community service">Community Service</option>
                   <option value="cultural">Cultural</option>
-                  <option value="techological">Technological</option>
+                  <option value="technological">Technological</option>
                   <option value="recreational">Recreational</option>
                   <option value="other">Other</option>  
               </select>

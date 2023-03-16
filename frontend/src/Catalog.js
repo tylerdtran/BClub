@@ -59,7 +59,7 @@ export default function Catalog() {
     fetchClubsByType('academic', setEducationalClubs);
     fetchClubsByType('arts', setArtsClubs);
     fetchClubsByType('career', setCareerClubs);
-    fetchClubsByType('community_service', setCommunityServiceClubs);
+    fetchClubsByType('community service', setCommunityServiceClubs);
     fetchClubsByType('cultural', setCulturalClubs);
     fetchClubsByType('recreational', setRecreationalClubs);
     fetchClubsByType('technological', setTechnologicalClubs);
@@ -72,7 +72,7 @@ export default function Catalog() {
     clubs: clubs.map((club) => ({
       clubName: club.name || "",
       clubBlurb: club.description || club.blurb || "Coming Soon",
-      clubImage: club.image || "placeholder.png",
+      clubImage: club.imageUrl || "placeholder.png",
     })),
   });
 
@@ -82,12 +82,12 @@ export default function Catalog() {
         {
           name: "Genshin Impact at UCLA",
           blurb: "The definitive community for Genshin Impact at UCLA",
-          image: "clubcatalogimages/genshin_club.webp",
+          imageUrl: "clubcatalogimages/genshin_club.webp",
         },
         {
           name: "Bruin Club Tennis",
           blurb: "The best club ever!",
-          image: "clubcatalogimages/BruinClubTennis.png",
+          imageUrl: "clubcatalogimages/BruinClubTennis.png",
         },
       ]),
       makeClubCategory("Newly Added Clubs", newClubs),

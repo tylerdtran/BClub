@@ -1,6 +1,8 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
+import { getStorage } from "firebase/storage";
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 import { GoogleAuthProvider } from "firebase/auth"; 
@@ -26,4 +28,5 @@ const provider = new GoogleAuthProvider();
 provider.addScope("https://www.googleapis.com/auth/calendar.events.readonly");
 provider.addScope("https://www.googleapis.com/auth/forms");
 const db = getDatabase();
-export { auth, provider, db }
+const storage = getStorage();
+export { auth, provider, db, storage }
