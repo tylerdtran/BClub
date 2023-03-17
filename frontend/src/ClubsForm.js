@@ -4,6 +4,7 @@ import { storage } from "./Firebase";
 import { Form } from "react-bootstrap";
 import { ref, set } from "firebase/database";
 import { ref as storageRef, uploadBytes, getDownloadURL } from "firebase/storage";
+import './Clubs.css';
 
 export default function ClubsForm() {
     const [clubType, setClubType] = useState("");
@@ -51,7 +52,7 @@ export default function ClubsForm() {
     }
     return (
         <div> 
-        <Form onSubmit={clubForm}>
+        <Form className="clubForm" onSubmit={clubForm}>
             <h1>Submit a Club</h1>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                 <Form.Label>Club Name</Form.Label>
@@ -97,7 +98,7 @@ export default function ClubsForm() {
                   <option value="Recreational">Recreational</option>
                   <option value="Other">Other</option>  
               </Form.Select>
-              <button type="submit">Submit</button>
+              <button className="clubFormButton" type="submit">Submit</button>
             </Form.Group>
         </Form>
         </div>
