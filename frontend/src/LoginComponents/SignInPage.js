@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth"
 import { auth } from "../Firebase";
 import { useNavigate } from "react-router-dom"; // needs to be simplified
-import { Form, Toast, ToastContainer } from 'react-bootstrap';
+import { Toast, ToastContainer } from 'react-bootstrap';
 import "./Login.css";
 
 export default function SignInPage()
