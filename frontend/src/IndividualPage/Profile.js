@@ -12,12 +12,11 @@ export default function Profile() {
 	let nav = useNavigate();
 	if (user == null)
 	{
-		console.log("THis doesn't work");
 		nav("/SignInPage")
 	}
 	const [displayName, setDisplayName] = useState("");
 	const [classYear, setClassYear] = useState("");
-	const [validated, setValidated] = useState(false);
+	const [approved, setApproved] = useState(false);
 	const preferences = ref(db, `users-profile/` + user?.uid);
 	const [showSave, setShowSave] = useState(false);
     const [disabled, setDisabled] = useState(false);
@@ -56,7 +55,7 @@ export default function Profile() {
                 setDisabled(true);
             }).catch((error) => { console.log(error) });
         }
-        setValidated(true);
+        setApproved(true);
     }
 
 
@@ -73,7 +72,7 @@ export default function Profile() {
 					<hr />
 					<Card.Text>Want to update your account information?</Card.Text>
 					<Col md={4}>
-						<Form noValidate validated={validated} onSubmit={handleSubmission}>
+						<Form noValidate approved={approved} onSubmit={handleSubmission}>
 							<FormGroup className="mb-3" onChange={(e) => { setDisplayName(e.target.value) }}>
 								<Form.Control required value={displayName} placeholder="Enter a new Reviewer Name ">
 								</Form.Control>

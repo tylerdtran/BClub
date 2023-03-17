@@ -1,15 +1,15 @@
 // handles the actual review card 
 
 import React, { useState, useEffect } from "react";
-import { Card, Stack, ToggleButton, Row, Col, DropdownButton, Dropdown, Modal, Popover, OverlayTrigger } from 'react-bootstrap';
 import Rating from '@mui/material/Rating';
-
+import { ref, get, update } from "firebase/database";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { db, auth } from '../Firebase';
 import { useNavigate } from 'react-router-dom';
-import { ref, get, update } from "firebase/database";
+import { Card, Stack, ToggleButton, Row, Col, DropdownButton, Dropdown, Modal, Popover, OverlayTrigger } from 'react-bootstrap';
+
 import 'bootstrap/dist/css/bootstrap.css';
-// Drop down button 
+// Drop down button, liking icons 
 import DeleteIcon from '@mui/icons-material/Delete';
 import Button from '@mui/material/Button';
 import EditIcon from '@mui/icons-material/Edit';
@@ -49,9 +49,7 @@ function RateStars(props) {
     </Popover>;
     
     // Figure out how to set the displayName for the user. to reflect in the comments. 
-    // get most recent flair info from database
     useEffect(() => {
-      // console.log(props.id);
       get(preferences).then((snapshot) => {
         if (snapshot.exists()) {
           setDisplayName(snapshot.val().displayName);
@@ -106,19 +104,6 @@ function RateStars(props) {
   
     return (
       <div>
-        <Modal show={showDelete} onHide={handleCloseDelete}>
-          <Modal.Header closeButton />
-          <Modal.Body className='text-center'>
-            <h5 className='pb-2'>Are you sure you want to delete this review?</h5>
-            <Button
-              variant="outline-danger"
-              onClick={() => {
-                handleCloseDelete();
-                props.deleteReview(props.id)
-              }}
-            >Delete</Button>
-          </Modal.Body>
-        </Modal>
         <Card className='mt-4'>
           <Card.Body>
             <Stack direction='horizontal' gap={2}>
@@ -154,54 +139,26 @@ function RateStars(props) {
                 <>
                   <OverlayTrigger placement="top" overlay={popover} delay={{ show: 250, hide: 250 }}>
                     <span>
-                      <ToggleButton
-                        className="mb-2"
-                        type="checkbox"
-                        variant="outline-primary"
-                        size='sm'
-                        disabled
-                      >
+                      <ToggleButton className="mb-2" type="checkbox" variant="outline-primary" size='sm' disabled>
                         <ThumbUpIcon />
                       </ToggleButton>
                     </span>
                   </OverlayTrigger>
                   <OverlayTrigger placement="top" overlay={popover} delay={{ show: 250, hide: 250 }}>
                     <span>
-                      <ToggleButton
-                        className="mb-2"
-                        type="checkbox"
-                        variant="outline-primary"
-                        size='sm'
-                        disabled
-                      >
+                      <ToggleButton className="mb-2" type="checkbox" variant="outline-primary" size='sm' disabled>
                         <ThumbDownIcon />
                       </ToggleButton>
                     </span>
                   </OverlayTrigger>
                 </> :
                 <>
-                  <ToggleButton
-                    className="mb-2"
-                    id={"upvote" + props.data.dateTime}
-                    type="checkbox"
-                    variant="outline-primary"
-                    checked={votes[0]}
-                    value="upvote"
-                    onChange={() => handleClick('upvote', votes, setVotes)}
-                    size='sm'
-                  >
+                  <ToggleButton className="mb-2" id={"upvote" + props.data.dateTime} type="checkbox" variant="outline-primary"
+                    checked={votes[0]} value="upvote" onChange={() => handleClick('upvote', votes, setVotes)} size='sm'>
                     <ThumbUpIcon />
                   </ToggleButton>
-                  <ToggleButton
-                    className="mb-2"
-                    id={"downvote" + props.data.dateTime}
-                    type="checkbox"
-                    variant="outline-primary"
-                    checked={votes[1]}
-                    value="downvote"
-                    onChange={() => handleClick('downvote', votes, setVotes)}
-                    size='sm'
-                  >
+                  <ToggleButton className="mb-2" id={"downvote" + props.data.dateTime} type="checkbox" variant="outline-primary"
+                    checked={votes[1]} value="downvote" onChange={() => handleClick('downvote', votes, setVotes)} size='sm'>
                     <ThumbDownIcon />
                   </ToggleButton>
                 </>
@@ -210,18 +167,21 @@ function RateStars(props) {
             </Stack>
           </Card.Body>
         </Card>
+        <Modal show={showDelete} onHide={handleCloseDelete}>
+          <Modal.Header closeButton />
+          <Modal.Body className='text-center'>
+            <h5 className='pb-2'>Are you sure you want to delete this review?</h5>
+            <Button
+              variant="outline-danger"
+              onClick={() => {
+                handleCloseDelete();
+                props.deleteReview(props.id)
+              }}
+            >Delete</Button>
+          </Modal.Body>
+        </Modal>
       </div>
     );
   }
   
-  // // https://stackoverflow.com/questions/10211145/getting-current-date-and-time-in-javascript
-  // // For todays date;
-  // Date.prototype.today = function () {
-  //   return ((this.getDate() < 10) ? "0" : "") + this.getDate() + "/" + (((this.getMonth() + 1) < 10) ? "0" : "") + (this.getMonth() + 1) + "/" + this.getFullYear();
-  // }
-  
-  // // For the time now
-  // Date.prototype.timeNow = function () {
-  //   return ((this.getHours() < 10) ? "0" : "") + this.getHours() + ":" + ((this.getMinutes() < 10) ? "0" : "") + this.getMinutes() + ":" + ((this.getSeconds() < 10) ? "0" : "") + this.getSeconds();
-  // }
   

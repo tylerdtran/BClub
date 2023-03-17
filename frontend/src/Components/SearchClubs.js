@@ -16,8 +16,11 @@ export default function SearchClubs(props) {
     useEffect(() => {get(clubList).then((snapshot) => {
         let clubNames = [];
         if (snapshot.exists()) {
+            // must be a name and val for select search to recognize
                 snapshot.forEach(function(childSnapshot) {
-                clubNames.push({ name: childSnapshot.val().name, value: childSnapshot.val().url })
+                clubNames.push({ 
+                    name: childSnapshot.val().name, 
+                    value: childSnapshot.val().url })
             });
         }
         setOptionList(clubNames);
@@ -25,14 +28,14 @@ export default function SearchClubs(props) {
 
     console.log(optionList);
 
-    const handleSelect = (selectedValue) => {
-        if (props.handleSelect)
+    const handleChosen = (chosenLink) => {
+        if (props.handleChosen)
         {
-            props.handleSelect(selectedValue);
+            props.handleChosen(chosenLink);
         }
         if (props.nav == "redirect")
         {
-            nav(`/clubs/${selectedValue}`);
+            nav(`/clubs/${chosenLink}`);
         }
     }
 
@@ -40,7 +43,7 @@ export default function SearchClubs(props) {
         <Form>
             <SelectSearch
                 options={optionList} 
-                onChange={handleSelect}
+                onChange={handleChosen}
                 value={value} 
                 name="clubs" 
                 placeholder="Search"/>

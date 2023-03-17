@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Row, Col, Button, Stack, Card, Form } from 'react-bootstrap';
+import { Container, Row, Col, Button, Stack, Card } from 'react-bootstrap';
 import '../App.css';
+import moment from 'moment';
+import _ from 'lodash';
 import { ClubInfo } from './ClubInfo';
 import { Review } from './ReviewComponent';
 import { ref, get, child, remove, query, orderByChild, equalTo, update } from "firebase/database";
 import { db, auth } from '../Firebase';
 import { useParams, useNavigate } from 'react-router-dom';
 import SelectSearch from 'react-select-search';
-import moment from 'moment';
-import _ from 'lodash';
 import { WriteReview } from './WriteReview';
-import 'bootstrap/dist/css/bootstrap.css';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 
 const calcAvg = (array) => Math.round(array.reduce((a, b) => a + b) / array.length);
@@ -131,28 +130,27 @@ export function ReviewDisplay() {
 
     //SORT
     const sortOptions = [
-        { name: 'Votes (default)', value: 'votes'},
-        { name: 'Date (newest first)', value: 'new'},
-        { name: 'Date (oldest first)', value: 'old'}
+        { name: 'By Votes', value: 'votes'},
+        { name: 'By Date (newest)', value: 'newest'},
+        { name: 'By Date (oldest)', value: 'oldest'}
     ]
     
     const [sortValue, setSortValue] = useState('votes');
 
     const handleSortChange = (value) => 
     {
-        console.log("SORT", value);
         setSortValue(value);
         let sorted;
         if (value === 'votes') {
             sorted = reviews.sort((review1, review2) => {
                 return review2[1].votes - review1[1].votes;
             })
-        } else if (value === 'new') {
+        } else if (value === 'newest') {
             sorted = reviews.sort((review1, review2) => {
                 return moment(review2[1].dateTime, "DD/MM/YYYY HH:mm:ss").valueOf() -
                 moment(review1[1].dateTime, "DD/MM/YYYY HH:mm:ss").valueOf();
             })
-        } else if (value === 'old') {
+        } else if (value === 'oldest') {
             sorted = reviews.sort((review1, review2) => {
                 return moment(review1[1].dateTime, "DD/MM/YYYY HH:mm:ss").valueOf() -
                 moment(review2[1].dateTime, "DD/MM/YYYY HH:mm:ss").valueOf();
@@ -198,9 +196,8 @@ export function ReviewDisplay() {
                         { reviewWriting ?
                             <div>
                                 <WriteReview /> 
-                                <Button onClick={(e) => {
+                                <Button className="justify-content-center" onClick={(e) => {
                                     e.preventDefault();
-                                    console.log("it made it here");
                                     setReviewWriting(false);
                                    
                                 }}> 
