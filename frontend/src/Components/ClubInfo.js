@@ -24,10 +24,6 @@ export function ClubInfo(props) {
                                                 <h5>Overall Rating:</h5>
                                                 <h5>{props?.data?.rating?.overall || 'N/A'}</h5>
                                             </Stack>
-                                            <Stack direction='horizontal' gap={2} className='d-flex justify-content-center'>
-                                                <h5>Club Type:</h5>
-                                                <h5>{props?.data?.clubType}</h5>
-                                            </Stack>
                                         </Stack>
                                     </Container>
                                 </Card.Body>

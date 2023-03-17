@@ -93,7 +93,6 @@ export function ReviewDisplay() {
     }, [clubname]);
 
 
-    //get reviews
     useEffect(() => {
         const fetchData = async () => {
             console.log("Getting reviews...");
@@ -103,8 +102,6 @@ export function ReviewDisplay() {
             get(qRef).then((snapshot) => {
                 if (snapshot.exists()) {
                     let data = snapshot.val();
-                    //sort by votes + newest
-                    
                     sorted = Object.entries(data).sort((review1, review2) => {
                         return moment(review2[1].dateTime, "DD/MM/YYYY HH:mm:ss").valueOf() -
                         moment(review1[1].dateTime, "DD/MM/YYYY HH:mm:ss").valueOf();
