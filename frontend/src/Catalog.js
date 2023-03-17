@@ -5,6 +5,7 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import { db } from "./Firebase";
 import { ref, orderByChild, limitToLast, get, query, equalTo } from "firebase/database";
+import { render } from '@testing-library/react';
 
 export default function Catalog() {
   const [newClubs, setNewClubs] = useState([]);
@@ -55,14 +56,14 @@ export default function Catalog() {
   };
 
   useEffect(() => {
-    fetchClubsByType('academic', setEducationalClubs);
-    fetchClubsByType('arts', setArtsClubs);
-    fetchClubsByType('career', setCareerClubs);
-    fetchClubsByType('community service', setCommunityServiceClubs);
-    fetchClubsByType('cultural', setCulturalClubs);
-    fetchClubsByType('recreational', setRecreationalClubs);
-    fetchClubsByType('technological', setTechnologicalClubs);
-    fetchClubsByType('other', setOtherClubs);
+    fetchClubsByType('Academic', setEducationalClubs);
+    fetchClubsByType('Arts', setArtsClubs);
+    fetchClubsByType('Career', setCareerClubs);
+    fetchClubsByType('Community Service', setCommunityServiceClubs);
+    fetchClubsByType('Cultural', setCulturalClubs);
+    fetchClubsByType('Recreational', setRecreationalClubs);
+    fetchClubsByType('Technological', setTechnologicalClubs);
+    fetchClubsByType('Other', setOtherClubs);
 
   }, []);
 
@@ -92,9 +93,6 @@ export default function Catalog() {
     return (
       <div className="catalogContainer">
         <h1 className='centeredCategoryTitle'>Club Catalog</h1>
-        <Button className="goToClubForm" href="/ClubsForm">
-				  Submit a new club!
-			  </Button>
         {categories.map((category) => (
           <div className='categoryCenter' key={category.name}>
             <h2>{category.name}</h2>
