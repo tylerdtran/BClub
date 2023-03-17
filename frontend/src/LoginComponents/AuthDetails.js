@@ -6,15 +6,12 @@ import { useNavigate } from "react-router-dom";
 const AuthDetails = () => {
     const [authUser, setAuthUser] = useState(null);
     
-
-     // Simplify this code 
     // button navigation infrastructure 
     let navigate = useNavigate(); 
     const routeChange = (route) => { 
         let path = route; 
         navigate(path);
     }
-
 
     // ensures the user who is logged in remains logged in
     useEffect(() => {
