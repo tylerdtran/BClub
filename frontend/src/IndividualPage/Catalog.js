@@ -1,9 +1,9 @@
-import './App.css';
-import './Catalog.css';
+import '../App.css';
+import '../Catalog.css';
 import React, { useState, useEffect } from 'react';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
-import { db } from "./Firebase";
+import { db } from "../Firebase";
 import { ref, orderByChild, limitToLast, get, query, equalTo } from "firebase/database";
 import { render } from '@testing-library/react';
 
