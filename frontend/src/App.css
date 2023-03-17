@@ -261,7 +261,6 @@ main a {
 .eventsFormTitle{
 	margin: 0.5em;
 	color: var(--dynamic-text-color) !important;
-	text-align: center;
 }
 
 .eventsFormGoogleButton{
