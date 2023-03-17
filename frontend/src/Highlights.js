@@ -53,13 +53,6 @@ function Posts(props) {
                     </div>
                 );
             }
-            else if(props.socialMedia === "Pinterest") {
-                return (
-                    <div className="squares">
-                        <PinterestEmbed url={links}/>
-                    </div>
-                );
-            }
             else if(props.socialMedia === "TikTok") {
                 return (
                     <div className="squares">
@@ -101,7 +94,7 @@ function Posts(props) {
 }
 
 export default function Highlights() {
-    const socialMedias = ["Facebook", "Instagram", "LinkedIn", "Pinterest","TikTok", "Twitter", "YouTube"];
+    const socialMedias = ["Facebook", "Instagram", "LinkedIn", "TikTok", "Twitter", "YouTube"];
 
     const highlights = socialMedias.map((socialMedia) => <Posts socialMedia={socialMedia}/>);
     return(

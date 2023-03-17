@@ -53,17 +53,7 @@ sudo apt-get install -y nodejs
 ```
 cd BClub
 cd frontend
-npm install react-router-dom
-npm install firebase
-npm install moment
-npm install react-google-button 
-npm install react-bootstrap bootstrap
-npm install --save react-firebase-hooks
-npm install @mui/icons-material/ThumbDown @mui/icons-material/ThumbUp @mui/material/Rating
-npm install react-select-search
-npm install react-select
-npm install react-firebase-hooks
-
+npm install 
 
 ```
 
