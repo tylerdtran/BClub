@@ -9,13 +9,14 @@ export default function GoogleCalendar() {
   const [events, setEvents] = useState([]);
   const [clicked, setClicked] = useState([]);
 
-  function addEvent(title, start, end, location, index) {
+  function addEvent(title, start, end, description, location, index) {
     const eventsRef = ref(db, 'events');
     const newEventsRef = push(eventsRef);
     set(newEventsRef, {
       title: title,
       start: start,
       end: end,
+      description: description,
       location: location
     })
     const newClickedArray = [...clicked];
@@ -42,6 +43,7 @@ export default function GoogleCalendar() {
             [data.items[i].summary ?? "", 
             data.items[i].originalStartTime?.date ?? data.items[i].start?.date ?? "",
             data.items[i].end?.date ?? "",
+            data.items[i].description ?? "",
             data.items[i].location ?? ""]]);
           setClicked(prevArray => [...prevArray, false]);
         }
@@ -62,8 +64,9 @@ export default function GoogleCalendar() {
           <p>Title: {item[0]}</p>
           <p>Start Date: {item[1]}</p>
           <p>End Date: {item[2]}</p>
-          <p>Location: {item[3]}</p>
-          <button onClick={() => addEvent(item[0], item[1], item[2], item[3], index)} 
+          <p>Description: {item[3]}</p>
+          <p>Location: {item[4]}</p>
+          <button onClick={() => addEvent(item[0], item[1], item[2], item[3], item[4], index)} 
           disabled={clicked[index]}>
             {clicked[index] ? "Event Added" : "Add Event"}
           </button>
