@@ -236,6 +236,37 @@ main a {
 	height: 50%;
 }
 
+.eventTitle {
+	font-size: 1.5em;
+}
+
+.eventToAdd {
+	border: 3px solid var(--dynamic-bruin-blue);
+	border-radius: 6px;
+	margin: 1em;
+	padding: 1em;
+}
+
+.eventToAdd button {
+	position: relative;
+	background: var(--dynamic-bg);
+	color: var(--dynamic-text-color);
+	border: 1px solid var(--dynamic-bruin-blue);
+	border-radius: 5px;
+	margin: 0px;
+	padding: 5px 10px;
+	height: 2em;
+}
+
+.eventsFormTitle{
+	margin: 0.5em;
+	color: var(--dynamic-text-color) !important;
+}
+
+.eventsFormGoogleButton{
+	margin: 0em 0em 1em 1em;
+}
+
 /* the styles for the footer */
 footer p {
 	clear: both;
