@@ -92,6 +92,9 @@ export default function Catalog() {
     return (
       <div className="catalogContainer">
         <h1 className='centeredCategoryTitle'>Club Catalog</h1>
+        <Button className="goToClubForm" href="/ClubsForm">
+				  Submit a new club!
+			  </Button>
         {categories.map((category) => (
           <div className='categoryCenter' key={category.name}>
             <h2>{category.name}</h2>
