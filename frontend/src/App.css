@@ -261,10 +261,11 @@ main a {
 .eventsFormTitle{
 	margin: 0.5em;
 	color: var(--dynamic-text-color) !important;
+	text-align: center;
 }
 
 .eventsFormGoogleButton{
-	margin: 0em 0em 1em 1em;
+	margin: 0em 0em 1em 32em;
 }
 
 /* the styles for the footer */

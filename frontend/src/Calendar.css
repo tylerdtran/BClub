@@ -64,6 +64,7 @@ backgroundImage{
 
 table {
 	margin: 0 auto;    
+	margin-left: 240px;
 }
   
 th, td {
