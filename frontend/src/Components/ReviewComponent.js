@@ -1,16 +1,20 @@
 // handles the actual review card 
 
 import React, { useState, useEffect } from "react";
-import { Card, Badge, Stack, ToggleButton, Row, Col, DropdownButton, Dropdown, Modal, Button, Popover, OverlayTrigger } from 'react-bootstrap';
+import { Card, Badge, Stack, ToggleButton, Row, Col, DropdownButton, Dropdown, Modal, Popover, OverlayTrigger } from 'react-bootstrap';
 import Rating from '@mui/material/Rating';
-import ThumbUpIcon from '@mui/icons-material/ThumbUp';
+
 import { useAuthState } from "react-firebase-hooks/auth";
-import ThumbDownIcon from '@mui/icons-material/ThumbDown';
 import { db, auth } from '../Firebase';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { ref, get, update } from "firebase/database";
 import 'bootstrap/dist/css/bootstrap.css';
-import { WriteReview } from "./WriteReview";
+// Drop down button 
+import DeleteIcon from '@mui/icons-material/Delete';
+import Button from '@mui/material/Button';
+import EditIcon from '@mui/icons-material/Edit';
+import ThumbUpIcon from '@mui/icons-material/ThumbUp';
+import ThumbDownIcon from '@mui/icons-material/ThumbDown';
 
 function StarRating(props) {
     return (
@@ -23,21 +27,14 @@ function StarRating(props) {
 
   export function Review(props) {
     const [votes, setVotes] = useState([false, false]); // [upvote, downvote]
-    const [voteOffset, setVoteOffset] = useState(0);
+    const [voteChange, setVoteChange] = useState(0);
     const [showDelete, setShowDelete] = useState(false);
     const handleCloseDelete = () => setShowDelete(false);
     const handleShowDelete = () => setShowDelete(true);
-    // const [displayName, setDisplayName] = useState("");
+    const [displayName, setDisplayName] = useState("");
     const [classYear, setClassYear] = useState("");
-    // const [editFunction, setEditFunction] = useState(false);
-
-    // function editComponent() {
-    //   location = useLocation()
-
-    //   return
-    // }
   
-    const [user, loading, error] = useAuthState(auth);
+    const [user] = useAuthState(auth);
   
 
     const doNotUpdate = 0;
@@ -58,7 +55,7 @@ function StarRating(props) {
       // console.log(props.id);
       get(preferences).then((snapshot) => {
         if (snapshot.exists()) {
-          // setDisplayName(snapshot.val().displayName);
+          setDisplayName(snapshot.val().displayName);
           setClassYear(snapshot.val().classYear);
         }
       }).catch((error) => { console.log(error) });
@@ -70,10 +67,10 @@ function StarRating(props) {
             console.log(props.id, snapshot.val());
             if (userVote == 1) {
               setVotes([true, false]);
-              setVoteOffset(1);
+              setVoteChange(1);
             } else if (userVote == -1) {
               setVotes([false, true]);
-              setVoteOffset(-1);
+              setVoteChange(-1);
             }
           }
         }).catch((error) => console.log(error))
@@ -103,7 +100,7 @@ function StarRating(props) {
       update(updateRef, { [props.id]: (result[0] - result[1]) });
   
       let updateVoteRef = ref(db, `reviews/${props.id}`);
-      update(updateVoteRef, { votes: props.data.votes + result[0] - result[1] - voteOffset });
+      update(updateVoteRef, { votes: props.data.votes + result[0] - result[1] - voteChange });
   
       setVotes(result);
     }
@@ -126,17 +123,18 @@ function StarRating(props) {
         <Card className='mt-4'>
           <Card.Body>
             <Stack direction='horizontal' gap={2}>
+              <Badge bg="secondary" className="text-primary">{displayName}</Badge>
+
               <Badge bg="secondary" className="text-primary">{classYear}</Badge>
               {
                 user && props.data.author === user.uid && props.deleteReview != null &&
-                <DropdownButton variant='light' title='...' className='ms-auto' align="end">
+                <DropdownButton variant='light' title='More' className='ms-auto' align="end">
                   <Dropdown.Item onClick={() => {
                     nav("/editReview", { state: { id: props.id, data: props.data } });
-                  }}>Edit</Dropdown.Item>
-                  <Dropdown.Item onClick={handleShowDelete}>Delete</Dropdown.Item>
+                  }}><EditIcon/>Edit</Dropdown.Item>
+                  <Dropdown.Item onClick={handleShowDelete}><DeleteIcon/>Delete</Dropdown.Item>
                 </DropdownButton>
               }
-              
             </Stack>
             <Row className='pt-2'>
               <Col>
@@ -144,7 +142,7 @@ function StarRating(props) {
                 <Card.Text className='text-muted'>{props.data.dateTime}</Card.Text>
               </Col>
               <Col md={4}>
-                <Card.Title className='text-center'>{props.data.clubtype}</Card.Title>
+                <Card.Title className='text-center'>{props.data.oneword}</Card.Title>
                 <hr />
                 <StarRating name="Overall" stars={props.data.overall} />
                 <StarRating name="Activeness" stars={props.data.activeness} />
@@ -210,8 +208,7 @@ function StarRating(props) {
                   </ToggleButton>
                 </>
               }
-  
-              <Card.Text className='p-2'>{props.data.votes + votes[0] - votes[1] - voteOffset}</Card.Text>
+              <Card.Text className='p-2'>{props.data.votes + votes[0] - votes[1] - voteChange}</Card.Text>
             </Stack>
           </Card.Body>
         </Card>

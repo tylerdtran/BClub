@@ -1,20 +1,19 @@
 import React, { useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth"
-import { auth, db } from "../Firebase";
-import { ref, set } from "firebase/database";
-import { useNavigate } from "react-router-dom"; // needs to be simplified
-
+import { auth } from "../Firebase";
+import { useNavigate } from "react-router-dom"; 
+import { Form, Toast, ToastContainer } from 'react-bootstrap';
 import "./Login.css";
 
 export default function SignUpPage()
 { 
-  const [displayName, setDisplayName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [classYear, setClassYear] = useState("");
   const [validated, setValidated] = useState(false);
+  const [isValidPopUp, setIsValidPopUp] = useState(false);
+
   const start = 1950;
-  const end = 2030;
+  const end = 2027;
   let classes = [...Array(end - start + 1).keys()].map(x => x + start);
   classes.reverse();
 
@@ -22,7 +21,7 @@ export default function SignUpPage()
   // button navigation infrastructure 
   let navigate = useNavigate(); 
   const routeChange = () =>{ 
-    let path = `../`; 
+    let path = `/Profile`; 
     navigate(path);
   }
 
@@ -40,44 +39,32 @@ export default function SignUpPage()
     .then((userCredential) => { 
       console.log(userCredential);
       const userId = auth.currentUser.uid
-      // writeUserData(userId, displayName, email, classYear)
       routeChange();
+      setIsValidPopUp(false);
     })
     .catch((error) => { 
       console.log(error);
+      setIsValidPopUp(true);
     })
   }
   setValidated(true);
 }
 
-  // writes the user data to the database 
-  // function writeUserData(userId, displayName, email, classYear) {
-  //   set(ref(db, 'users-profile/' + userId), {
-  //     display_name: displayName, 
-  //     email: email,
-  //     class_year: classYear
-  //   });
-  // }
-
   return(
     <div className="Login-Container"> 
-      <form validated={validated} onSubmit={signUp}>
+      <ToastContainer className="p-3" position="top-center">
+						<Toast onClose={() => setIsValidPopUp(false)} show={isValidPopUp} delay={3000} autohide bg="light">
+							<Toast.Body>Invalid Username or Password: Your email address has either already been used or your login is invalid</Toast.Body>
+						</Toast>
+			</ToastContainer> : <div></div>
+      <Form validated={validated} onSubmit={signUp}>
         <h1 className="welcomeMessage">Welcome home, Bruin!</h1>
-        <input className="loginInput" type="first-name" placeholder="Full Name" value={displayName} onChange={(e) => setDisplayName(e.target.value)}></input>
-        <br/>
         <input className="loginInput" type="email" placeholder="E-mail" value={email} onChange={(e) => setEmail(e.target.value)}></input>
         <br/>
         <input className="loginInput" type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)}></input>
         <br/>
-        <select className="loginInput" onChange={(e) => { setClassYear(e.target.value) }}>
-                <option value="">Select your class year...</option>
-                {classes.map((x) => (
-                  <option value={x}>{x}</option>
-                ))}
-        </select>
-        <br/>
         <button type="submit" className="bigButton">Register</button>
-      </form>
+      </Form>
     </div>
   );
 }

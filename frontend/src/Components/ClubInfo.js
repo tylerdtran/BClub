@@ -6,7 +6,6 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import LinkIcon from '@mui/icons-material/Link';
 import { useState, useEffect } from 'react'
-import 'bootstrap/dist/css/bootstrap.css';
 
 export function ClubInfo(props) {
 
@@ -24,7 +23,6 @@ export function ClubInfo(props) {
                                         <Stack direction='horizontal' gap={5} className='justify-content-center'>
                                             <Stack direction='horizontal' gap={2} className='d-flex justify-content-center'>
                                                 <h5>Overall Rating:</h5>
-                                                {/* <h5 className={highlight}>{props?.data?.rating?.overall || 'N/A'}</h5> */}
                                                 <h5>{props?.data?.rating?.overall || 'N/A'}</h5>
                                             </Stack>
                                             <Stack direction='horizontal' gap={2} className='d-flex justify-content-center'>
@@ -38,7 +36,7 @@ export function ClubInfo(props) {
                         </Col>
                     </Row>
                         <Row className='mt-4'>
-                            <Col style={{ paddingRight: 0 }}>
+                            <Col style={{ paddingRight: 20 }}>
                                 <Card className='h-100'>
                                     <Card.Body className='d-flex flex-column justify-content-between pb-4'>
                                         <div>
@@ -56,7 +54,7 @@ export function ClubInfo(props) {
                                     </Card.Body>
                                 </Card>
                             </Col>
-                            <Col style={{ paddingLeft: 0 }}>
+                            <Col style={{ paddingLeft: 20 }}>
                                 <Card className='h-100'>
                                     <Card.Body className='d-flex flex-column justify-content-between pb-4'>
                                         <RatingBar title="Activeness" rating={props?.data?.rating?.activeness} />

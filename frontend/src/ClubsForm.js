@@ -9,7 +9,6 @@ export default function ClubsForm() {
     const [clubType, setClubType] = useState("");
     const [description, setDescription] = useState("");
     const [name, setName] = useState("");
-    const [overallRating, setOverallRating] = useState("");
     const [nickname, setNickname] = useState("");
     const [facebook, setFacebook] = useState("");
     const [instagram, setInstagram] = useState("");
@@ -32,8 +31,7 @@ export default function ClubsForm() {
         description: description,
         name: name,
         nickname: nickname,
-        overallRating: 0,
-        rating: [1, 1, 1, 1],
+        rating: [1, 1, 1, 1, 1],
         socials:{
           Facebook: facebook,
           Instagram: instagram,
@@ -56,11 +54,11 @@ export default function ClubsForm() {
         <Form onSubmit={clubForm}>
             <h1>Submit a Club</h1>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                <Form.Label>Name</Form.Label>
+                <Form.Label>Club Name</Form.Label>
                 <Form.Control type="text" required placeholder="Club Name" value={name} onChange={(e) => setName(e.target.value)}/>
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput2">
-              <Form.Label>Nickname</Form.Label>
+              <Form.Label>Club Nickname</Form.Label>
               <Form.Control type="text" placeholder="Club Nickname" value={nickname} onChange={(e) => setNickname(e.target.value)}/>
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput3">
@@ -68,19 +66,19 @@ export default function ClubsForm() {
               <Form.Control type="text" placeholder="Facebook" value={facebook} onChange={(e) => setFacebook(e.target.value)}/>
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput4">
-              <Form.Label>Instagram</Form.Label>
+              <Form.Label>Club Instagram Page</Form.Label>
               <Form.Control type="text" required placeholder="Instagram" value={instagram} onChange={(e) => setInstagram(e.target.value)}/>
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput5">
-              <Form.Label>Description</Form.Label>
+              <Form.Label>Club Description</Form.Label>
               <Form.Control as="textarea"required placeholder="Description" value={description} onChange={(e) => setDescription(e.target.value)}/>
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput6">
-              <Form.Label>url</Form.Label>
+              <Form.Label>Desired BClub URL</Form.Label>
                 <Form.Control type="text" required placeholder="URL" value={url} onChange={(e) => setURL(e.target.value)}/>
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput7">
-              <Form.Label>Website</Form.Label>
+              <Form.Label>External Club Website</Form.Label>
                 <Form.Control type="text" placeholder="Website" value={website} onChange={(e) => setWebsite(e.target.value)}/>
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput9">
@@ -88,17 +86,17 @@ export default function ClubsForm() {
               <Form.Control required type="file" accept="image/*" onChange={(e) => setImageUpload(e.target.files[0])} />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput8">
-              <select required value={clubType} onChange={(e) => setClubType(e.target.value)}>
+              <Form.Select required value={clubType} onChange={(e) => setClubType(e.target.value)}>
                   <option value="" disabled selected>Select a Category</option>
-                  <option value="academic">Academic</option>
-                  <option value="arts">Arts</option>
-                  <option value="career">Career</option>
-                  <option value="community service">Community Service</option>
-                  <option value="cultural">Cultural</option>
-                  <option value="technological">Technological</option>
-                  <option value="recreational">Recreational</option>
-                  <option value="other">Other</option>  
-              </select>
+                  <option value="Academic">Academic</option>
+                  <option value="Arts">Arts</option>
+                  <option value="Career">Career</option>
+                  <option value="Community Service">Community Service</option>
+                  <option value="Cultural">Cultural</option>
+                  <option value="Technological">Technological</option>
+                  <option value="Recreational">Recreational</option>
+                  <option value="Other">Other</option>  
+              </Form.Select>
               <button type="submit">Submit</button>
             </Form.Group>
         </Form>

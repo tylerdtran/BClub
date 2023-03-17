@@ -113,7 +113,7 @@ function Category({ clubs }) {
           <div className="empty-grid-item"></div> {/* Add empty grid item */}
           {clubs.map((club) => (
              club.clubName !== "" && (
-            <Card key={club.clubName} href="clubs/Bruin-Club-Tennis">
+            <Card key={club.clubName} nav="clubs/Bruin-Club-Tennis">
                 <Card.Img src={club.clubImage} fluid alt='Club Image' />
                 <a>
                   <div className='mask' style={{ backgroundColor: 'rgba(251, 251, 251, 0.15)' }}></div>
@@ -121,7 +121,8 @@ function Category({ clubs }) {
               <Card.Body>
                 <Card.Title>{club.clubName}</Card.Title>
                 <Card.Text>{club.clubBlurb}</Card.Text>
-                <Button onClick={() => goToClub(club.url)}>Go To Club</Button>
+                <Button onClick={() => goToClub(club.url)}>Checkout Club</Button>
+                <Button></Button>
               </Card.Body>
             </Card>
           )
