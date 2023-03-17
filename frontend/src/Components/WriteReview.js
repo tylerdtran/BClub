@@ -38,6 +38,8 @@ export function WriteReview() {
     const reviewList = ref(db, 'reviews');
     const [validated, setValidated] = useState(false);
 
+    // clubtype
+    const [oneword, setOneWord] = useState(location?.state?.data != null ? location?.state?.data.oneword : "");
     // numerical ratings
     const [club, setClub] = useState(location?.state?.data != null ? location?.state?.data.club : location?.state?.club);
     const [overall, setOverall] = useState(location?.state?.data != null ? parseInt(location?.state?.data.overall) : 0);
@@ -47,10 +49,8 @@ export function WriteReview() {
     const [fun, setFun] = useState(location?.state?.data != null ? parseInt(location?.state?.data.fun) : 0);
 
     // text review
+    const [displayName, setDisplayName] = useState(location?.state?.data != null ? location?.state?.data.displayName : "");
     const [text, setText] = useState(location?.state?.data != null ? location?.state?.data.text : "");
-
-    // clubtype
-    const [oneword, setOneWord] = useState(location?.state?.data != null ? location?.state?.data.oneword : "");
 
     const saveClub = (newclub) => {
         
@@ -118,6 +118,7 @@ Date.prototype.currentTime = function () {
             let rev = {
                 "club": club,
                 "author": user.uid,
+                "displayName": displayName,
                 "text": text,
                 "dateTime": currentDateTime,
                 "overall": overall,
@@ -160,6 +161,20 @@ Date.prototype.currentTime = function () {
                                 <Form.Label className='d-flex justify-content-center'>Club</Form.Label>
                                 <div className='d-flex justify-content-center'>
                                     <SearchClubs nav={false} handleSelect={saveClub} value={club} />
+                                </div>
+                            </Form.Group>
+                            <Form.Group>
+                                <Form.Label className='d-flex justify-content-center'>One word to characterize this club</Form.Label>
+                                <div className='d-flex justify-content-center'>
+                                    <Form.Control 
+                                    required 
+                                    size="sm" 
+                                    type="text"
+                                    className='mb-3' 
+                                    onChange={(e) => { setDisplayName(e.target.value) }} 
+                                    style={{ width: 300 }}
+                                    value={oneword}
+                                    />
                                 </div>
                             </Form.Group>
                                 <ReviewRate title="What's your overall rating of the club?" name='overall' saveHandler={saveRating} defaultValue={overall} />

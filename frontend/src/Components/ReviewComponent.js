@@ -1,7 +1,7 @@
 // handles the actual review card 
 
 import React, { useState, useEffect } from "react";
-import { Card, Badge, Stack, ToggleButton, Row, Col, DropdownButton, Dropdown, Modal, Popover, OverlayTrigger } from 'react-bootstrap';
+import { Card, Stack, ToggleButton, Row, Col, DropdownButton, Dropdown, Modal, Popover, OverlayTrigger } from 'react-bootstrap';
 import Rating from '@mui/material/Rating';
 
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -26,7 +26,7 @@ function StarRating(props) {
   }
 
   export function Review(props) {
-    const [votes, setVotes] = useState([false, false]); // [upvote, downvote]
+    const [votes, setVotes] = useState([false, false]); 
     const [voteChange, setVoteChange] = useState(0);
     const [showDelete, setShowDelete] = useState(false);
     const handleCloseDelete = () => setShowDelete(false);
@@ -37,10 +37,9 @@ function StarRating(props) {
     const [user] = useAuthState(auth);
   
 
-    const doNotUpdate = 0;
+    const noUpdates = 0;
     const nav = useNavigate();
     const preferences = ref(db, `users-profile/${props.data.author}`)
-    // const preferences = ref(db, "users-profile/" + String(props.data.author)); // get author pref
     const userVoteRef = user != null ? ref(db, `users-profile/${user.uid}/votes/${props.id}`) : null; // check if logged in
   
     const popover = <Popover id="popover-basic">
@@ -75,7 +74,7 @@ function StarRating(props) {
           }
         }).catch((error) => console.log(error))
       }
-    }, [doNotUpdate]);
+    }, [noUpdates]);
   
     function handleClick(clicked, votes, setVotes) {
       const noneClicked = !votes[0] && !votes[1] ? true : false;
@@ -110,7 +109,7 @@ function StarRating(props) {
         <Modal show={showDelete} onHide={handleCloseDelete}>
           <Modal.Header closeButton />
           <Modal.Body className='text-center'>
-            <h5 className='pb-2'>Delete review?</h5>
+            <h5 className='pb-2'>Are you sure you want to delete this review?</h5>
             <Button
               variant="outline-danger"
               onClick={() => {
@@ -123,9 +122,8 @@ function StarRating(props) {
         <Card className='mt-4'>
           <Card.Body>
             <Stack direction='horizontal' gap={2}>
-              <Badge bg="secondary" className="text-primary">{displayName}</Badge>
-
-              <Badge bg="secondary" className="text-primary">{classYear}</Badge>
+              <Button variant="contained" >{props.data.displayName}</Button>
+              <Button variant="contained" >{classYear}</Button>
               {
                 user && props.data.author === user.uid && props.deleteReview != null &&
                 <DropdownButton variant='light' title='More' className='ms-auto' align="end">
