@@ -8,7 +8,7 @@ import { Review } from './ReviewComponent';
 import { ref, get, child, remove, query, orderByChild, equalTo, update } from "firebase/database";
 import { db, auth } from '../Firebase';
 import { useParams, useNavigate } from 'react-router-dom';
-import SelectSearch from 'react-select-search';
+import EditIcon from '@mui/icons-material/Edit';
 import { WriteReview } from './WriteReview';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 
@@ -46,7 +46,6 @@ export function ReviewDisplay() {
         remove(child(reviewList, reviewID));
 
         setReviews(prevReviews => {
-            console.log("HEREEEEE")
             let newReviews = prevReviews.filter((review) => {
                 return review.key !== reviewID;
             });
@@ -63,15 +62,13 @@ export function ReviewDisplay() {
                 console.log("Updating ratings", newRatings, clubInfo?.rating);
                 clubInfo.rating = newRatings;
                 setClubInfo(clubInfo);
-
-                //update db as well
                 const clubRatingRef = child(clubList, clubname);
                 update(clubRatingRef, {rating: newRatings});
             }
         }
     }, [clubsQueue, loading])
 
-    //get club info summary
+    // retrieving data from clubs 
     useEffect(() => {
         const fetchClubData = async () => {
             console.log("Getting club data...");
@@ -112,7 +109,7 @@ export function ReviewDisplay() {
                     console.log("it made it all the way here");
 
                 } else {
-                    console.log("No data available");
+                    console.log("No data retreived");
                     setReviews([]);
                 }
                 setLoading(false);
@@ -125,12 +122,6 @@ export function ReviewDisplay() {
         fetchData();
     }, [clubname]);
 
-    //SORT
-    const sortOptions = [
-        { name: 'By Votes', value: 'votes'},
-        { name: 'By Date (newest)', value: 'newest'},
-        { name: 'By Date (oldest)', value: 'oldest'}
-    ]
     
     const [sortValue, setSortValue] = useState('votes');
 
@@ -182,7 +173,7 @@ export function ReviewDisplay() {
                                     }
                                 }}
                             >
-                                Write a review...
+                                Write a review...<EditIcon/>
                             </Button>
 
                         </Stack>

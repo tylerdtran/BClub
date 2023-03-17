@@ -12,7 +12,6 @@ import 'bootstrap/dist/css/bootstrap.css';
 // Drop down button, liking icons 
 import DeleteIcon from '@mui/icons-material/Delete';
 import Button from '@mui/material/Button';
-import EditIcon from '@mui/icons-material/Edit';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import ThumbDownIcon from '@mui/icons-material/ThumbDown';
 
@@ -112,9 +111,6 @@ function RateStars(props) {
               {
                 user && props.data.author === user.uid && props.deleteReview != null &&
                 <DropdownButton variant='light' title='More' className='ms-auto' align="end">
-                  <Dropdown.Item onClick={() => {
-                    nav("/editReview", { state: { id: props.id, data: props.data } });
-                  }}><EditIcon/>Edit</Dropdown.Item>
                   <Dropdown.Item onClick={handleShowDelete}><DeleteIcon/>Delete</Dropdown.Item>
                 </DropdownButton>
               }
