@@ -19,6 +19,10 @@ export default function Homepage() {
 					width: '100%'
 				}}
 			/>
+			<br></br>
+			<br></br>
+			<br></br>
+
 			<main>
 				<section className="featureSection">
 				<p id='weeklyFeatured'>Weekly Featured Clubs</p>
