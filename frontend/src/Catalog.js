@@ -122,7 +122,6 @@ function Category({ clubs }) {
                 <Card.Title>{club.clubName}</Card.Title>
                 <Card.Text>{club.clubBlurb}</Card.Text>
                 <Button onClick={() => goToClub(club.url)}>Checkout Club</Button>
-                <Button></Button>
               </Card.Body>
             </Card>
           )
