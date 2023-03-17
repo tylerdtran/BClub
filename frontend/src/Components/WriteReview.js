@@ -112,7 +112,6 @@ Date.prototype.currentTime = function () {
             } else {
                 console.log("updating new review...");
                 key = push(reviewList).key; // get new review id 
-                // flair = preferences.on
                 const newDate = new Date();
                 currentDateTime = newDate.today() + ' ' + newDate.currentTime(); // get new dateTime
             }
@@ -134,6 +133,7 @@ Date.prototype.currentTime = function () {
             update(ref(db), updates).catch((error) => {
                 console.log(error);
             });
+            window.location.reload();
             setValidated(true);
             nav(`/clubs/${club}`); 
         }
@@ -194,7 +194,7 @@ Date.prototype.currentTime = function () {
                             <div className='d-grid px-5'>
                                 <Button
                                     type="submit"
-                                    className='mt-3'
+                                    className='mt-3' 
                                 >Submit Review</Button>
                             </div>
                         </Form>
