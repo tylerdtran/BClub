@@ -2,7 +2,6 @@ import './App.css';
 import './Calendar.css';
 import React, { useEffect, useState } from 'react';
 import moment from 'moment';
-import LearnMoreButton from './LearnMoreButton';
 import { db } from "./Firebase";
 import { ref, onChildAdded } from "firebase/database";
 import Button from 'react-bootstrap/Button';
@@ -68,7 +67,6 @@ export default function Calendar() {
 						<p className='lineMoveUp'>_________</p>
 						<p>UCLA Clubs, Events, & Activities</p>
 						<br></br>
-						<LearnMoreButton />
 					</div>
 				</section>
 
