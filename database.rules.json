@@ -1,0 +1,13 @@
+{
+  "rules": {
+    ".read": true,
+    ".write": true,
+    "reviews": {
+    	".indexOn": ["club"]
+    },
+    "clubs": {
+      ".indexOn": ["createdAt", "clubType"]
+
+    }
+  }
+}
