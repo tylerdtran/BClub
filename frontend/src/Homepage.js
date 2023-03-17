@@ -1,6 +1,5 @@
 import './App.css';
 import React from 'react';
-// import { MDBInputGroup, MDBInput, MDBIcon, MDBBtn } from 'mdb-react-ui-kit';
 import Slides from './slideshow';
 import { HomePageSearchBar } from './Components/HomePageSearchBar';
 

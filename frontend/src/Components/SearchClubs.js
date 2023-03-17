@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import SelectSearch from 'react-select-search';
-import Select from 'react-select';
-// import { MDBSelect } from "mdb-react-ui-kit";
-// import fuzzySearch from 'react-select-search';
 import { Form } from "react-bootstrap";
 import { ref, get } from "firebase/database";
 import { db } from '../Firebase';
@@ -19,7 +16,6 @@ export default function SearchClubs(props) {
     useEffect(() => {get(clubList).then((snapshot) => {
         let clubNames = [];
         if (snapshot.exists()) {
-            // let data = snapshot.val()
                 snapshot.forEach(function(childSnapshot) {
                 clubNames.push({ name: childSnapshot.val().name, value: childSnapshot.val().url })
             });

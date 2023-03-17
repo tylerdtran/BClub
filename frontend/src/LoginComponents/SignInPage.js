@@ -10,6 +10,7 @@ export default function SignInPage()
   // we pass a string inside the useState("") parameter 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isValidPopUp, setIsValidPopUp] = useState(false);
   // variable declaration for the google authentication provider
 
   // Simplify this code 
@@ -27,14 +28,21 @@ export default function SignInPage()
     .then((userCredential) => { 
       console.log(userCredential);
       routeChange(`../`);
+      setIsValidPopUp(false);
     })
     .catch((error) => { 
       console.log(error);
+      setIsValidPopUp(true);
     })
   }
   
     return(
       <div className="Login-Container"> 
+      <ToastContainer className="p-3" position="top-center">
+						<Toast onClose={() => setIsValidPopUp(false)} show={isValidPopUp} delay={3000} autohide bg="light">
+							<Toast.Body>Invalid Username or Password: Your email address has either already been used or your login is invalid</Toast.Body>
+						</Toast>
+			</ToastContainer> 
         <form onSubmit={signInUsingEmail}>
           <h1 className="welcomeMessage">Welcome back, Bruin!</h1>
           <input className="loginInput" type="email" placeholder="E-mail" value={email} onChange={(e) => setEmail(e.target.value)}></input>

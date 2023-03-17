@@ -17,7 +17,6 @@ import HighlightsForm from './HighlightsForm';
 import ClubsForm from './ClubsForm';
 import { EditReview } from './Components/EditReview';
 import { ReviewDisplay } from './Components/ReviewDisplay';
-// import WriteReview from '../Components/WriteReview';
 import { ProtectedRoute } from './Components/ProtectedRoute';
 import 'bootstrap/dist/css/bootstrap.css';
 

@@ -33,12 +33,10 @@ export default function SignUpPage()
     if (form.checkValidity() === false) {
       e.stopPropagation();
     } else {
-    // todo: sign in
     e.preventDefault();
     createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => { 
       console.log(userCredential);
-      const userId = auth.currentUser.uid
       routeChange();
       setIsValidPopUp(false);
     })
@@ -56,7 +54,7 @@ export default function SignUpPage()
 						<Toast onClose={() => setIsValidPopUp(false)} show={isValidPopUp} delay={3000} autohide bg="light">
 							<Toast.Body>Invalid Username or Password: Your email address has either already been used or your login is invalid</Toast.Body>
 						</Toast>
-			</ToastContainer> : <div></div>
+			</ToastContainer> 
       <Form validated={validated} onSubmit={signUp}>
         <h1 className="welcomeMessage">Welcome home, Bruin!</h1>
         <input className="loginInput" type="email" placeholder="E-mail" value={email} onChange={(e) => setEmail(e.target.value)}></input>

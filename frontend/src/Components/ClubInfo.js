@@ -5,7 +5,6 @@ import { RatingBar } from './RatingBar'
 import InstagramIcon from '@mui/icons-material/Instagram';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import LinkIcon from '@mui/icons-material/Link';
-import { useState, useEffect } from 'react'
 
 export function ClubInfo(props) {
 

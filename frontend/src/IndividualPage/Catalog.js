@@ -5,7 +5,6 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import { db } from "../Firebase";
 import { ref, orderByChild, limitToLast, get, query, equalTo } from "firebase/database";
-import { render } from '@testing-library/react';
 
 export default function Catalog() {
   const [newClubs, setNewClubs] = useState([]);

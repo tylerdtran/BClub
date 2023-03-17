@@ -6,7 +6,7 @@ import Rating from '@mui/material/Rating';
 
 import { useAuthState } from "react-firebase-hooks/auth";
 import { db, auth } from '../Firebase';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { ref, get, update } from "firebase/database";
 import 'bootstrap/dist/css/bootstrap.css';
 // Drop down button 
