@@ -4,17 +4,6 @@ import React from 'react';
 import Slides from './slideshow';
 import { HomePageSearchBar } from './Components/HomePageSearchBar';
 
-// export function searchBar() {
-// 	return (
-// 		<MDBInputGroup>
-// 			<MDBInput placeholder="Search" className="searchBar"/>
-// 			<MDBBtn rippleColor='dark' className="searchBtn">
-// 				<MDBIcon icon='search'/>
-// 			</MDBBtn>
-// 		</MDBInputGroup>
-// 	);
-// }
-
 export default function Homepage() {
 	return (
 		<>

@@ -4,10 +4,82 @@ import { useNavigate } from "react-router-dom";
 import { Form } from "react-bootstrap";
 import { ref, get } from "firebase/database";
 import { db } from '../Firebase';
-import SelectSearch from 'react-select-search';
+// import SelectSearch from 'react-select-search';
+import Select from 'react-select';
 import 'react-select-search/style.css'
 
 function HomePageSearchBar(props) {
+    const [optionList, setOptionList] = useState([]);
+    const value = props.label != null ? props.label : "";
+    const clubList = ref(db, 'clubs');
+    const doNotUpdate = 0;
+    const nav = useNavigate();
+    
+    useEffect(() => {get(clubList).then((snapshot) => {
+        let clubNames = [];
+        if (snapshot.exists()) {
+            // let data = snapshot.val();
+                snapshot.forEach(function(childSnapshot) {
+                clubNames.push({ 
+                    value: childSnapshot.val().url,
+                    label: childSnapshot.val().name, 
+                    })
+            });
+        }
+        setOptionList(clubNames);
+    }).catch((error) => {console.log(error)})}, [doNotUpdate]);
+
+    console.log(optionList);
+
+    const handleSelect = (selectedValue) => {
+        console.log(selectedValue)
+        if (props.handleSelect)
+        {
+            props.handleSelect(selectedValue);
+        }
+        if (props.nav == "redirect")
+        {
+            console.log(selectedValue.value);
+            nav(`/clubs/${selectedValue.value}`);
+        }
+    }
+
+    return (
+        <Form>
+            <Select
+                options={optionList} 
+                onChange={handleSelect}
+                value={value} 
+                name="clubs" 
+                placeholder="Search"/>
+        </Form>
+    );
+}
+
+//   const goToClub = (url) => {
+//     const websiteName = window.location.origin;
+//     window.open(`${websiteName}/clubs/${url}`, "_blank", "noopener noreferrer");
+//   }
+
+//   return (
+//     <div className="App">
+//       <Select mode="single" style={{ width: 120 }}>
+//         {data.map(({ label, value, text }) =>
+//           label ? (
+//             <Select.Option onClick{()=>goToClub(club.url)} value={value || ""} key={label}>
+//               {text}
+//             </Select.Option>
+//           ) : null
+//         )}
+//       </Select>
+//     </div>
+//   );
+// }
+
+
+
+export { HomePageSearchBar };
+
     // const [value, setValue] = useState('');
     // const [result, setResult] = useState([]);
 
@@ -37,65 +109,3 @@ function HomePageSearchBar(props) {
     //         setResult([]);
     //     }
     // }, [value])
-
-    const [optionList, setOptionList] = useState([]);
-    const value = props.value != null ? props.value : "";
-    const clubList = ref(db, 'clubs');
-    const doNotUpdate = 0;
-    const nav = useNavigate();
-    
-    useEffect(() => {get(clubList).then((snapshot) => {
-        let clubNames = [];
-        if (snapshot.exists()) {
-            // let data = snapshot.val();
-                snapshot.forEach(function(childSnapshot) {
-                clubNames.push({ name: childSnapshot.val().name, value: childSnapshot.val().url })
-            });
-        }
-        setOptionList(clubNames);
-    }).catch((error) => {console.log(error)})}, [doNotUpdate]);
-
-    console.log(optionList);
-
-    const handleSelect = (selectedValue) => {
-        if (props.handleSelect)
-        {
-            props.handleSelect(selectedValue);
-        }
-        if (props.nav == "redirect")
-        {
-            nav(`/clubs/${selectedValue}`);
-        }
-    }
-
-    return (
-        // <div>
-        //     <input type="text"
-        //     className="searchBar"
-        //     onChange={(event) => setValue(event.target.value)}
-        //     value={value}
-        //     />
-        //     <div className="searchBack">
-        //         <div className="searchEntry">
-        //             {result.map((result, index) => (
-        //                 <a onClick={nav(`/clubs/${}`)} key={index}>
-        //                     <div className="searchEntry">
-        //                         {result}
-        //                     </div>
-        //                 </a>
-        //             ))}
-        //         </div>
-        //     </div>
-        // </div>
-        <Form>
-            <SelectSearch
-                options={optionList} 
-                onChange={handleSelect}
-                value={value} 
-                name="clubs" 
-                placeholder="Search"/>
-        </Form>
-    );
-}
-
-export { HomePageSearchBar };
