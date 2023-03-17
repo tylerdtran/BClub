@@ -4,7 +4,6 @@ import './Highlights.css'
 import { FacebookEmbed,
          InstagramEmbed,
          LinkedInEmbed,
-         PinterestEmbed,
          TikTokEmbed,
          TwitterEmbed,
          YouTubeEmbed } from 'react-social-media-embed';

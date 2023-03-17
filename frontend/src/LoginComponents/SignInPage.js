@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth"
-import { auth, provider } from "../Firebase";
+import { signInWithEmailAndPassword } from "firebase/auth"
+import { auth } from "../Firebase";
 import { useNavigate } from "react-router-dom"; // needs to be simplified
-import { GoogleButton } from "react-google-button";
 import "./Login.css";
 
 export default function SignInPage()
