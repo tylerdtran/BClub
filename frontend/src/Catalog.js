@@ -10,7 +10,7 @@ import { render } from '@testing-library/react';
 export default function Catalog() {
   const [newClubs, setNewClubs] = useState([]);
   useEffect(() => {
-    const latestClubs = query(ref(db, "/clubs"), orderByChild("createdAt"), limitToLast(4));
+    const latestClubs = query(ref(db, "/clubs"), orderByChild("createdAt"), limitToLast(5));
     get(latestClubs)
       .then((snapshot) => {
         if (snapshot.exists()) {
@@ -73,6 +73,7 @@ export default function Catalog() {
       clubName: club.name || "",
       clubBlurb: club.description || club.blurb || "Coming Soon",
       clubImage: club.imageUrl || "placeholder.png",
+      url: club.url
     })),
   });
 

@@ -26,7 +26,6 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
 provider.addScope("https://www.googleapis.com/auth/calendar.events.readonly");
-provider.addScope("https://www.googleapis.com/auth/forms");
 const db = getDatabase();
 const storage = getStorage();
 export { auth, provider, db, storage }
