@@ -14,10 +14,14 @@ export default function HighlightsForm() {
       set(newHighlightRef, {
         link: highlightLink
       })
-      .catch((error) => { 
-        console.log(error);
-      }) 
-    }
+      .then(() =>{
+        alert('Club data submitted');
+        window.location.reload();
+        })
+        .catch((error) => { 
+          console.log(error);
+        }) 
+      }
 
     return (
     <div> 
@@ -27,8 +31,8 @@ export default function HighlightsForm() {
           Want to promote a social media post from your club? Submit it here!
         </p>
         <div className="highlightFlexbox">
-        <input type="text" placeholder="Highlight Link" className="highlightLink" value={highlightLink} onChange={(e) => setHighlightLink(e.target.value)}></input>
-        <select className="platformSelect" value={socialMedia} onChange={(e) => setSocialMedia(e.target.value)}>
+        <input required type="text" placeholder="Highlight Link" className="highlightLink" value={highlightLink} onChange={(e) => setHighlightLink(e.target.value)}></input>
+        <select required className="platformSelect" value={socialMedia} onChange={(e) => setSocialMedia(e.target.value)}>
             <option value="" disabled selected>Select social media platform...</option>
             <option value="Facebook">Facebook</option>
             <option value="Instagram">Instagram</option>
