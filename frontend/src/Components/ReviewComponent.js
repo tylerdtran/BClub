@@ -16,7 +16,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import ThumbDownIcon from '@mui/icons-material/ThumbDown';
 
-function StarRating(props) {
+function RateStars(props) {
     return (
       <Card.Text className='mb-0 text-center'>
         {props.name}<br />
@@ -142,11 +142,11 @@ function StarRating(props) {
               <Col md={4}>
                 <Card.Title className='text-center'>{props.data.oneword}</Card.Title>
                 <hr />
-                <StarRating name="Overall" stars={props.data.overall} />
-                <StarRating name="Activeness" stars={props.data.activeness} />
-                <StarRating name="Community" stars={props.data.community} />
-                <StarRating name="Competitiveness" stars={props.data.competitiveness} />
-                <StarRating name="Fun" stars={props.data.fun} />
+                <RateStars name="Overall" stars={props.data.overall} />
+                <RateStars name="Activeness" stars={props.data.activeness} />
+                <RateStars name="Community" stars={props.data.community} />
+                <RateStars name="Competitiveness" stars={props.data.competitiveness} />
+                <RateStars name="Fun" stars={props.data.fun} />
               </Col>
             </Row>
             <Stack direction='horizontal' className='d-flex align-self-center' gap={1}>
