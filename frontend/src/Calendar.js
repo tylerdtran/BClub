@@ -1,46 +1,62 @@
 import './App.css';
 import './Calendar.css';
+import React, { useEffect, useState } from 'react';
 import moment from 'moment';
-import events from './events';
-import React from 'react';
 import LearnMoreButton from './LearnMoreButton';
+import { db } from "./Firebase";
+import { ref, onChildAdded } from "firebase/database";
 
 export default function Calendar() {
+	const [unsortedEvents, setUnsortedEvents] = useState([]);
 
-	// group the events by date
-	const eventsByDate = events.reduce((acc, event) => {
-		const date = moment(event.date).format('YYYY-MM-DD');
-		if (!acc[date]) {
-			acc[date] = [];
-		}
-		acc[date].push(event);
-		return acc;
-	}, {});
+    useEffect(() => {
+        const path = "/events/";
+        const eventsRef = ref(db, path);
+        
+        onChildAdded(eventsRef, (data) => {
+            setUnsortedEvents(prevLinks => [...prevLinks,
+								   {title: data.val().title, 
+								    description: data.val().description,
+									start: data.val().start, 
+									location: data.val().location,
+									id: data.key}]);
+        });
+    }, []);
 
-	// generate an array of table rows for each date with events
-	const tableRows = Object.keys(eventsByDate).map(date => {
-		const eventsForDate = eventsByDate[date];
-		const formattedDate = moment(date).format('dddd, MMMM D');
-		const eventList = eventsForDate.map(event => (
-			<li key={event.id} className="event-item">
-				<h3>{event.title}</h3>
-				<p>{event.time}</p>
-				<p>{event.location}</p>
-				<p className='event-description'>{event.description}</p>
-			</li>
-		));
+	const sortedEvents = [...unsortedEvents].sort((a, b) => {
+		const dateA = new Date(a[2]);
+		const dateB = new Date(b[2]);
+		return dateA - dateB;
+	});
+
+	const removeDuplicates = (arr) => {
+		const seen = new Set();
+		return arr.filter((event) => {
+		  if (seen.has(event.id)) {
+			return false;
+		  } else {
+			seen.add(event.id);
+			return true;
+		  }
+		});
+	  };
+    
+	const filteredEvents = removeDuplicates(sortedEvents); 
+
+	const tableRows = filteredEvents.map(event => {
+		const formattedDate = moment(event.start).format('dddd, MMMM D');
 		return (
-			<tr key={date}>
+			<tr key={event.id}>
 				<td>{formattedDate}</td>
 				<td>
-					<ul className="event-list">
-						{eventList}
-					</ul>
+					<h3>{event.title}</h3>
+					<p>{event.location}</p>
+					<p>{event.description}</p>
 				</td>
 			</tr>
 		);
 	});
-
+    
 	return (
 		<>
 			<div className='calendarMain'>
