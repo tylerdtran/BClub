@@ -4,9 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { Form } from "react-bootstrap";
 import { ref, get } from "firebase/database";
 import { db } from '../Firebase';
-// import SelectSearch from 'react-select-search';
 import Select from 'react-select';
-import 'react-select-search/style.css'
+import 'react-select-search/style.css';
 
 function HomePageSearchBar(props) {
     const [optionList, setOptionList] = useState([]);
@@ -55,29 +54,6 @@ function HomePageSearchBar(props) {
         </Form>
     );
 }
-
-//   const goToClub = (url) => {
-//     const websiteName = window.location.origin;
-//     window.open(`${websiteName}/clubs/${url}`, "_blank", "noopener noreferrer");
-//   }
-
-//   return (
-//     <div className="App">
-//       <Select mode="single" style={{ width: 120 }}>
-//         {data.map(({ label, value, text }) =>
-//           label ? (
-//             <Select.Option onClick{()=>goToClub(club.url)} value={value || ""} key={label}>
-//               {text}
-//             </Select.Option>
-//           ) : null
-//         )}
-//       </Select>
-//     </div>
-//   );
-// }
-
-
-
 export { HomePageSearchBar };
 
     // const [value, setValue] = useState('');
