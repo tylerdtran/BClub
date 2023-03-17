@@ -103,6 +103,10 @@ export default function Catalog() {
   }
 
 function Category({ clubs }) {
+  const goToClub = (url) => {
+    const websiteName = window.location.origin;
+    window.open(`${websiteName}/clubs/${url}`, "_blank", "noopener noreferrer");
+  }
     return (
       <div>
         <section className="category">
@@ -117,7 +121,7 @@ function Category({ clubs }) {
               <Card.Body>
                 <Card.Title>{club.clubName}</Card.Title>
                 <Card.Text>{club.clubBlurb}</Card.Text>
-                <Button >Button</Button>
+                <Button onClick={() => goToClub(club.url)}>Go To Club</Button>
               </Card.Body>
             </Card>
           )
