@@ -75,7 +75,7 @@ export default function Profile() {
 					<Col md={4}>
 						<Form noValidate validated={validated} onSubmit={handleSubmission}>
 							<FormGroup className="mb-3" onChange={(e) => { setDisplayName(e.target.value) }}>
-								<Form.Control required value={displayName} placeholder="Enter a new Review Name ">
+								<Form.Control required value={displayName} placeholder="Enter a new Reviewer Name ">
 								</Form.Control>
 							</FormGroup>
 							<FormGroup className="mb-3" onChange={(e) => { setClassYear(e.target.value) }}>

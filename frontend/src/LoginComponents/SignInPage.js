@@ -33,17 +33,6 @@ export default function SignInPage()
       console.log(error);
     })
   }
-
-  // Signing in With Google 
-  const GoogleLogin = async () => {
-    try {
-      const result = await signInWithPopup(auth, provider);
-      console.log(result);
-      routeChange(`/Profile`);
-    } catch (error) {
-      console.log(error);
-    }
-  };
   
     return(
       <div className="Login-Container"> 
@@ -56,7 +45,6 @@ export default function SignInPage()
           <button type="submit" className="bigButton">Sign In</button>
           <h2 className="noAccount">Don't have an account?</h2>
           <button type="button" className="bigButton" onClick={() => routeChange(`/SignUpPage`)}>Register</button>
-          <GoogleButton className="googleLogin" onClick={GoogleLogin}> Sign in with Google </GoogleButton>
         </form>
       </div>
     );
