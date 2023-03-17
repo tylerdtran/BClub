@@ -8,7 +8,6 @@ import { ref, set, push } from "firebase/database";
 export default function GoogleCalendar() {
   const [events, setEvents] = useState([]);
   const [clicked, setClicked] = useState([]);
-  const [loggedIn, setLoggedIn] = useState(false);
 
   function addEvent(title, start, end, description, location, index) {
     const eventsRef = ref(db, 'events');
@@ -27,7 +26,6 @@ export default function GoogleCalendar() {
 
   async function GoogleLogIn() {
     try {
-      setLoggedIn(true);
       const result = await signInWithPopup(auth, provider);
       const accessToken = result._tokenResponse.oauthAccessToken;
       const calendarID =  result.user.email;
@@ -60,7 +58,6 @@ export default function GoogleCalendar() {
   }
   return (
     <div>
-      { loggedIn ? (
         <>
           {events.map((item, index) => (
             <>
@@ -77,16 +74,9 @@ export default function GoogleCalendar() {
               </div>
             </>
           ))}
-        </>
-      ) 
-      : 
-      (
-        <>
           <h2 className="eventsFormTitle">Sign in with Google to find Google Calendar events to add!</h2>
           <GoogleButton className="eventsFormGoogleButton" onClick={GoogleLogIn}/>
         </>
-      )
-      }
     </div>
   );
 }
