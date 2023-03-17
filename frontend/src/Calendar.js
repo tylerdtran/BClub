@@ -5,6 +5,7 @@ import moment from 'moment';
 import LearnMoreButton from './LearnMoreButton';
 import { db } from "./Firebase";
 import { ref, onChildAdded } from "firebase/database";
+import Button from 'react-bootstrap/Button';
 
 export default function Calendar() {
 	const [unsortedEvents, setUnsortedEvents] = useState([]);
@@ -101,8 +102,14 @@ export default function Calendar() {
 							</tbody>
 						</table>
 					</div>
+					
 				</section>
 			</div>
+			
+			<Button className="submitButton" href="/addevents">
+				Submit an event!
+			</Button>
+
 		</>
 	);
 }
