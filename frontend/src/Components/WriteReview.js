@@ -7,7 +7,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import SearchClubs from '../Components/SearchClubs';
 
 
-function FormSelect(props) {
+function ReviewRate(props) {
     return (
         <Form.Group className='m-4'>
             <Form.Label className='d-flex justify-content-center'>{props.title}</Form.Label>
@@ -23,7 +23,6 @@ function FormSelect(props) {
                             props.saveHandler(props.name, value);
                         }}
                         defaultChecked={props.defaultValue == value ? true : false}
-
                     />
                 ))}
             </Stack>
@@ -51,10 +50,10 @@ export function WriteReview() {
     const [text, setText] = useState(location?.state?.data != null ? location?.state?.data.text : "");
 
     // clubtype
-    const [clubtype, setClubType] = useState(location?.state?.data != null ? location?.state?.data.clubtype : "");
-    const clubTypeList = ["Academic", "Arts", "Career", "Community Service", "Cultural", "Technological", "Recreational", "Other"]
+    const [oneword, setOneWord] = useState(location?.state?.data != null ? location?.state?.data.oneword : "");
 
     const saveClub = (newclub) => {
+        
         setClub(newclub);
     }
 
@@ -85,7 +84,7 @@ Date.prototype.today = function () {
 }
 
 // For the time now
-Date.prototype.timeNow = function () {
+Date.prototype.currentTime = function () {
     return ((this.getHours() < 10) ? "0" : "") + this.getHours() + ":" + ((this.getMinutes() < 10) ? "0" : "") + this.getMinutes() + ":" + ((this.getSeconds() < 10) ? "0" : "") + this.getSeconds();
 }
 
@@ -115,7 +114,7 @@ Date.prototype.timeNow = function () {
                 key = push(reviewList).key; // get new review id 
                 // flair = preferences.on
                 const newDate = new Date();
-                currentDateTime = newDate.today() + ' ' + newDate.timeNow(); // get new dateTime
+                currentDateTime = newDate.today() + ' ' + newDate.currentTime(); // get new dateTime
             }
             let rev = {
                 "club": club,
@@ -128,7 +127,7 @@ Date.prototype.timeNow = function () {
                 "competitiveness": competitiveness,
                 "fun": fun,
                 "votes": votes,
-                "clubtype": clubtype
+                "oneword": oneword
             };
             const updates = {};
             updates['/reviews/' + key] = rev;
@@ -136,14 +135,14 @@ Date.prototype.timeNow = function () {
                 console.log(error);
             });
             setValidated(true);
-            nav(`/clubs/${club}`); // change this to this give club
+            nav(`/clubs/${club}`); 
         }
         setValidated(true);
     }
 
     return (
         <div>
-            <Col md={6} >
+            <Col >
                 <Card >
                     <Card.Body>
                         <h4 className='text-center'>
@@ -163,27 +162,23 @@ Date.prototype.timeNow = function () {
                                     <SearchClubs nav={false} handleSelect={saveClub} value={club} />
                                 </div>
                             </Form.Group>
-                            <FormSelect title="Overall Rating" name='overall' saveHandler={saveRating} defaultValue={overall} />
-                            <FormSelect title="Activeness" name='activeness' saveHandler={saveRating} defaultValue={activeness} />
-                            <FormSelect title="Community" name='community' saveHandler={saveRating} defaultValue={community} />
-                            <FormSelect title="Competitiveness" name='competitiveness' saveHandler={saveRating} defaultValue={competitiveness} />
-                            <FormSelect title="Fun" name='fun' saveHandler={saveRating} defaultValue={fun} />
+                                <ReviewRate title="What's your overall rating of the club?" name='overall' saveHandler={saveRating} defaultValue={overall} />
+                                <ReviewRate title="How active is the club?" name='activeness' saveHandler={saveRating} defaultValue={activeness} />
+                                <ReviewRate title="How would you rate the sense of community?" name='community' saveHandler={saveRating} defaultValue={community} />
+                                <ReviewRate title="Competitiveness? 1 = Most Difficult to 5 = For everyone" name='competitiveness' saveHandler={saveRating} defaultValue={competitiveness} />
+                                <ReviewRate title="How fun is the club?" name='fun' saveHandler={saveRating} defaultValue={fun} />
                             <Form.Group>
-                                <Form.Label className='d-flex justify-content-center'>One word to characterize them</Form.Label>
+                                <Form.Label className='d-flex justify-content-center'>One word to characterize this club</Form.Label>
                                 <div className='d-flex justify-content-center'>
-                                    <Form.Select 
+                                    <Form.Control 
                                     required 
                                     size="sm" 
+                                    type="text"
                                     className='mb-3' 
-                                    onChange={(e) => { setClubType(e.target.value) }} 
+                                    onChange={(e) => { setOneWord(e.target.value) }} 
                                     style={{ width: 300 }}
-                                    value={clubtype}
-                                    >
-                                        <option value="">Select...</option>
-                                        {clubTypeList.map((x) => (
-                                            <option value={x}>{x}</option>
-                                        ))}
-                                    </Form.Select>
+                                    value={oneword}
+                                    />
                                 </div>
                             </Form.Group>
                             <Form.Group className='px-2'>
@@ -210,14 +205,4 @@ Date.prototype.timeNow = function () {
     );
 }
 
-// https://stackoverflow.com/questions/10211145/getting-current-date-and-time-in-javascript
-// For todays date;
-Date.prototype.today = function () {
-    return ((this.getDate() < 10) ? "0" : "") + this.getDate() + "/" + (((this.getMonth() + 1) < 10) ? "0" : "") + (this.getMonth() + 1) + "/" + this.getFullYear();
-}
-
-// For the time now
-Date.prototype.timeNow = function () {
-    return ((this.getHours() < 10) ? "0" : "") + this.getHours() + ":" + ((this.getMinutes() < 10) ? "0" : "") + this.getMinutes() + ":" + ((this.getSeconds() < 10) ? "0" : "") + this.getSeconds();
-}
 

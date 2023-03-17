@@ -4,6 +4,7 @@ import AuthDetails from './LoginComponents/AuthDetails';
 import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import { auth } from './Firebase';
+import { useNavigate } from 'react-router-dom';
 
 function DarkModeButton({value, handlerFunction}){
     return(
@@ -15,11 +16,11 @@ function DarkModeButton({value, handlerFunction}){
 export default class Header extends React.Component {
     constructor(props) {
       super(props);
+
       this.state = {
         mode: "Switch to Dark Mode",
       }
     }
-	
 	
     handleClick() {
     	// Set light mode dynamic colors
@@ -57,7 +58,7 @@ export default class Header extends React.Component {
     		<>
         		<meta charSet="utf-8" />
 					<header>
-						<a href="index.html">
+						<a href="../">
 						<img id="logo" src="/logo.png" alt="BClub Logo" />
 						</a>
 						<br />
@@ -70,7 +71,7 @@ export default class Header extends React.Component {
 					</header>
 					<div id="navBarButtons">
 						<ButtonGroup id="nav_menu">
-							<Button href="/">
+							<Button href="../">
 								Home
 							</Button>
 							<Button href="/catalog">

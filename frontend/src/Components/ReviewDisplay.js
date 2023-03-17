@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Row, Col, Button, Stack, Card } from 'react-bootstrap';
+import { Container, Row, Col, Button, Stack, Card, Form } from 'react-bootstrap';
 import '../App.css';
 import { ClubInfo } from './ClubInfo';
 import { Review } from './ReviewComponent';
@@ -11,6 +11,7 @@ import moment from 'moment';
 import _ from 'lodash';
 import { WriteReview } from './WriteReview';
 import 'bootstrap/dist/css/bootstrap.css';
+import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 
 const calcAvg = (array) => Math.round(array.reduce((a, b) => a + b) / array.length);
 
@@ -31,13 +32,10 @@ export function ReviewDisplay() {
 
     const reviewList = ref(db, 'reviews');
     const clubList = ref(db, 'clubs');
-
     const [loading, setLoading] = useState(true);
     const [reviews, setReviews] = useState([]);
-
     const [loadingClub, setLoadingClub] = useState(true);
     const [clubInfo, setClubInfo] = useState({});
-
     const [reviewWriting, setReviewWriting] = useState(false);
 
     // Create a function that extends the button 
@@ -174,7 +172,7 @@ export function ReviewDisplay() {
                     loading={loadingClub}
                 />
                 <Row className='mt-4'>
-                    <Col >
+                    <Col>
                         <Stack direction='horizontal' gap={4} >
                             <Button
                                 md={4}
@@ -182,11 +180,6 @@ export function ReviewDisplay() {
                                 onClick={(e) => {
                                     e.preventDefault();
                                     console.log("it made it here");
-                                    // if (user) {
-                                    //     nav("/WriteReview", {state: {club: clubInfo.url}});
-                                    // } else {
-                                    //     nav("/SignInPage", {state: {next: "/WriteReview", nextState: {club: clubInfo.url}}});
-                                    // }
                                     if (user) {
                                         setReviewWriting(true);
                                     } else {
@@ -194,9 +187,15 @@ export function ReviewDisplay() {
                                     }
                                 }}
                             >
-                                Create a review...
+                                Write a review...
                             </Button>
-                            { reviewWriting ?
+                            <div className='ms-auto'>
+                                Sort by 
+                            </div>
+                            <SelectSearch options={sortOptions} 
+                            value={sortValue} onChange={handleSortChange} name="language" />
+                        </Stack>
+                        { reviewWriting ?
                             <div>
                                 <WriteReview /> 
                                 <Button onClick={(e) => {
@@ -205,15 +204,10 @@ export function ReviewDisplay() {
                                     setReviewWriting(false);
                                    
                                 }}> 
-                                    Cancel Review Writing
+                                    Cancel Review Writing <ArrowDropUpIcon/>
                                 </Button>
                             </div>
                             : <div></div>}
-                            <div className='ms-auto'>
-                                Sort by 
-                            </div>
-                            <SelectSearch options={sortOptions} value={sortValue} onChange={handleSortChange} name="language" />
-                        </Stack>
                         {loading ? 
                             "Loading reviews..." : 
                             reviews.length ? reviews.map(([key, value]) => {

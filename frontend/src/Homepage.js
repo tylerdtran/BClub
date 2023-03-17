@@ -1,24 +1,25 @@
 import './App.css';
 import React from 'react';
-import { MDBInputGroup, MDBInput, MDBIcon, MDBBtn } from 'mdb-react-ui-kit';
+// import { MDBInputGroup, MDBInput, MDBIcon, MDBBtn } from 'mdb-react-ui-kit';
 import Slides from './slideshow';
+import { HomePageSearchBar } from './Components/HomePageSearchBar';
 
-export function searchBar() {
-	return (
-		<MDBInputGroup>
-			<MDBInput placeholder="Search" className="searchBar"/>
-			<MDBBtn rippleColor='dark' className="searchBtn">
-				<MDBIcon icon='search'/>
-			</MDBBtn>
-		</MDBInputGroup>
-	);
-}
+// export function searchBar() {
+// 	return (
+// 		<MDBInputGroup>
+// 			<MDBInput placeholder="Search" className="searchBar"/>
+// 			<MDBBtn rippleColor='dark' className="searchBtn">
+// 				<MDBIcon icon='search'/>
+// 			</MDBBtn>
+// 		</MDBInputGroup>
+// 	);
+// }
 
 export default function Homepage() {
 	return (
 		<>
 			<div id='searchBarWrapper'>
-				{searchBar()}
+				<HomePageSearchBar nav={"redirect"} />
 			</div>
 			<hr
 				style={{

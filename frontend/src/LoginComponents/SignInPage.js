@@ -39,7 +39,7 @@ export default function SignInPage()
     try {
       const result = await signInWithPopup(auth, provider);
       console.log(result);
-      routeChange(`../`);
+      routeChange(`/Profile`);
     } catch (error) {
       console.log(error);
     }

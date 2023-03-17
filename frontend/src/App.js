@@ -8,7 +8,6 @@ import Homepage from './Homepage';
 import Catalog from './Catalog';
 import Calendar from './Calendar';
 import Feedback from './Feedback';
-import ClubPage from './IndividualPage/ClubPage';
 import Profile from './IndividualPage/Profile';
 import NoPage from './NoPage';
 import SignInPage from './LoginComponents/SignInPage';
@@ -35,17 +34,12 @@ export default function App(){
 					<Route path="catalog" element={<Catalog/>} />
 					<Route path="calendar" element={<Calendar/>} />
 					<Route path="feedback" element={<Feedback/>} />
-					<Route path="ClubPage" element={<ClubPage/>} />
 					<Route path="Profile" element={<Profile/>} />
 					<Route path="SignUpPage" element={<SignUpPage/>} />
 					<Route path="SignInPage" element={<SignInPage/>} />
-					{/* <Route path="writeReview" element={<ProtectedRoute state={{ next: '/writeReview' }} />}>
-						<Route index element={<WriteReview />} />
-	</Route>*/}
 					<Route path="editReview" element={<ProtectedRoute state={{ next: '/editReview' }} />}>
 						<Route index element={<EditReview />} />
 					</Route> 
-					{/* <Route path="writeReview" element={<WriteReview/>} /> */}
 					<Route path="ReviewDisplay" element={<ReviewDisplay/>} />
 					<Route path="clubs/:clubname" element={<ReviewDisplay />} />
 					<Route path="highlights" element={<Highlights/>} />
