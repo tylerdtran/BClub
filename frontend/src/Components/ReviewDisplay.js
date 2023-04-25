@@ -123,7 +123,7 @@ export function ReviewDisplay() {
     }, [clubname]);
 
     
-    const [sortValue, setSortValue] = useState('newest');
+    const [sortValue, setSortValue] = useState('votes');
 
     const handleSortChange = (value) => 
     {

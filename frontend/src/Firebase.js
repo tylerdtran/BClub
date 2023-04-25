@@ -9,28 +9,9 @@ import { GoogleAuthProvider } from "firebase/auth";
 import { getDatabase } from "firebase/database";
 import './App.css';
 
-const express = require('express')
-const app = express()
-const port = 8080
-require('dotenv').config()
-
-const secret_key = process.env.APIKEY
-console.log(secret_key)
-
-app.get('/test/endpoint', (req, res) => {
-  const { api_key } = req.query
-  const message = `API KEY is ${api_key}`
-  console.log(message)
-
-  if (api_key != secret_key) {
-    return res.status(403).send({message: `Your API KEY was incorrect: ${api_key}`})
-  }
-  res.status(200).send({ message })
-})
-
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: secret_key,
+  apiKey: "AIzaSyA-8vR9blff5GIhVhlMH8LMu48_U5-91ic",
   authDomain: "bclub-b0d3f.firebaseapp.com",
   projectId: "bclub-b0d3f",
   storageBucket: "bclub-b0d3f.appspot.com",
@@ -39,14 +20,12 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const application = initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
 
 // Initialize Firebase Authentication and get a reference to the service
-const auth = getAuth(application);
+const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
 provider.addScope("https://www.googleapis.com/auth/calendar.events.readonly");
 const db = getDatabase();
 const storage = getStorage();
 export { auth, provider, db, storage }
- 
-

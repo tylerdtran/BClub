@@ -17,7 +17,7 @@ function ReviewRate(props) {
                         onChange={() => {
                             props.saveHandler(props.name, value);
                         }}
-                        defaultChecked={props.defaultValue === value ? true : false}
+                        defaultChecked={props.defaultValue == value ? true : false}
                     />
                 ))}
             </Stack>

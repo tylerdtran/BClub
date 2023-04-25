@@ -33,7 +33,7 @@ export default function SearchClubs(props) {
         {
             props.handleSelect(selected);
         }
-        if (props.nav === "redirect")
+        if (props.nav == "redirect")
         {
             nav(`/clubs/${selected}`);
         }
