@@ -61,10 +61,10 @@ function RateStars(props) {
           if (snapshot.exists()) {
             let userVote = snapshot.val();
             console.log(props.id, snapshot.val());
-            if (userVote == 1) {
+            if (userVote === 1) {
               setVotes([true, false]);
               setVoteChange(1);
-            } else if (userVote == -1) {
+            } else if (userVote === -1) {
               setVotes([false, true]);
               setVoteChange(-1);
             }

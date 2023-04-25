@@ -36,7 +36,7 @@ function HomePageSearchBar(props) {
         {
             props.handleSelect(selectedValue);
         }
-        if (props.nav == "redirect")
+        if (props.nav === "redirect")
         {
             console.log(selectedValue.value);
             nav(`/clubs/${selectedValue.value}`);
