@@ -35,7 +35,7 @@ export function ReviewDisplay() {
     const clubList = ref(db, 'clubs');
     const [loading, setLoading] = useState(true);
     const [reviews, setReviews] = useState([]);
-    const [clubsQueue, setClubsQueue] = useState(true);
+    const [loadingClub, setLoadingClub] = useState(true);
     const [clubInfo, setClubInfo] = useState({});
     const [reviewWriting, setReviewWriting] = useState(false);
 
@@ -57,7 +57,7 @@ export function ReviewDisplay() {
 
     //calculate club overall rating
     useEffect(() => {
-        if (!clubsQueue && !loading && reviews.length) {
+        if (!loadingClub && !loading && reviews.length) {
             console.log("Calculating ratings...");
             let newRatings = calculateScores(reviews);
             if (!_.isEqual(newRatings, clubInfo?.rating)) {
@@ -68,23 +68,23 @@ export function ReviewDisplay() {
                 update(clubRatingRef, {rating: newRatings});
             }
         }
-    }, [clubsQueue, loading])
+    }, [loadingClub, loading])
 
     // retrieving data from clubs 
     useEffect(() => {
         const fetchClubData = async () => {
             console.log("Getting club data...");
-            setClubsQueue(true);
+            setLoadingClub(true);
             get(child(clubList, clubname)).then((snapshot) => {
                 if (snapshot.exists()) {
                     setClubInfo(snapshot.val());
                 } else {
-                    console.log("No data");
+                    console.log("No data available");
                 }
-                setClubsQueue(false);
+                setLoadingClub(false);
             }).catch((error) => {
                 console.error(error);
-                setClubsQueue(false);
+                setLoadingClub(false);
             });
         }
 
@@ -164,7 +164,7 @@ export function ReviewDisplay() {
             <Container md={6}>
                 <ClubInfo
                     data={clubInfo}
-                    loading={clubsQueue}
+                    loading={loadingClub}
                 />
                 <Row className='mt-4'>
                     <Col>
@@ -184,7 +184,11 @@ export function ReviewDisplay() {
                             >
                                 Write a review...<EditIcon/>
                             </Button>
-
+                            <div className='ms-auto'>
+                                Sort by 
+                            </div>
+                            <SelectSearch options={sortOptions} 
+                            value={sortValue} onChange={handleSortChange} name="language" />
                         </Stack>
                         { reviewWriting ?
                             <div>

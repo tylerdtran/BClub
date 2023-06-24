@@ -13,7 +13,12 @@ function ReviewRate(props) {
             <Form.Label className='d-flex justify-content-center'>{props.title}</Form.Label>
             <Stack direction='horizontal' gap={3} className='d-flex justify-content-center'>
                 {['1', '2', '3', '4', '5'].map((value) => (
-                    <Form.Check required label={value} name={props.name}type="radio" id={`${props.name}-${value}`}
+                    <Form.Check
+                        required
+                        label={value}
+                        name={props.name}
+                        type="radio"
+                        id={`${props.name}-${value}`}
                         onChange={() => {
                             props.saveHandler(props.name, value);
                         }}
@@ -159,8 +164,7 @@ Date.prototype.currentTime = function () {
                                 </div>
                             </Form.Group>
                             <Form.Group>
-                                <Form.Label className='d-flex justify-content-center'>What would you like your reviewer name to be?</Form.Label>
-                                <Form.Label className='d-flex justify-content-center'>One word to characterize this club</Form.Label>
+                                <Form.Label className='d-flex justify-content-center'>What would you like the review author name to be?</Form.Label>
                                 <div className='d-flex justify-content-center'>
                                     <Form.Control 
                                     required 
@@ -169,7 +173,7 @@ Date.prototype.currentTime = function () {
                                     className='mb-3' 
                                     onChange={(e) => { setDisplayName(e.target.value) }} 
                                     style={{ width: 300 }}
-                                    value={displayName}
+                                    value={oneword}
                                     />
                                 </div>
                             </Form.Group>

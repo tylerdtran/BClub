@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import SelectSearch from 'react-select-search';
-import Select from 'react-select';
-// import { MDBSelect } from "mdb-react-ui-kit";
-// import fuzzySearch from 'react-select-search';
 import { Form } from "react-bootstrap";
 import { ref, get } from "firebase/database";
 import { db } from '../Firebase';
@@ -19,8 +16,11 @@ export default function SearchClubs(props) {
     useEffect(() => {get(clubList).then((snapshot) => {
         let clubNames = [];
         if (snapshot.exists()) {
+            // must be a name and val for select search to recognize
                 snapshot.forEach(function(childSnapshot) {
-                clubNames.push({ name: childSnapshot.val().name, value: childSnapshot.val().url })
+                clubNames.push({ 
+                    name: childSnapshot.val().name, 
+                    value: childSnapshot.val().url })
             });
         }
         setOptionList(clubNames);
@@ -28,14 +28,14 @@ export default function SearchClubs(props) {
 
     console.log(optionList);
 
-    const handleSelect = (selected) => {
-        if (props.handleSelect)
+    const handleChosen = (chosenLink) => {
+        if (props.handleChosen)
         {
-            props.handleSelect(selected);
+            props.handleChosen(chosenLink);
         }
         if (props.nav == "redirect")
         {
-            nav(`/clubs/${selected}`);
+            nav(`/clubs/${chosenLink}`);
         }
     }
 
@@ -43,7 +43,7 @@ export default function SearchClubs(props) {
         <Form>
             <SelectSearch
                 options={optionList} 
-                onChange={handleSelect}
+                onChange={handleChosen}
                 value={value} 
                 name="clubs" 
                 placeholder="Search"/>
