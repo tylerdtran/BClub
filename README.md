@@ -7,47 +7,9 @@ BClub is a new way for Bruins and clubs at UCLA to interact, featuring an interf
 git clone https://github.com/tylerdtran/BClub
 ```
 
-- Install Node.js 18.14.2 LTS
+# Install Node.js
+Install the most recent version of Node.js onto your devise. For further instructions on Node.js installation, visit the Node.js installation page: https://nodejs.org/en. 
 
-Arch Linux:
-```
-pacman -S nodejs npm
-```
-
-CentOS, Fedora and Red Hat Enterprise Linux:
-```
-dnf module install nodejs:18/common
-```
-
-Debian based Linux distributions:
-```
-curl -fsSL https://deb.nodesource.com/setup_18.x | bash - &&\
-apt-get install -y nodejs
-```
-
-Gentoo:
-```
-emerge nodejs
-```
-
-macOS:
-macOS installer from https://nodejs.org/en/#home-downloadhead
-or
-```
-curl "https://nodejs.org/dist/latest/node-${VERSION:-$(wget -qO- https://nodejs.org/dist/latest/ | sed -nE 's|.*>node-(.*)\.pkg</a>.*|\1|p')}.pkg" > "$HOME/Downloads/node-latest.pkg" && sudo installer -store -pkg "$HOME/Downloads/node-latest.pkg" -target "/"
-```
-
-Windows:
-Windows installer from https://nodejs.org/en/#home-downloadhead
-or 
-```
-winget install OpenJS.NodeJS
-```
-Ubuntu based Linux distributions:
-```
-curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash - &&\
-sudo apt-get install -y nodejs
-```
 
 # Install dependencies:
 ```
