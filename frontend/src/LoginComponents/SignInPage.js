@@ -41,7 +41,7 @@ export default function SignInPage()
       <div className="Login-Container"> 
       <ToastContainer className="p-3" position="top-center">
 						<Toast onClose={() => setIsValidPopUp(false)} show={isValidPopUp} delay={3000} autohide bg="light">
-							<Toast.Body>Invalid Username or Password: Your email address has either already been used, your login is invalid or you need to create a new account</Toast.Body>
+							<Toast.Body>Invalid Username or Password: Your email address has either already been used or your login is invalid</Toast.Body>
 						</Toast>
 			</ToastContainer> 
         <form onSubmit={signInUsingEmail}>

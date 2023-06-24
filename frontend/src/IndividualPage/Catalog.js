@@ -106,7 +106,7 @@ export default function Catalog() {
   }
 
 function Category({ clubs }) {
-    const goToClub = (url) => {
+  const goToClub = (url) => {
     const websiteName = window.location.origin;
     window.open(`${websiteName}/clubs/${url}`, "_blank", "noopener noreferrer");
   }
@@ -118,7 +118,9 @@ function Category({ clubs }) {
              club.clubName !== "" && (
             <Card key={club.clubName} nav="clubs/Bruin-Club-Tennis">
                 <Card.Img src={club.clubImage} fluid alt='Club Image' />
+                <a>
                   <div className='mask' style={{ backgroundColor: 'rgba(251, 251, 251, 0.15)' }}></div>
+                </a>
               <Card.Body>
                 <Card.Title>{club.clubName}</Card.Title>
                 <Card.Text>{club.clubBlurb}</Card.Text>

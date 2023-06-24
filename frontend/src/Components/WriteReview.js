@@ -160,6 +160,7 @@ Date.prototype.currentTime = function () {
                             </Form.Group>
                             <Form.Group>
                                 <Form.Label className='d-flex justify-content-center'>What would you like your reviewer name to be?</Form.Label>
+                                <Form.Label className='d-flex justify-content-center'>One word to characterize this club</Form.Label>
                                 <div className='d-flex justify-content-center'>
                                     <Form.Control 
                                     required 
