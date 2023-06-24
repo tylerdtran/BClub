@@ -10,6 +10,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import SelectSearch from 'react-select-search';
 import moment from 'moment';
 import _ from 'lodash';
+import SelectSearch from 'react-select-search';
 import { WriteReview } from './WriteReview';
 import 'bootstrap/dist/css/bootstrap.css';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
@@ -48,6 +49,7 @@ export function ReviewDisplay() {
         remove(child(reviewList, reviewID));
 
         setReviews(prevReviews => {
+            console.log("HEREEEEE")
             let newReviews = prevReviews.filter((review) => {
                 return review.key !== reviewID;
             });
@@ -64,13 +66,15 @@ export function ReviewDisplay() {
                 console.log("Updating ratings", newRatings, clubInfo?.rating);
                 clubInfo.rating = newRatings;
                 setClubInfo(clubInfo);
+
+                //update db as well
                 const clubRatingRef = child(clubList, clubname);
                 update(clubRatingRef, {rating: newRatings});
             }
         }
     }, [loadingClub, loading])
 
-    // retrieving data from clubs 
+    //get club info summary
     useEffect(() => {
         const fetchClubData = async () => {
             console.log("Getting club data...");
@@ -111,7 +115,7 @@ export function ReviewDisplay() {
                     console.log("it made it all the way here");
 
                 } else {
-                    console.log("No data retreived");
+                    console.log("No data available");
                     setReviews([]);
                 }
                 setLoading(false);
@@ -182,7 +186,7 @@ export function ReviewDisplay() {
                                     }
                                 }}
                             >
-                                Write a review...<EditIcon/>
+                                Write a review...
                             </Button>
                             <div className='ms-auto'>
                                 Sort by 

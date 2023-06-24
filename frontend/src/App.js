@@ -15,7 +15,9 @@ import SignUpPage from './LoginComponents/SignUpPage';
 import Highlights from './Highlights';
 import HighlightsForm from './HighlightsForm';
 import ClubsForm from './ClubsForm';
+import { EditReview } from './Components/EditReview';
 import { ReviewDisplay } from './Components/ReviewDisplay';
+import { ProtectedRoute } from './Components/ProtectedRoute';
 import 'bootstrap/dist/css/bootstrap.css';
 
 import GoogleCalendar from './GoogleCalendar';
@@ -34,6 +36,9 @@ export default function App(){
 					<Route path="Profile" element={<Profile/>} />
 					<Route path="SignUpPage" element={<SignUpPage/>} />
 					<Route path="SignInPage" element={<SignInPage/>} />
+					<Route path="editReview" element={<ProtectedRoute state={{ next: '/editReview' }} />}>
+						<Route index element={<EditReview />} />
+					</Route> 
 					<Route path="ReviewDisplay" element={<ReviewDisplay/>} />
 					<Route path="clubs/:clubname" element={<ReviewDisplay />} />
 					<Route path="highlights" element={<Highlights/>} />
