@@ -9,6 +9,7 @@ import { GoogleAuthProvider } from "firebase/auth";
 import { getDatabase } from "firebase/database";
 import './App.css';
 
+// require('dotenv').config();
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyA-8vR9blff5GIhVhlMH8LMu48_U5-91ic",
