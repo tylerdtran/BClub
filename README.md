@@ -2,6 +2,8 @@
 
 BClub revolutionizes the way Bruins and clubs at UCLA connect by providing a cutting-edge platform. It offers an intuitive interface for club profile pages, seamless event calendars, convenient club interest forms, and robust search and filtering capabilities. Discover your ideal clubs effortlessly through our powerful tools and make the most of your UCLA experience!
 
+![Screenshot of demo](./public/BClub_Demo.png)
+
 ## How to Build
 
 1. Clone this repository
